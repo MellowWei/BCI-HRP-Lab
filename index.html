@@ -240,6 +240,51 @@
       .mode-toggle{left:12px; right:12px; justify-content:center}
       .glitch,.glitch::before,.glitch::after{white-space:normal}
     }
+
+    /* FINAL HERO OVERFLOW FIX v3:
+       Keep the BCI-HRP main-site-like cyan/pink glitch, but prevent the title from escaping the viewport. */
+    .hero-grid{
+      grid-template-columns:1fr !important;
+      align-items:start !important;
+    }
+    h1{
+      max-width:100% !important;
+      font-size:clamp(48px, 5.8vw, 96px) !important;
+      line-height:.88 !important;
+      letter-spacing:-.085em !important;
+      font-weight:860 !important;
+    }
+    .glitch{
+      display:block !important;
+      max-width:100% !important;
+      white-space:normal !important;
+      overflow-wrap:normal !important;
+      word-break:normal !important;
+    }
+    .glitch::before,
+    .glitch::after{
+      display:block !important;
+      width:100% !important;
+      white-space:inherit !important;
+      overflow-wrap:inherit !important;
+      word-break:inherit !important;
+    }
+    .hero-visual{
+      width:100% !important;
+      min-height:280px !important;
+      max-height:360px;
+    }
+    .hero .wrap{
+      width:min(1320px, calc(100% - 72px));
+    }
+    @media (max-width:900px){
+      .hero .wrap{width:min(100% - 32px, 1160px);}
+      h1{font-size:clamp(44px, 12vw, 82px) !important; letter-spacing:-.075em !important;}
+    }
+    @media (max-width:640px){
+      h1{font-size:clamp(40px, 15vw, 68px) !important; letter-spacing:-.065em !important;}
+    }
+
   </style>
 </head>
 <body>
