@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BCI-HRP Lab Collaboration Brief: a lab-facing protocol for testing sound probes, self-prediction, qualia naming, and human-return interaction safety." />
+  <title>BCI-HRP Lab — The Human Return Protocol</title>
+  <style>
+    :root {
+      --bg: #03040a;
+      --bg2: #070817;
+      --panel: rgba(11, 14, 34, 0.72);
+      --panel2: rgba(255,255,255,0.045);
+      --text: #f5f7ff;
+      --muted: #a4abc8;
+      --dim: #69708d;
+      --cyan: #00f5ff;
+      --blue: #66d7ff;
+      --pink: #ff2bd6;
+      --green: #35ff9f;
+      --yellow: #ffe66d;
+      --red: #ff5a75;
+      --line: rgba(0,245,255,0.18);
+      --line2: rgba(255,255,255,0.09);
+      --shadow: 0 24px 90px rgba(0,0,0,.46);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --serif: Georgia, "Times New Roman", "Songti SC", serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: var(--sans);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(0,245,255,.16), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(255,43,214,.13), transparent 31%),
+        radial-gradient(circle at 48% 88%, rgba(53,255,159,.09), transparent 38%),
+        linear-gradient(180deg, var(--bg) 0%, #050612 48%, #02030a 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,245,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,43,214,.055) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: .35;
+      mask-image: linear-gradient(to bottom, transparent 0, black 16%, black 74%, transparent 100%);
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.25) 55%, rgba(0,0,0,.78) 100%);
+      z-index: -1;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(4, 6, 18, .86);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 0 28px rgba(0,245,255,.08);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 260px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .dot {
+      width: 11px;
+      height: 11px;
+      flex: 0 0 auto;
+      border-radius: 99px;
+      background: var(--cyan);
+      box-shadow: 0 0 16px rgba(0,245,255,.9), 0 0 34px rgba(255,43,214,.25);
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px 14px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .18s ease, text-shadow .18s ease;
+    }
+    nav a:hover { color: var(--cyan); text-shadow: 0 0 12px rgba(0,245,255,.65); }
+
+    section { padding: 58px 0; scroll-margin-top: 82px; }
+    .hero { padding: 76px 0 52px; }
+    .eyebrow {
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      text-shadow: 0 0 14px rgba(0,245,255,.55);
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      max-width: 1080px;
+      font-size: clamp(48px, 7.3vw, 96px);
+      line-height: .92;
+      letter-spacing: -.075em;
+      font-weight: 840;
+      text-shadow: 0 0 28px rgba(0,245,255,.18), 0 0 42px rgba(255,43,214,.12);
+    }
+    h2 {
+      max-width: 980px;
+      font-size: clamp(30px, 4.4vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    h3 {
+      color: var(--text);
+      font-size: 21px;
+      line-height: 1.18;
+      letter-spacing: -.025em;
+      margin-bottom: 10px;
+    }
+    p { color: var(--muted); font-size: 15.5px; line-height: 1.68; }
+    .cn { color: rgba(245,247,255,.9); margin-top: 8px; }
+    .muted { color: var(--muted); }
+    .small { font-size: 13px; line-height: 1.55; }
+
+    .hero-sub {
+      max-width: 960px;
+      margin-top: 24px;
+      color: rgba(245,247,255,.92);
+      font-size: clamp(20px, 2.5vw, 32px);
+      line-height: 1.22;
+      letter-spacing: -.035em;
+    }
+    .hero-note {
+      max-width: 880px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.68;
+    }
+    .status-row, .button-row, .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .status-row { margin: 26px 0 0; }
+    .pill, .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(0,245,255,.21);
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(0,245,255,.07), rgba(255,43,214,.045)), rgba(255,255,255,.032);
+      color: var(--muted);
+      padding: 8px 11px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .pill.good { border-color: rgba(53,255,159,.34); color: var(--green); }
+    .pill.warn { border-color: rgba(255,230,109,.34); color: var(--yellow); }
+    .pill.no { border-color: rgba(255,90,117,.34); color: #ffb1bf; }
+
+    .button-row { margin-top: 28px; }
+    .button {
+      border: 1px solid rgba(0,245,255,.26);
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(0,245,255,.08), rgba(255,43,214,.06)), rgba(255,255,255,.035);
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 15px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); border-color: rgba(53,255,159,.45); box-shadow: 0 0 26px rgba(0,245,255,.14); }
+    .button.primary { border-color: rgba(53,255,159,.44); box-shadow: 0 0 22px rgba(53,255,159,.12); }
+    .button.ghost { color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+    .span-12 { grid-column: span 12; }
+    .span-8 { grid-column: span 8; }
+    .span-7 { grid-column: span 7; }
+    .span-6 { grid-column: span 6; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .span-3 { grid-column: span 3; }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(0,245,255,.06), transparent 34%),
+        linear-gradient(180deg, rgba(0,245,255,.035), rgba(255,43,214,.022)),
+        var(--panel);
+      padding: 24px;
+      box-shadow: var(--shadow), inset 0 0 28px rgba(255,255,255,.02);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,245,255,.76), rgba(255,43,214,.62), transparent);
+      opacity: .7;
+    }
+    .card.feature { border-color: rgba(53,255,159,.33); background:
+      radial-gradient(circle at 10% 0%, rgba(53,255,159,.09), transparent 32%),
+      radial-gradient(circle at 88% 10%, rgba(255,43,214,.07), transparent 34%),
+      var(--panel); }
+    .card.warn { border-color: rgba(255,230,109,.32); }
+    .card.red { border-color: rgba(255,90,117,.32); }
+
+    .num {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .num.yellow { color: var(--yellow); }
+    .num.pink { color: var(--pink); }
+    .large-claim {
+      font-size: clamp(24px, 3.2vw, 42px);
+      line-height: 1.18;
+      letter-spacing: -.04em;
+      color: var(--text);
+      max-width: 1020px;
+    }
+    .claim-box {
+      margin-top: 20px;
+      border: 1px solid rgba(53,255,159,.28);
+      border-radius: 22px;
+      padding: 18px;
+      background: linear-gradient(90deg, rgba(53,255,159,.075), rgba(0,245,255,.045), rgba(255,43,214,.035)), rgba(255,255,255,.025);
+    }
+    .claim-box strong { color: var(--green); }
+
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td {
+      border: 1px solid rgba(0,245,255,.13);
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+      background: rgba(255,255,255,.022);
+    }
+    th {
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: rgba(0,245,255,.06);
+    }
+    td:first-child { color: rgba(245,247,255,.92); font-weight: 650; }
+    .table-wrap { overflow-x: auto; border-radius: 18px; margin-top: 16px; }
+
+    .flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .flow-step {
+      border: 1px solid rgba(0,245,255,.15);
+      border-radius: 18px;
+      padding: 15px;
+      background: rgba(255,255,255,.028);
+      min-height: 150px;
+    }
+    .flow-step b { display: block; color: var(--cyan); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; margin-bottom: 10px; }
+
+    .kpi {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      align-items: start;
+      border-top: 1px solid rgba(0,245,255,.12);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+    .kpi:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+    .kpi .label { color: var(--yellow); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+
+    .safety-machine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .safety-node {
+      border: 1px solid rgba(255,230,109,.18);
+      border-radius: 18px;
+      padding: 15px;
+      background: rgba(255,230,109,.028);
+      min-height: 175px;
+    }
+    .safety-node b { display: block; color: var(--yellow); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 9px; }
+    .safety-node.red { border-color: rgba(255,90,117,.3); background: rgba(255,90,117,.04); }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .mini {
+      border: 1px solid rgba(0,245,255,.14);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.026);
+    }
+    .mini b, .mini h3 { color: var(--green); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; display: block; }
+    ul.clean { margin: 10px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+    ul.clean li { margin: 5px 0; }
+
+    .copy-box {
+      margin-top: 16px;
+      border: 1px solid rgba(0,245,255,.16);
+      border-radius: 20px;
+      background: rgba(3,4,10,.54);
+      padding: 16px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    .footer {
+      padding: 54px 0 70px;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      border-top: 1px solid rgba(0,245,255,.12);
+    }
+
+    .mode-toggle {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      display: flex;
+      gap: 8px;
+      border: 1px solid rgba(0,245,255,.18);
+      border-radius: 999px;
+      background: rgba(4,6,18,.82);
+      backdrop-filter: blur(14px);
+      padding: 7px;
+      box-shadow: 0 0 24px rgba(0,0,0,.32);
+    }
+    .mode-toggle button {
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      cursor: pointer;
+      padding: 8px 10px;
+    }
+    .mode-toggle button.active { background: rgba(0,245,255,.12); color: var(--cyan); }
+    body.focus-mode .secondary { display: none !important; }
+    body.focus-mode section { padding: 44px 0; }
+    body.focus-mode .card { box-shadow: none; }
+
+    @media (max-width: 960px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      .span-8, .span-7, .span-6, .span-5, .span-4, .span-3 { grid-column: span 12; }
+      .flow, .safety-machine { grid-template-columns: 1fr 1fr; }
+      .split { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: calc(100% - 22px); }
+      .hero { padding-top: 54px; }
+      section { padding: 44px 0; }
+      h1 { font-size: clamp(39px, 16vw, 62px); }
+      h2 { font-size: clamp(28px, 10vw, 42px); }
+      .card { padding: 19px; border-radius: 22px; }
+      .flow, .safety-machine { grid-template-columns: 1fr; }
+      th, td { min-width: 210px; }
+      .brand { white-space: normal; min-width: 0; }
+      .mode-toggle { left: 12px; right: 12px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="dot"></span>BCI-HRP LAB // Wei Jueran · 魏珏然</div>
+      <nav aria-label="Page navigation">
+        <a href="#claim">Claim</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#methods">Methods</a>
+        <a href="#feasibility">Feasibility</a>
+        <a href="#safety">Safety</a>
+        <a href="#collaborate">Collaborate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">Lab Collaboration Brief // 实验室合作入口</div>
+        <h1>BCI - The Human Return Protocol</h1>
+        <p class="hero-sub">A lab-facing protocol for testing whether sound probes, self-prediction, editable naming, and wearable/neural proxies can improve within-person self-calibration.</p>
+        <p class="hero-sub cn">一个面向实验室合作的研究协议：测试声音探针、自我预测、可编辑命名与可穿戴/神经代理，是否能提升个体内自我校准。</p>
+        <p class="hero-note">Current pilot: Sound-QDR protocol first. Existing lab equipment second. Future triadic hardware last.</p>
+        <div class="status-row">
+          <span class="pill good">Current Pilot: Sound-QDR</span>
+          <span class="pill warn">Future Vision: AI headphones + head patch + wristband</span>
+          <span class="pill no">No diagnosis · no treatment · no state induction</span>
+        </div>
+        <div class="button-row">
+          <a class="button primary" href="#claim">Read 3-min PI brief</a>
+          <a class="button" href="#pilot">Pilot design</a>
+          <a class="button" href="#safety">Safety flow</a>
+          <button class="button ghost" type="button" onclick="copyBrief()">Copy email brief</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="claim">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">One Testable Claim // 一个可证伪主张</div>
+          <p class="large-claim">Does a sound-probe + self-prediction + editable naming protocol improve within-person self-calibration, and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
+          <p class="large-claim cn">声音探针 + 自我预测 + 可编辑命名协议，是否能提升个体内自我校准？自主神经/神经代理是否比仅自评提供额外解释价值？</p>
+          <div class="claim-box">
+            <p><strong>Research stance:</strong> this is feasibility and construct calibration, not clinical validation. “Qualia alignment” and “Human Return” are candidate constructs that can be narrowed, renamed, rejected, or revised by a partner lab before preregistration.</p>
+            <p class="cn"><strong>研究姿态：</strong>第一项研究是可行性与构念校准，不是临床验证。“感质对齐”和“Human Return”是候选构念，可以在预注册前由合作实验室缩小、改名、否定或修正。</p>
+          </div>
+        </div>
+        <div class="card span-4">
+          <div class="num">Not a device pitch</div>
+          <h3>Protocol first</h3>
+          <p>Custom hardware is not required for the first study. Use fixed sound probes, self-report, interaction logs, and existing lab sensors.</p>
+          <p class="cn">第一项研究不依赖自研硬件。先用固定声音探针、自评、交互日志与实验室现有传感器。</p>
+        </div>
+        <div class="card span-4">
+          <div class="num">Not hidden truth</div>
+          <h3>Proxies, not mind-reading</h3>
+          <p>HRV, EDA, motion, and optional EEG/fNIRS are physiological proxies; they do not reveal meaning, trauma, or “true emotion.”</p>
+          <p class="cn">HRV、EDA、运动、可选 EEG/fNIRS 都是生理代理；它们不揭示意义、创伤或“真实情绪”。</p>
+        </div>
+        <div class="card span-4">
+          <div class="num">Not a finished belief system</div>
+          <h3>Co-designable</h3>
+          <p>The lab may change hypotheses, metrics, stimuli, hardware path, and construct names before any formal study.</p>
+          <p class="cn">实验室可以在正式研究前修改假设、指标、刺激材料、硬件路径与构念名称。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pilot">
+      <div class="wrap grid">
+        <div class="card span-12">
+          <div class="eyebrow">Pilot Design // 试点研究设计</div>
+          <h2>Small, within-subject, ablated.</h2>
+          <h2 class="cn">小样本、个体内、可消融。</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Item</th><th>Lab-facing version</th><th>中文版本</th></tr></thead>
+              <tbody>
+                <tr><td>Study type</td><td>Within-subject feasibility pilot; repeated sessions; non-clinical participants; no treatment claim.</td><td>个体内可行性试点；重复 session；非临床参与者；不做治疗声明。</td></tr>
+                <tr><td>Sample rationale</td><td>N = 5–12 only supports usability, data-quality estimation, adverse UX discovery, and variance estimates for a later powered study.</td><td>N=5–12 只支持可用性、数据质量估计、负面交互发现，以及为后续功效研究估计方差。</td></tr>
+                <tr><td>Primary outcome</td><td>Within-person change in pre-probe prediction error across sessions.</td><td>跨 session 的个体内声音前预测误差变化。</td></tr>
+                <tr><td>Secondary outcomes</td><td>State-naming stability, qualia granularity, interpretive-agency events, completion rate, discomfort / stop events.</td><td>状态命名稳定性、感质颗粒度、解释自主事件、完成率、不适/停止事件。</td></tr>
+                <tr><td>Signals</td><td>Self-report first; HRV/RMSSD, EDA/SCR, respiration, temperature, motion second; EEG/fNIRS optional and lab-dependent.</td><td>自评优先；HRV/RMSSD、EDA/SCR、呼吸、皮温、运动其次；EEG/fNIRS 可选且由实验室条件决定。</td></tr>
+                <tr><td>Controls / ablations</td><td>Self-report only; fixed sound + self-report; wrist + sound; head + sound; full triad; silence / neutral field where appropriate.</td><td>仅自评；固定声音 + 自评；腕 + 声音；头 + 声音；完整三件套；适当加入静默/中性场。</td></tr>
+                <tr><td>Analysis</td><td>Mixed-effects model, event-locked descriptive analysis, ablation comparison, missing-data report, artifact report, individual plots.</td><td>混合效应模型、事件锁定描述分析、消融比较、缺失数据报告、伪迹报告、个体图。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card span-12 secondary">
+          <div class="eyebrow">Session Flow // 单次流程</div>
+          <div class="flow">
+            <div class="flow-step"><b>T0 Consent</b><p>Sound family, intensity ceiling, stop method, data sharing, AI summary permission.</p></div>
+            <div class="flow-step"><b>T1 Baseline</b><p>Short rest + self-report; optional physiological baseline.</p></div>
+            <div class="flow-step"><b>T2 Predict</b><p>User predicts direction and intensity of state change before the sound.</p></div>
+            <div class="flow-step"><b>T3 Probe</b><p>Fixed, documented sound file with event markers and stop controls.</p></div>
+            <div class="flow-step"><b>T4 Report</b><p>User reports body, affect, perception, action tendency, meaning.</p></div>
+            <div class="flow-step"><b>T5 Rename</b><p>User accepts, edits, rejects, renames, deletes, or exits.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="methods">
+      <div class="wrap grid">
+        <div class="card span-12 feature">
+          <div class="eyebrow">Operational Definitions // 操作化定义</div>
+          <h2>Make “Human Return” measurable without reducing it to a hidden signal.</h2>
+          <h2 class="cn">让“人类返回”可测，但不把它压扁成隐藏信号。</h2>
+        </div>
+        <div class="card span-6">
+          <div class="kpi"><div class="label">Primary</div><div><h3>Self-prediction error</h3><p>Pre-probe predicted vector compared with post-probe reported vector. Candidate dimensions: tension, clarity, body return, movement urge, emotional pressure, safety. Direction match + normalized absolute error.</p><p class="cn">声音前预测向量与播放后报告向量比较。候选维度：紧张度、清晰度、身体返回、行动冲动、情绪压强、安全感。计算方向匹配与归一化绝对误差。</p></div></div>
+          <div class="kpi"><div class="label">Secondary</div><div><h3>State-naming stability</h3><p>Across repeated sound families, does the user reuse, refine, or stabilize personal labels without being forced into AI labels?</p><p class="cn">在重复声音条件下，用户是否能复用、细化或稳定个人标签，而不是被 AI 标签强行牵引？</p></div></div>
+        </div>
+        <div class="card span-6">
+          <div class="kpi"><div class="label">Construct</div><div><h3>Qualia granularity</h3><p>Shift from generic terms (“good / bad”) to differentiated bodily-affective-perceptual-action descriptions.</p><p class="cn">从“舒服/难受”的泛化词，转向更细的身体—情绪—感知—行动描述。</p></div></div>
+          <div class="kpi"><div class="label">Agency</div><div><h3>Interpretive agency</h3><p>Stop, Ground, Delete, Reject, Rename, Skip, and Edit are primary events, not UI afterthoughts.</p><p class="cn">停止、落地、删除、拒绝、重命名、跳过、编辑是主要数据事件，不是 UI 附属品。</p></div></div>
+        </div>
+        <div class="card span-12 secondary">
+          <div class="eyebrow">Minimal Data Schema // 最小数据字段</div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Field group</th><th>Example fields</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td>Session</td><td>participant_hash, session_id, session_date, consent_version</td><td>Track repeated sessions without exposing identity.</td></tr>
+                <tr><td>Stimulus</td><td>stimulus_id, file_hash, loudness_norm, event_markers, playback_onset</td><td>Keep sound probes fixed and reproducible.</td></tr>
+                <tr><td>Prediction</td><td>pre_tension, pre_clarity, pre_body_return, pre_action_urge, confidence</td><td>Compute prediction error.</td></tr>
+                <tr><td>Post-report</td><td>post_vector, free_text, qualia_terms, action_tendency, meaning_note</td><td>Capture subjective change without claiming hidden truth.</td></tr>
+                <tr><td>Agency</td><td>stop, ground, reject, rename, edit, delete, skip, timestamp</td><td>Measure interpretive control and safety behavior.</td></tr>
+                <tr><td>Optional sensors</td><td>hrv_rmssd, eda_scr, respiration_proxy, temp, motion, eeg_quality_flag</td><td>Use proxies only when data quality permits.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="failure">
+      <div class="wrap grid">
+        <div class="card red span-12">
+          <div class="eyebrow">What Can Fail // 失败判准</div>
+          <h2>The project becomes stronger when failure is visible.</h2>
+          <h2 class="cn">失败被写清楚，项目才更可信。</h2>
+          <div class="grid" style="margin-top:16px;">
+            <div class="mini span-4"><b>Usability failure</b><p>User cannot complete prediction, playback, report, rejection, or exit flow.</p><p class="cn">用户无法完成预测、播放、报告、拒绝或退出流程。</p></div>
+            <div class="mini span-4"><b>Prediction failure</b><p>Prediction error does not decrease, or users become more confused after exposure.</p><p class="cn">预测误差无下降，或暴露后更混乱。</p></div>
+            <div class="mini span-4"><b>Naming failure</b><p>Labels remain generic, unstable, or AI-led across repeated sessions.</p><p class="cn">标签持续泛化、不稳定，或被 AI 牵着走。</p></div>
+            <div class="mini span-4"><b>Safety failure</b><p>Users feel guided, diagnosed, pushed by sound, or unable to stop.</p><p class="cn">用户感到被诱导、被诊断、被声音推着走或无法退出。</p></div>
+            <div class="mini span-4"><b>Signal failure</b><p>Synchronization failure, high artifact load, or missing data prevents analysis.</p><p class="cn">同步失败、伪迹太高、缺失过多，无法支持分析。</p></div>
+            <div class="mini span-4"><b>Added-value failure</b><p>Wearable/neural proxies add no explanatory value beyond self-report.</p><p class="cn">可穿戴/神经代理没有比自评提供更多解释价值。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feasibility">
+      <div class="wrap grid">
+        <div class="card span-12">
+          <div class="eyebrow">Technical Feasibility // 技术可行性</div>
+          <h2>The pilot should not depend on custom hardware.</h2>
+          <h2 class="cn">试点不应依赖自研硬件。</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Layer</th><th>Feasible pilot choice</th><th>Known risk</th><th>Mitigation</th></tr></thead>
+              <tbody>
+                <tr><td>Audio stimuli</td><td>Fixed WAV files, fixed loudness normalization, event markers, optional loopback confirmation.</td><td>Bluetooth latency and device delay.</td><td>Use wired playback or measured onset markers; analyze ANS in second-level windows.</td></tr>
+                <tr><td>Wearable/autonomic</td><td>Existing research-accepted devices for HRV, EDA, respiration proxy, skin temperature, motion.</td><td>EDA latency, motion artifact, slow temperature response.</td><td>Quality flags, recovery-window analysis, artifact reporting, within-person interpretation.</td></tr>
+                <tr><td>EEG/fNIRS</td><td>Optional lab extension, not core proof. Treat as listening-state proxy only.</td><td>Fp1/Fp2 eye/muscle artifact; fNIRS co-wear complexity.</td><td>Predefine artifact rejection, quality thresholds, optional exclusion, no meaning-decoding claim.</td></tr>
+                <tr><td>Synchronization</td><td>Shared event log, measured onset, LSL or lab-equivalent time sync.</td><td>Clock drift and unsynchronized devices.</td><td>Reject millisecond-level claims unless timing is verified.</td></tr>
+                <tr><td>AI role</td><td>Optional production aid and editable report summarizer.</td><td>AI over-packaging / suggestion bias.</td><td>Frozen stimuli for study; AI labels are rejectable and not treated as truth.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card warn span-12 secondary">
+          <div class="eyebrow">Future Hardware Boundary // 未来硬件边界</div>
+          <p>The triadic product vision remains: AI headphones for timed acoustic output, head patch for optional listening-state proxies, wristband for autonomic/body witness, and AI-QDR for interpretive return. But the first study should prove the protocol can work before the devices become the project.</p>
+          <p class="cn">三件套产品愿景保留：AI 耳机负责定时声音输出，头部贴片负责可选聆听状态代理，腕环负责自主神经/身体见证，AI-QDR 负责解释返回。但第一项研究必须先证明协议有价值，而不是让设备先吞掉项目。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">Safety Interaction Flow // 安全交互流程</div>
+          <h2>Ethics must appear as interaction, not only as principle.</h2>
+          <h2 class="cn">伦理必须落实为交互，而不能只停留在原则声明。</h2>
+          <div class="safety-machine">
+            <div class="safety-node"><b>1. Consent gate</b><p>User chooses sound family, intensity ceiling, stop method, data sharing, and whether AI summaries are allowed.</p><p class="cn">用户先选择声音家族、强度上限、停止方式、数据分享与是否允许 AI 总结。</p></div>
+            <div class="safety-node"><b>2. Persistent controls</b><p>Stop, Ground, Volume Down, Skip, and Delete remain visible before, during, and after playback.</p><p class="cn">播放前、中、后始终显示停止、落地、降音量、跳过、删除。</p></div>
+            <div class="safety-node"><b>3. Auto-pause triggers</b><p>Self-report unsafe, repeated stop gestures, non-response, rapid discomfort increase, or lab-defined physiology threshold.</p><p class="cn">自评不安全、重复停止、不回应、不适评分快速上升，或实验室定义阈值。</p></div>
+            <div class="safety-node"><b>4. Grounding mode</b><p>Fade out sound, suppress interpretation, show grounding prompt, offer researcher check-in.</p><p class="cn">声音淡出，暂停解释，显示落地提示，提供研究人员 check-in。</p></div>
+            <div class="safety-node red"><b>5. No crisis system</b><p>This is not emergency detection or therapy. High-risk disclosures leave the protocol and follow lab-approved human safety procedures.</p><p class="cn">这不是危机检测或治疗系统。高风险表露退出协议，进入实验室批准的人类安全流程。</p></div>
+          </div>
+        </div>
+        <div class="card span-4">
+          <div class="num">UI requirement</div><h3>Always-visible exit</h3>
+          <p>Stop must be larger than decorative controls, keyboard/touch accessible, and logged as a valid outcome rather than failure.</p>
+          <p class="cn">Stop 必须比装饰控件更显眼，支持键盘/触控，并作为有效结果记录，而不是失败。</p>
+        </div>
+        <div class="card span-4">
+          <div class="num">UI requirement</div><h3>No post-trigger analysis</h3>
+          <p>If grounding mode is triggered, AI-QDR does not produce deep interpretation. It only summarizes user-owned safety actions.</p>
+          <p class="cn">进入落地模式后，AI-QDR 不做深度解释，只总结用户拥有的安全行动。</p>
+        </div>
+        <div class="card span-4">
+          <div class="num">UI requirement</div><h3>Agency as data</h3>
+          <p>Reject, rename, stop, delete, and skip are primary interaction events, not UI afterthoughts.</p>
+          <p class="cn">拒绝、重命名、停止、删除、跳过是核心交互事件，不是界面附属品。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="collaborate">
+      <div class="wrap grid">
+        <div class="card span-12">
+          <div class="eyebrow">Collaboration Model // 合作模型</div>
+          <h2>Not asking a lab to execute a finished system.</h2>
+          <h2 class="cn">不是请实验室执行一个已经封闭的系统。</h2>
+          <div class="split">
+            <div class="mini">
+              <b>What I bring</b>
+              <ul class="clean">
+                <li>Human Return / QDR construct and user-facing interface logic.</li>
+                <li>Qualia naming prompts and interpretive-agency design.</li>
+                <li>Sound-probe interaction prototype and narrative design.</li>
+                <li>Ethical stance: AI hypotheses are editable, rejectable, and deletable.</li>
+              </ul>
+              <p class="cn">我带来：Human Return / QDR 构念、感质命名界面、解释自主机制、声音探针交互原型，以及 AI 可被拒绝/删除的伦理结构。</p>
+            </div>
+            <div class="mini">
+              <b>What a lab brings</b>
+              <ul class="clean">
+                <li>Methodological rigor, IRB pathway, safety review.</li>
+                <li>Sensor selection, signal processing, artifact criteria.</li>
+                <li>Study recruitment, statistical modeling, preregistration.</li>
+                <li>Authority to narrow, rename, reject, or split hypotheses.</li>
+              </ul>
+              <p class="cn">实验室带来：方法学严谨、IRB/伦理流程、传感器选择、信号处理、招募、统计建模、预注册，以及修改/否定构念的权力。</p>
+            </div>
+          </div>
+        </div>
+        <div class="card feature span-12">
+          <div class="eyebrow">First Ask // 第一请求</div>
+          <h2>A 15-minute fit call.</h2>
+          <h2 class="cn">一次 15 分钟的契合对话。</h2>
+          <p>The first meeting is not a funding ask and not a hardware ask. It is a fit call to decide whether this should become a Phase 0 software protocol, a wearable feasibility pilot, an HCI safety study, or a music-cognition / neuroaesthetics project.</p>
+          <p class="cn">第一次对话不是融资请求，也不是硬件请求。它只是判断这个方向更适合成为 Phase 0 软件协议、可穿戴可行性试点、HCI 安全研究，还是音乐认知/神经美学项目。</p>
+          <div class="button-row">
+            <button class="button primary" type="button" onclick="copyBrief()">Copy PI email brief</button>
+            <a class="button" href="#top">Back to top</a>
+            <a class="button ghost" href="./full.html">Full appendix placeholder</a>
+          </div>
+          <div id="brief" class="copy-box">Subject: Lab collaboration fit call — BCI-HRP / Human Return Protocol
+
+Dear Professor [Name],
+
+I’m developing BCI - The Human Return Protocol as a lab-facing research prototype rather than a consumer BCI device. The candidate question is whether a sound-probe + self-prediction + editable naming protocol can improve within-person self-calibration, and whether autonomic/neural proxies add explanatory value beyond self-report alone.
+
+The first pilot would be small, non-clinical, within-subject, and ablated: fixed sound probes, pre/post self-prediction, qualia naming, interpretive-agency events, and optional wearable or EEG/fNIRS proxies using existing lab equipment. It makes no diagnostic, treatment, crisis-detection, or neural-decoding claims.
+
+I bring the Human Return/QDR construct, user-facing interface logic, sound-probe design, and interpretive-agency safety model. I’m looking for a PI/lab to help narrow, falsify, operationalize, or redesign the construct before preregistration.
+
+Would you be open to a 15-minute fit call?</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mode-toggle" aria-label="View mode">
+    <button type="button" id="modeFull" class="active" onclick="setMode('full')">FULL</button>
+    <button type="button" id="modeFocus" onclick="setMode('focus')">PI FOCUS</button>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      BCI-HRP LAB // Research prototype · non-diagnostic · non-treatment · user-owned interpretation · built for PI-first review.
+      <br />当前状态：实验室合作入口页，不替代 IRB、工程规格书或临床安全方案。
+    </div>
+  </footer>
+
+  <script>
+    function setMode(mode) {
+      const full = document.getElementById('modeFull');
+      const focus = document.getElementById('modeFocus');
+      if (mode === 'focus') {
+        document.body.classList.add('focus-mode');
+        full.classList.remove('active');
+        focus.classList.add('active');
+      } else {
+        document.body.classList.remove('focus-mode');
+        focus.classList.remove('active');
+        full.classList.add('active');
+      }
+    }
+
+    async function copyBrief() {
+      const text = document.getElementById('brief').innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        flash('Copied PI brief to clipboard');
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        flash('Copied PI brief to clipboard');
+      }
+    }
+
+    function flash(message) {
+      const el = document.createElement('div');
+      el.textContent = message;
+      el.style.position = 'fixed';
+      el.style.left = '50%';
+      el.style.bottom = '74px';
+      el.style.transform = 'translateX(-50%)';
+      el.style.padding = '10px 14px';
+      el.style.border = '1px solid rgba(53,255,159,.38)';
+      el.style.borderRadius = '999px';
+      el.style.background = 'rgba(4,6,18,.92)';
+      el.style.backdropFilter = 'blur(12px)';
+      el.style.color = '#35ff9f';
+      el.style.fontFamily = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace';
+      el.style.fontSize = '12px';
+      el.style.zIndex = '999';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1800);
+    }
+  </script>
+</body>
+</html>
