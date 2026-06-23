@@ -5,427 +5,201 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="BCI-HRP Lab Collaboration Brief: a lab-facing protocol for testing sound probes, self-prediction, qualia naming, and human-return interaction safety." />
   <title>BCI-HRP Lab — The Human Return Protocol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #03040a;
+      --bg: #02030a;
       --bg2: #070817;
       --panel: rgba(11, 14, 34, 0.72);
-      --panel2: rgba(255,255,255,0.045);
+      --panel2: rgba(255,255,255,0.04);
       --text: #f5f7ff;
-      --muted: #a4abc8;
-      --dim: #69708d;
+      --muted: #aab2d4;
+      --dim: #6b7396;
       --cyan: #00f5ff;
-      --blue: #66d7ff;
+      --blue: #74dbff;
       --pink: #ff2bd6;
+      --purple: #8c5bff;
       --green: #35ff9f;
       --yellow: #ffe66d;
       --red: #ff5a75;
       --line: rgba(0,245,255,0.18);
       --line2: rgba(255,255,255,0.09);
       --shadow: 0 24px 90px rgba(0,0,0,.46);
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      --serif: Georgia, "Times New Roman", "Songti SC", serif;
+      --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --display: Orbitron, Inter, sans-serif;
     }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      font-family: var(--sans);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; min-height:100vh; color:var(--text); font-family:var(--sans);
       background:
         radial-gradient(circle at 12% 4%, rgba(0,245,255,.16), transparent 30%),
-        radial-gradient(circle at 88% 10%, rgba(255,43,214,.13), transparent 31%),
+        radial-gradient(circle at 88% 10%, rgba(255,43,214,.14), transparent 31%),
         radial-gradient(circle at 48% 88%, rgba(53,255,159,.09), transparent 38%),
         linear-gradient(180deg, var(--bg) 0%, #050612 48%, #02030a 100%);
-      overflow-x: hidden;
+      overflow-x:hidden;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none;
       background-image:
-        linear-gradient(rgba(0,245,255,.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,43,214,.055) 1px, transparent 1px);
-      background-size: 72px 72px;
-      opacity: .35;
-      mask-image: linear-gradient(to bottom, transparent 0, black 16%, black 74%, transparent 100%);
-      z-index: -2;
+        linear-gradient(rgba(0,245,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,43,214,.05) 1px, transparent 1px);
+      background-size:72px 72px; opacity:.4;
+      mask-image:linear-gradient(to bottom, transparent 0, black 16%, black 74%, transparent 100%);
+      z-index:-2;
     }
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.25) 55%, rgba(0,0,0,.78) 100%);
-      z-index: -1;
+    body::after{
+      content:""; position:fixed; inset:0; pointer-events:none;
+      background:radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.24) 58%, rgba(0,0,0,.82) 100%);
+      z-index:-1;
     }
-
-    a { color: inherit; }
-    .wrap { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: rgba(4, 6, 18, .86);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 0 28px rgba(0,245,255,.08);
+    a{color:inherit}
+    .wrap{width:min(1160px, calc(100% - 36px)); margin:0 auto}
+    header{
+      position:sticky; top:0; z-index:50; border-bottom:1px solid var(--line);
+      background:rgba(4,6,18,.86); backdrop-filter:blur(18px); box-shadow:0 0 28px rgba(0,245,255,.08)
     }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 13px 0;
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:13px 0}
+    .brand{display:flex; align-items:center; gap:10px; min-width:260px; font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap}
+    .dot{width:11px; height:11px; border-radius:99px; background:var(--cyan); box-shadow:0 0 16px rgba(0,245,255,.9), 0 0 34px rgba(255,43,214,.25)}
+    nav{display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px 14px}
+    nav a{color:var(--muted); text-decoration:none; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; transition:color .18s ease, text-shadow .18s ease}
+    nav a:hover{color:var(--cyan); text-shadow:0 0 12px rgba(0,245,255,.65)}
+    section{padding:64px 0; scroll-margin-top:84px}
+    .hero{padding:76px 0 56px; position:relative}
+    .eyebrow{color:var(--cyan); font-family:var(--mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase; margin-bottom:16px; text-shadow:0 0 14px rgba(0,245,255,.55)}
+    h1,h2,h3,p{margin:0}
+    h1{
+      font-family:var(--display);
+      max-width:1100px; font-size:clamp(48px, 8vw, 102px); line-height:.96; letter-spacing:-.035em; font-weight:900;
+      text-transform:uppercase;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 260px;
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--text);
-      white-space: nowrap;
+    .glitch{position:relative; display:inline-block; color:#f7fbff; text-shadow:0 0 12px rgba(255,255,255,.08), 0 0 28px rgba(0,245,255,.16), 0 0 42px rgba(255,43,214,.12); animation:titlePulse 3.2s ease-in-out infinite}
+    .glitch::before,.glitch::after{content:attr(data-text); position:absolute; inset:0; pointer-events:none}
+    .glitch::before{color:var(--cyan); transform:translate(-2px, -1px); clip-path:polygon(0 0, 100% 0, 100% 42%, 0 58%); opacity:.88; animation:glitchA 2.9s infinite linear alternate-reverse}
+    .glitch::after{color:var(--pink); transform:translate(3px, 1px); clip-path:polygon(0 52%, 100% 42%, 100% 100%, 0 100%); opacity:.84; animation:glitchB 2.1s infinite linear alternate-reverse}
+    .title-cutline{width:min(720px, 88%); height:2px; background:linear-gradient(90deg, transparent, var(--cyan), var(--pink), transparent); margin:18px 0 22px; box-shadow:0 0 18px rgba(0,245,255,.35)}
+    .jump-tag{
+      display:inline-flex; align-items:center; gap:8px; margin-bottom:18px; padding:7px 11px;
+      font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+      border:1px solid rgba(255,43,214,.28); border-radius:999px;
+      background:linear-gradient(90deg, rgba(0,245,255,.08), rgba(255,43,214,.08)), rgba(255,255,255,.03);
+      box-shadow:0 0 22px rgba(255,43,214,.08);
     }
-    .dot {
-      width: 11px;
-      height: 11px;
-      flex: 0 0 auto;
-      border-radius: 99px;
-      background: var(--cyan);
-      box-shadow: 0 0 16px rgba(0,245,255,.9), 0 0 34px rgba(255,43,214,.25);
+    .hero-grid{display:grid; grid-template-columns:1.35fr .9fr; gap:22px; align-items:end}
+    .hero-sub{max-width:960px; margin-top:8px; color:rgba(245,247,255,.95); font-size:clamp(20px, 2.5vw, 32px); line-height:1.22; letter-spacing:-.03em}
+    .hero-note{max-width:890px; margin-top:18px; color:var(--muted); font-size:16px; line-height:1.7}
+    .status-row,.button-row,.chip-row{display:flex; flex-wrap:wrap; gap:10px}
+    .status-row{margin:28px 0 0}
+    .pill,.chip{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(0,245,255,.21); border-radius:999px; background:linear-gradient(90deg, rgba(0,245,255,.07), rgba(255,43,214,.045)), rgba(255,255,255,.032); color:var(--muted); padding:8px 11px; font-family:var(--mono); font-size:11px; letter-spacing:.07em; text-transform:uppercase}
+    .pill.good{border-color:rgba(53,255,159,.34); color:var(--green)} .pill.warn{border-color:rgba(255,230,109,.34); color:var(--yellow)} .pill.no{border-color:rgba(255,90,117,.34); color:#ffb1bf}
+    .button-row{margin-top:28px}
+    .button{border:1px solid rgba(0,245,255,.26); border-radius:999px; background:linear-gradient(90deg, rgba(0,245,255,.08), rgba(255,43,214,.06)), rgba(255,255,255,.035); color:var(--text); text-decoration:none; padding:12px 15px; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease}
+    .button:hover{transform:translateY(-2px); border-color:rgba(53,255,159,.45); box-shadow:0 0 26px rgba(0,245,255,.14)} .button.primary{border-color:rgba(53,255,159,.44); box-shadow:0 0 22px rgba(53,255,159,.12)} .button.ghost{color:var(--muted)}
+    .hero-visual{
+      position:relative; min-height:360px; border:1px solid var(--line); border-radius:28px; overflow:hidden;
+      background:linear-gradient(180deg, rgba(10,14,33,.76), rgba(7,10,24,.92)); box-shadow:var(--shadow)
     }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px 14px;
+    .hero-visual::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 20% 24%, rgba(0,245,255,.12), transparent 28%), radial-gradient(circle at 76% 20%, rgba(255,43,214,.12), transparent 28%), linear-gradient(120deg, transparent 0 44%, rgba(255,255,255,.04) 44% 48%, transparent 48% 100%)}
+    .hero-visual .label{position:absolute; top:16px; left:16px; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--cyan)}
+    .scanbox{position:absolute; inset:52px 18px 18px; border:1px solid rgba(255,255,255,.08); border-radius:18px; overflow:hidden}
+    .scanline{position:absolute; left:0; right:0; top:0; height:72px; background:linear-gradient(180deg, rgba(0,245,255,.12), rgba(255,43,214,.05), transparent); animation:scan 6.5s linear infinite}
+    .bars{position:absolute; left:26px; right:26px; bottom:24px; display:flex; align-items:flex-end; justify-content:space-between; gap:8px; height:150px}
+    .bars span{display:block; width:8%; border-radius:999px 999px 10px 10px; background:linear-gradient(180deg, rgba(255,255,255,.08), var(--cyan)); box-shadow:0 0 18px rgba(0,245,255,.35); animation:barMove 2.2s ease-in-out infinite}
+    .bars span:nth-child(2), .bars span:nth-child(6){background:linear-gradient(180deg, rgba(255,255,255,.08), var(--pink)); box-shadow:0 0 18px rgba(255,43,214,.35)}
+    .bars span:nth-child(1){height:64%}.bars span:nth-child(2){height:88%; animation-delay:.15s}.bars span:nth-child(3){height:46%; animation-delay:.3s}.bars span:nth-child(4){height:76%; animation-delay:.45s}.bars span:nth-child(5){height:52%; animation-delay:.6s}.bars span:nth-child(6){height:92%; animation-delay:.75s}.bars span:nth-child(7){height:58%; animation-delay:.9s}
+    .diag{position:absolute; width:180px; height:1px; background:linear-gradient(90deg, transparent, rgba(255,43,214,.7), transparent); top:92px; right:-18px; transform:rotate(-22deg)}
+    .diag.two{top:130px; right:60px; background:linear-gradient(90deg, transparent, rgba(0,245,255,.6), transparent)}
+    .micro{position:absolute; left:24px; right:24px; top:90px; display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .micro-card{padding:14px; border:1px solid rgba(255,255,255,.07); border-radius:18px; background:rgba(255,255,255,.03)}
+    .micro-card b{display:block; color:var(--cyan); font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; margin-bottom:8px}
+    .micro-card p{font-size:13px; line-height:1.5; color:#dce2ff}
+    h2{max-width:980px; font-size:clamp(32px, 4.6vw, 58px); line-height:1.04; letter-spacing:-.055em; font-weight:800; margin-bottom:16px}
+    h3{color:var(--text); font-size:21px; line-height:1.18; letter-spacing:-.025em; margin-bottom:10px}
+    p{color:var(--muted); font-size:15.5px; line-height:1.68}
+    .cn{color:rgba(245,247,255,.9); margin-top:8px}
+    .small{font-size:13px; line-height:1.55}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+    .span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
+    .card{position:relative; padding:22px; border:1px solid var(--line2); border-radius:26px; background:linear-gradient(180deg, rgba(10,14,33,.78), rgba(8,11,24,.92)); box-shadow:var(--shadow); overflow:hidden}
+    .card::before{content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(140deg, rgba(0,245,255,.05), transparent 24%, transparent 70%, rgba(255,43,214,.05)); opacity:.9}
+    .card.feature{border-color:rgba(0,245,255,.24)} .card.secondary{background:linear-gradient(180deg, rgba(10,14,33,.62), rgba(8,11,24,.86))}
+    .card.warn{border-color:rgba(255,230,109,.28)} .card.red{border-color:rgba(255,90,117,.28)} .card.green{border-color:rgba(53,255,159,.24)}
+    .num{display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; font-family:var(--mono); font-size:11px; color:var(--cyan); letter-spacing:.14em; text-transform:uppercase}
+    .large-claim{font-size:clamp(24px, 3vw, 36px); line-height:1.2; color:#f7fbff; letter-spacing:-.03em}
+    .claim-box{margin-top:18px; padding:16px 18px; border:1px solid rgba(255,255,255,.08); border-radius:18px; background:rgba(255,255,255,.025)}
+    .mini{padding:16px; border:1px solid rgba(255,255,255,.07); border-radius:20px; background:rgba(255,255,255,.02)}
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px}
+    .table-wrap{overflow:auto; margin-top:10px}
+    table{width:100%; border-collapse:collapse; min-width:820px}
+    th,td{padding:13px 12px; text-align:left; vertical-align:top; border-bottom:1px solid rgba(255,255,255,.08); font-size:14px; line-height:1.52}
+    th{font-family:var(--mono); font-size:11px; color:var(--cyan); letter-spacing:.12em; text-transform:uppercase; background:rgba(0,245,255,.045)}
+    td strong{color:#fff}
+    .flow{display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-top:16px}
+    .flow-step{padding:16px; border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+    .flow-step b,.phase b,.safety-node b{display:block; color:var(--yellow); font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; margin-bottom:8px}
+    .kpi{display:grid; grid-template-columns:120px 1fr; gap:14px; align-items:start; margin-bottom:18px}
+    .label{padding-top:4px; color:var(--cyan); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase}
+    .phase-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:10px}
+    .phase{padding:18px; border:1px solid rgba(255,255,255,.08); border-radius:18px; background:rgba(255,255,255,.025)}
+    .stack{display:grid; gap:12px}
+    .layer{padding:14px 16px; border-left:3px solid rgba(0,245,255,.42); border-radius:14px; background:rgba(255,255,255,.025)}
+    .layer b{display:block; color:var(--cyan); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px}
+    .safety-machine{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px}
+    .safety-node{padding:16px; border:1px solid rgba(255,255,255,.08); border-radius:18px; background:rgba(255,255,255,.03)}
+    .safety-node.red{border-color:rgba(255,90,117,.3)}
+    .clean{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .clean li{margin:0 0 8px 0; line-height:1.55}
+    .copy-box{margin-top:14px; padding:16px; border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.025); font-size:13px; line-height:1.6; color:#dce2ff; white-space:pre-wrap}
+    .focus-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px}
+    .focus-box{padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+    .focus-box b{display:block; color:var(--pink); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:7px}
+    .mode-toggle{position:fixed; right:16px; bottom:16px; z-index:70; display:flex; border:1px solid rgba(255,255,255,.08); border-radius:999px; background:rgba(5,7,18,.92); overflow:hidden; backdrop-filter:blur(12px); box-shadow:0 10px 30px rgba(0,0,0,.32)}
+    .mode-toggle button{border:0; padding:10px 14px; background:transparent; color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:.1em; cursor:pointer; text-transform:uppercase}
+    .mode-toggle button.active{background:linear-gradient(90deg, rgba(0,245,255,.14), rgba(255,43,214,.14)); color:#fff}
+    .footer{padding:34px 0 54px; color:var(--dim); text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase}
+    body.focus-mode .secondary, body.focus-mode .appendix-only{display:none !important}
+    @keyframes titlePulse{0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)}}
+    @keyframes glitchA{0%{transform:translate(-2px,0)} 18%{transform:translate(-6px,1px)} 38%{transform:translate(-1px,-2px)} 58%{transform:translate(-5px,2px)} 100%{transform:translate(-2px,0)}}
+    @keyframes glitchB{0%{transform:translate(2px,0)} 22%{transform:translate(6px,-1px)} 46%{transform:translate(3px,2px)} 74%{transform:translate(7px,-2px)} 100%{transform:translate(2px,0)}}
+    @keyframes barMove{0%,100%{transform:scaleY(.88)} 50%{transform:scaleY(1.08)}}
+    @keyframes scan{0%{transform:translateY(-72px)}100%{transform:translateY(320px)}}
+    @media (max-width: 1120px){
+      .hero-grid,.split,.phase-grid,.safety-machine,.focus-strip{grid-template-columns:1fr !important}
+      .micro{grid-template-columns:1fr}
+      .flow{grid-template-columns:repeat(3,1fr)}
     }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      transition: color .18s ease, text-shadow .18s ease;
+    @media (max-width: 900px){
+      .span-8,.span-7,.span-6,.span-5,.span-4,.span-3,.span-12{grid-column:span 12}
+      .nav{align-items:flex-start; flex-direction:column}
+      nav{justify-content:flex-start}
+      .flow{grid-template-columns:1fr 1fr}
+      .kpi{grid-template-columns:1fr}
+      .hero-visual{min-height:300px}
     }
-    nav a:hover { color: var(--cyan); text-shadow: 0 0 12px rgba(0,245,255,.65); }
-
-    section { padding: 58px 0; scroll-margin-top: 82px; }
-    .hero { padding: 76px 0 52px; }
-    .eyebrow {
-      color: var(--cyan);
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      text-shadow: 0 0 14px rgba(0,245,255,.55);
-    }
-    h1, h2, h3, p { margin: 0; }
-    h1 {
-      max-width: 1080px;
-      font-size: clamp(48px, 7.3vw, 96px);
-      line-height: .92;
-      letter-spacing: -.075em;
-      font-weight: 840;
-      text-shadow: 0 0 28px rgba(0,245,255,.18), 0 0 42px rgba(255,43,214,.12);
-    }
-    h2 {
-      max-width: 980px;
-      font-size: clamp(30px, 4.4vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -.055em;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-    h3 {
-      color: var(--text);
-      font-size: 21px;
-      line-height: 1.18;
-      letter-spacing: -.025em;
-      margin-bottom: 10px;
-    }
-    p { color: var(--muted); font-size: 15.5px; line-height: 1.68; }
-    .cn { color: rgba(245,247,255,.9); margin-top: 8px; }
-    .muted { color: var(--muted); }
-    .small { font-size: 13px; line-height: 1.55; }
-
-    .hero-sub {
-      max-width: 960px;
-      margin-top: 24px;
-      color: rgba(245,247,255,.92);
-      font-size: clamp(20px, 2.5vw, 32px);
-      line-height: 1.22;
-      letter-spacing: -.035em;
-    }
-    .hero-note {
-      max-width: 880px;
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.68;
-    }
-    .status-row, .button-row, .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .status-row { margin: 26px 0 0; }
-    .pill, .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(0,245,255,.21);
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(0,245,255,.07), rgba(255,43,214,.045)), rgba(255,255,255,.032);
-      color: var(--muted);
-      padding: 8px 11px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-    .pill.good { border-color: rgba(53,255,159,.34); color: var(--green); }
-    .pill.warn { border-color: rgba(255,230,109,.34); color: var(--yellow); }
-    .pill.no { border-color: rgba(255,90,117,.34); color: #ffb1bf; }
-
-    .button-row { margin-top: 28px; }
-    .button {
-      border: 1px solid rgba(0,245,255,.26);
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(0,245,255,.08), rgba(255,43,214,.06)), rgba(255,255,255,.035);
-      color: var(--text);
-      text-decoration: none;
-      padding: 12px 15px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
-    }
-    .button:hover { transform: translateY(-2px); border-color: rgba(53,255,159,.45); box-shadow: 0 0 26px rgba(0,245,255,.14); }
-    .button.primary { border-color: rgba(53,255,159,.44); box-shadow: 0 0 22px rgba(53,255,159,.12); }
-    .button.ghost { color: var(--muted); }
-
-    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
-    .span-12 { grid-column: span 12; }
-    .span-8 { grid-column: span 8; }
-    .span-7 { grid-column: span 7; }
-    .span-6 { grid-column: span 6; }
-    .span-5 { grid-column: span 5; }
-    .span-4 { grid-column: span 4; }
-    .span-3 { grid-column: span 3; }
-
-    .card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(0,245,255,.06), transparent 34%),
-        linear-gradient(180deg, rgba(0,245,255,.035), rgba(255,43,214,.022)),
-        var(--panel);
-      padding: 24px;
-      box-shadow: var(--shadow), inset 0 0 28px rgba(255,255,255,.02);
-    }
-    .card::before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      top: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,245,255,.76), rgba(255,43,214,.62), transparent);
-      opacity: .7;
-    }
-    .card.feature { border-color: rgba(53,255,159,.33); background:
-      radial-gradient(circle at 10% 0%, rgba(53,255,159,.09), transparent 32%),
-      radial-gradient(circle at 88% 10%, rgba(255,43,214,.07), transparent 34%),
-      var(--panel); }
-    .card.warn { border-color: rgba(255,230,109,.32); }
-    .card.red { border-color: rgba(255,90,117,.32); }
-
-    .num {
-      color: var(--green);
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .num.yellow { color: var(--yellow); }
-    .num.pink { color: var(--pink); }
-    .large-claim {
-      font-size: clamp(24px, 3.2vw, 42px);
-      line-height: 1.18;
-      letter-spacing: -.04em;
-      color: var(--text);
-      max-width: 1020px;
-    }
-    .claim-box {
-      margin-top: 20px;
-      border: 1px solid rgba(53,255,159,.28);
-      border-radius: 22px;
-      padding: 18px;
-      background: linear-gradient(90deg, rgba(53,255,159,.075), rgba(0,245,255,.045), rgba(255,43,214,.035)), rgba(255,255,255,.025);
-    }
-    .claim-box strong { color: var(--green); }
-
-    table { width: 100%; border-collapse: collapse; overflow: hidden; }
-    th, td {
-      border: 1px solid rgba(0,245,255,.13);
-      padding: 13px 14px;
-      text-align: left;
-      vertical-align: top;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.55;
-      background: rgba(255,255,255,.022);
-    }
-    th {
-      color: var(--cyan);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      background: rgba(0,245,255,.06);
-    }
-    td:first-child { color: rgba(245,247,255,.92); font-weight: 650; }
-    .table-wrap { overflow-x: auto; border-radius: 18px; margin-top: 16px; }
-
-    .flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
-    .flow-step {
-      border: 1px solid rgba(0,245,255,.15);
-      border-radius: 18px;
-      padding: 15px;
-      background: rgba(255,255,255,.028);
-      min-height: 150px;
-    }
-    .flow-step b { display: block; color: var(--cyan); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; margin-bottom: 10px; }
-
-    .kpi {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 12px;
-      align-items: start;
-      border-top: 1px solid rgba(0,245,255,.12);
-      padding-top: 14px;
-      margin-top: 14px;
-    }
-    .kpi:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
-    .kpi .label { color: var(--yellow); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
-
-    .safety-machine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
-    .safety-node {
-      border: 1px solid rgba(255,230,109,.18);
-      border-radius: 18px;
-      padding: 15px;
-      background: rgba(255,230,109,.028);
-      min-height: 175px;
-    }
-    .safety-node b { display: block; color: var(--yellow); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 9px; }
-    .safety-node.red { border-color: rgba(255,90,117,.3); background: rgba(255,90,117,.04); }
-
-    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .mini {
-      border: 1px solid rgba(0,245,255,.14);
-      border-radius: 18px;
-      padding: 16px;
-      background: rgba(255,255,255,.026);
-    }
-    .mini b, .mini h3 { color: var(--green); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; display: block; }
-    ul.clean { margin: 10px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.65; font-size: 14px; }
-    ul.clean li { margin: 5px 0; }
-
-    .copy-box {
-      margin-top: 16px;
-      border: 1px solid rgba(0,245,255,.16);
-      border-radius: 20px;
-      background: rgba(3,4,10,.54);
-      padding: 16px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.65;
-      white-space: pre-wrap;
-    }
-    .footer {
-      padding: 54px 0 70px;
-      color: var(--dim);
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      border-top: 1px solid rgba(0,245,255,.12);
-    }
-
-    .mode-toggle {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 60;
-      display: flex;
-      gap: 8px;
-      border: 1px solid rgba(0,245,255,.18);
-      border-radius: 999px;
-      background: rgba(4,6,18,.82);
-      backdrop-filter: blur(14px);
-      padding: 7px;
-      box-shadow: 0 0 24px rgba(0,0,0,.32);
-    }
-    .mode-toggle button {
-      border: 0;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
-      cursor: pointer;
-      padding: 8px 10px;
-    }
-    .mode-toggle button.active { background: rgba(0,245,255,.12); color: var(--cyan); }
-    body.focus-mode .secondary { display: none !important; }
-    body.focus-mode section { padding: 44px 0; }
-    body.focus-mode .card { box-shadow: none; }
-
-    @media (max-width: 960px) {
-      .nav { align-items: flex-start; flex-direction: column; }
-      nav { justify-content: flex-start; }
-      .span-8, .span-7, .span-6, .span-5, .span-4, .span-3 { grid-column: span 12; }
-      .flow, .safety-machine { grid-template-columns: 1fr 1fr; }
-      .split { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .wrap { width: calc(100% - 22px); }
-      .hero { padding-top: 54px; }
-      section { padding: 44px 0; }
-      h1 { font-size: clamp(39px, 16vw, 62px); }
-      h2 { font-size: clamp(28px, 10vw, 42px); }
-      .card { padding: 19px; border-radius: 22px; }
-      .flow, .safety-machine { grid-template-columns: 1fr; }
-      th, td { min-width: 210px; }
-      .brand { white-space: normal; min-width: 0; }
-      .mode-toggle { left: 12px; right: 12px; justify-content: center; }
+    @media (max-width: 640px){
+      section{padding:52px 0}
+      .hero{padding-top:62px}
+      .wrap{width:min(100% - 24px, 1160px)}
+      .flow{grid-template-columns:1fr}
+      .button-row{gap:8px}
+      .button{width:100%; justify-content:center; display:inline-flex}
+      .mode-toggle{left:12px; right:12px; justify-content:center}
+      .glitch,.glitch::before,.glitch::after{white-space:normal}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
-      <div class="brand"><span class="dot"></span>BCI-HRP LAB // Wei Jueran · 魏珏然</div>
-      <nav aria-label="Page navigation">
+      <div class="brand"><span class="dot"></span>BCI-HRP LAB // HUMAN RETURN PROTOCOL</div>
+      <nav>
         <a href="#claim">Claim</a>
+        <a href="#gap">Why Now</a>
+        <a href="#layers">Model</a>
         <a href="#pilot">Pilot</a>
         <a href="#methods">Methods</a>
         <a href="#feasibility">Feasibility</a>
@@ -437,22 +211,38 @@
 
   <main>
     <section class="hero" id="top">
-      <div class="wrap">
-        <div class="eyebrow">Lab Collaboration Brief // 实验室合作入口</div>
-        <h1>BCI - The Human Return Protocol</h1>
-        <p class="hero-sub">A lab-facing protocol for testing whether sound probes, self-prediction, editable naming, and wearable/neural proxies can improve within-person self-calibration.</p>
-        <p class="hero-sub cn">一个面向实验室合作的研究协议：测试声音探针、自我预测、可编辑命名与可穿戴/神经代理，是否能提升个体内自我校准。</p>
-        <p class="hero-note">Current pilot: Sound-QDR protocol first. Existing lab equipment second. Future triadic hardware last.</p>
-        <div class="status-row">
-          <span class="pill good">Current Pilot: Sound-QDR</span>
-          <span class="pill warn">Future Vision: AI headphones + head patch + wristband</span>
-          <span class="pill no">No diagnosis · no treatment · no state induction</span>
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Lab Collaboration Brief // 实验室合作入口</div>
+          <div class="jump-tag">Pink / Blue cyber protocol // 当前是实验室合作入口，不是消费产品 pitch</div>
+          <h1 class="glitch" data-text="BCI - The Human Return Protocol">BCI - The Human Return Protocol</h1>
+          <div class="title-cutline"></div>
+          <p class="hero-sub">A lab-facing protocol for testing whether sound probes, self-prediction, editable naming, and wearable/neural proxies can improve within-person self-calibration.</p>
+          <p class="hero-sub cn">一个面向实验室合作的研究协议：测试声音探针、自我预测、可编辑命名与可穿戴/神经代理，是否能提升个体内自我校准。</p>
+          <p class="hero-note">Current pilot: Sound-QDR first. Existing lab equipment second. Future triadic hardware last. The goal is not to prove a finished belief system, but to operationalize, falsify, narrow, or redesign a promising construct with a partner lab.</p>
+          <div class="status-row">
+            <span class="pill good">Current Pilot: Sound-QDR</span>
+            <span class="pill warn">Future Vision: AI headphones + head patch + wristband</span>
+            <span class="pill no">No diagnosis · no treatment · no state induction</span>
+          </div>
+          <div class="button-row">
+            <a class="button primary" href="#claim">Read 3-min PI brief</a>
+            <a class="button" href="#pilot">Pilot design</a>
+            <a class="button" href="#safety">Safety flow</a>
+            <button class="button ghost" type="button" onclick="copyBrief()">Copy PI email brief</button>
+          </div>
         </div>
-        <div class="button-row">
-          <a class="button primary" href="#claim">Read 3-min PI brief</a>
-          <a class="button" href="#pilot">Pilot design</a>
-          <a class="button" href="#safety">Safety flow</a>
-          <button class="button ghost" type="button" onclick="copyBrief()">Copy email brief</button>
+        <div class="hero-visual">
+          <div class="label">PROTOCOL SIGNAL VIEW // Pink-Blue jump cut</div>
+          <div class="scanbox">
+            <div class="scanline"></div>
+            <div class="micro">
+              <div class="micro-card"><b>Current Pilot</b><p>Fixed sound probes + self-prediction + editable naming + agency events.</p></div>
+              <div class="micro-card"><b>Optional Proxies</b><p>HRV / EDA / respiration / motion first, EEG/fNIRS only when lab conditions support it.</p></div>
+            </div>
+            <div class="diag"></div><div class="diag two"></div>
+            <div class="bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -467,24 +257,65 @@
             <p><strong>Research stance:</strong> this is feasibility and construct calibration, not clinical validation. “Qualia alignment” and “Human Return” are candidate constructs that can be narrowed, renamed, rejected, or revised by a partner lab before preregistration.</p>
             <p class="cn"><strong>研究姿态：</strong>第一项研究是可行性与构念校准，不是临床验证。“感质对齐”和“Human Return”是候选构念，可以在预注册前由合作实验室缩小、改名、否定或修正。</p>
           </div>
+          <div class="focus-strip">
+            <div class="focus-box"><b>Not a device pitch</b><p>First study does not require custom hardware.</p></div>
+            <div class="focus-box"><b>Not mind-reading</b><p>Proxies do not reveal meaning or true emotion.</p></div>
+            <div class="focus-box"><b>Not fixed doctrine</b><p>The lab can redesign the construct.</p></div>
+            <div class="focus-box"><b>Not therapy</b><p>No treatment or crisis-detection claim.</p></div>
+          </div>
         </div>
-        <div class="card span-4">
-          <div class="num">Not a device pitch</div>
-          <h3>Protocol first</h3>
-          <p>Custom hardware is not required for the first study. Use fixed sound probes, self-report, interaction logs, and existing lab sensors.</p>
-          <p class="cn">第一项研究不依赖自研硬件。先用固定声音探针、自评、交互日志与实验室现有传感器。</p>
+      </div>
+    </section>
+
+    <section id="gap">
+      <div class="wrap grid">
+        <div class="card span-7">
+          <div class="eyebrow">Why This Matters // 为什么值得做</div>
+          <h2>Most systems either over-interpret the user or under-describe experience.</h2>
+          <h2 class="cn">现有系统往往不是过度解释用户，就是过度压扁体验。</h2>
+          <p>Emotion tools often force users into coarse labels like calm / stressed. Consumer neurotech often overclaims hidden insight from weak physiological proxies. Music tools often optimize for mood playlists without modeling user prediction, interpretive control, or safe exit. BCI-HRP Lab is aimed at the missing middle: a protocol where sound becomes a controlled probe, the user predicts first, physiology remains a proxy, and AI explanations stay editable and rejectable.</p>
+          <p class="cn">现有情绪工具往往把人压进 calm / stressed 这种粗标签；消费级神经科技则容易对弱生理代理做过度解释；音乐工具又常常只做 mood playlist，而不处理自我预测、解释权与安全退出。BCI-HRP Lab 想做的是中间缺口：让声音成为可控探针，用户先预测，生理信号只是代理，而 AI 解释始终可编辑、可拒绝、可删除。</p>
         </div>
-        <div class="card span-4">
-          <div class="num">Not hidden truth</div>
-          <h3>Proxies, not mind-reading</h3>
-          <p>HRV, EDA, motion, and optional EEG/fNIRS are physiological proxies; they do not reveal meaning, trauma, or “true emotion.”</p>
-          <p class="cn">HRV、EDA、运动、可选 EEG/fNIRS 都是生理代理；它们不揭示意义、创伤或“真实情绪”。</p>
+        <div class="card span-5 secondary">
+          <div class="eyebrow">Research Gap // 研究缺口</div>
+          <div class="stack">
+            <div class="layer"><b>Gap 01</b><p>Too much reliance on coarse affect labels; too little on qualia granularity.</p></div>
+            <div class="layer"><b>Gap 02</b><p>Too much sensor authority; too little user-owned interpretation.</p></div>
+            <div class="layer"><b>Gap 03</b><p>Too much sound-as-mood-control; too little sound-as-probe-with-falsifiable outcomes.</p></div>
+            <div class="layer"><b>Gap 04</b><p>Too much ethics rhetoric; too little interaction-level safety design.</p></div>
+          </div>
         </div>
-        <div class="card span-4">
-          <div class="num">Not a finished belief system</div>
-          <h3>Co-designable</h3>
-          <p>The lab may change hypotheses, metrics, stimuli, hardware path, and construct names before any formal study.</p>
-          <p class="cn">实验室可以在正式研究前修改假设、指标、刺激材料、硬件路径与构念名称。</p>
+      </div>
+    </section>
+
+    <section id="layers">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">Scientific Layer Model // 科学版层级模型</div>
+          <h2>Keep the architecture rich, but scientifically legible.</h2>
+          <h2 class="cn">保留结构复杂度，但把它翻译成科学上可读的语言。</h2>
+        </div>
+        <div class="card span-7">
+          <div class="stack">
+            <div class="layer"><b>Layer 01 — Sound Event</b><p>The actual stimulus: a fixed audio file with documented properties and event markers.</p><p class="cn">真实刺激：固定音频文件，具有已记录的声学属性与事件标记。</p></div>
+            <div class="layer"><b>Layer 02 — Sensory Contact</b><p>How the sound enters through hearing, bodily resonance, respiration coupling, and attentional capture.</p><p class="cn">声音如何通过听觉、身体共振、呼吸耦合与注意进入人。</p></div>
+            <div class="layer"><b>Layer 03 — Autonomic / Body Response</b><p>HRV, EDA, movement, temperature, and body self-report as within-person response traces.</p><p class="cn">HRV、EDA、运动、皮温与身体自评，作为个体内反应轨迹。</p></div>
+            <div class="layer"><b>Layer 04 — Affective Construction</b><p>How bodily change becomes felt pressure, relief, activation, safety, or overwhelm.</p><p class="cn">身体变化如何被体验成压强、释放、激活、安全或过载。</p></div>
+            <div class="layer"><b>Layer 05 — Cognitive Prediction</b><p>What the user thought would happen before the sound, and whether prediction error decreases.</p><p class="cn">用户在播放前以为会发生什么，以及预测误差是否下降。</p></div>
+            <div class="layer"><b>Layer 06 — Meaning Making</b><p>Memory, future direction, autobiographical resonance, or value-significance notes.</p><p class="cn">记忆、未来方向、自传性共振与价值意义笔记。</p></div>
+            <div class="layer"><b>Layer 07 — Interpretive Agency</b><p>Accept, edit, reject, rename, delete, stop, ground, and skip as user-owned interpretive control.</p><p class="cn">接受、编辑、拒绝、重命名、删除、停止、落地、跳过构成用户拥有的解释控制。</p></div>
+          </div>
+        </div>
+        <div class="card span-5 secondary">
+          <div class="eyebrow">Scientific Anchors // 科学锚点</div>
+          <div class="stack">
+            <div class="layer"><b>Interoception</b><p>Body-state sensing and interpretation.</p></div>
+            <div class="layer"><b>Allostasis</b><p>Regulation and recovery rather than static homeostasis.</p></div>
+            <div class="layer"><b>Constructed Emotion</b><p>Emotion is not simply read out from signals.</p></div>
+            <div class="layer"><b>Predictive Processing</b><p>The pre-probe prediction error is a real operational target.</p></div>
+            <div class="layer"><b>Personal Informatics</b><p>Collect → reflect → act, without turning data into absolute truth.</p></div>
+            <div class="layer"><b>Music-based intervention rigor</b><p>Stimuli should be documented, repeatable, and narrow in claim.</p></div>
+          </div>
         </div>
       </div>
     </section>
@@ -519,6 +350,14 @@
             <div class="flow-step"><b>T3 Probe</b><p>Fixed, documented sound file with event markers and stop controls.</p></div>
             <div class="flow-step"><b>T4 Report</b><p>User reports body, affect, perception, action tendency, meaning.</p></div>
             <div class="flow-step"><b>T5 Rename</b><p>User accepts, edits, rejects, renames, deletes, or exits.</p></div>
+          </div>
+        </div>
+        <div class="card span-12 green appendix-only">
+          <div class="eyebrow">Phase Path // 阶段路径</div>
+          <div class="phase-grid">
+            <div class="phase"><b>Phase 0</b><p>Software-only Sound-QDR protocol: prediction, report, rename, agency logs.</p><p class="cn">纯软件 Sound-QDR：预测、报告、重命名、解释自主日志。</p></div>
+            <div class="phase"><b>Phase 1</b><p>Add existing wearable proxies: HRV, EDA, respiration, motion, temperature.</p><p class="cn">加入现有可穿戴代理：HRV、EDA、呼吸、运动、皮温。</p></div>
+            <div class="phase"><b>Phase 2</b><p>Optional listening-state extension with EEG/fNIRS when lab conditions and data quality justify it.</p><p class="cn">在实验室条件与数据质量允许时，扩展至 EEG/fNIRS 聆听状态代理。</p></div>
           </div>
         </div>
       </div>
@@ -558,36 +397,20 @@
       </div>
     </section>
 
-    <section id="failure">
-      <div class="wrap grid">
-        <div class="card red span-12">
-          <div class="eyebrow">What Can Fail // 失败判准</div>
-          <h2>The project becomes stronger when failure is visible.</h2>
-          <h2 class="cn">失败被写清楚，项目才更可信。</h2>
-          <div class="grid" style="margin-top:16px;">
-            <div class="mini span-4"><b>Usability failure</b><p>User cannot complete prediction, playback, report, rejection, or exit flow.</p><p class="cn">用户无法完成预测、播放、报告、拒绝或退出流程。</p></div>
-            <div class="mini span-4"><b>Prediction failure</b><p>Prediction error does not decrease, or users become more confused after exposure.</p><p class="cn">预测误差无下降，或暴露后更混乱。</p></div>
-            <div class="mini span-4"><b>Naming failure</b><p>Labels remain generic, unstable, or AI-led across repeated sessions.</p><p class="cn">标签持续泛化、不稳定，或被 AI 牵着走。</p></div>
-            <div class="mini span-4"><b>Safety failure</b><p>Users feel guided, diagnosed, pushed by sound, or unable to stop.</p><p class="cn">用户感到被诱导、被诊断、被声音推着走或无法退出。</p></div>
-            <div class="mini span-4"><b>Signal failure</b><p>Synchronization failure, high artifact load, or missing data prevents analysis.</p><p class="cn">同步失败、伪迹太高、缺失过多，无法支持分析。</p></div>
-            <div class="mini span-4"><b>Added-value failure</b><p>Wearable/neural proxies add no explanatory value beyond self-report.</p><p class="cn">可穿戴/神经代理没有比自评提供更多解释价值。</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="feasibility">
       <div class="wrap grid">
-        <div class="card span-12">
+        <div class="card feature span-12">
           <div class="eyebrow">Technical Feasibility // 技术可行性</div>
           <h2>The pilot should not depend on custom hardware.</h2>
           <h2 class="cn">试点不应依赖自研硬件。</h2>
+        </div>
+        <div class="card span-12">
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Layer</th><th>Feasible pilot choice</th><th>Known risk</th><th>Mitigation</th></tr></thead>
+              <thead><tr><th>Domain</th><th>What is realistic now</th><th>Risk</th><th>Boundary / mitigation</th></tr></thead>
               <tbody>
-                <tr><td>Audio stimuli</td><td>Fixed WAV files, fixed loudness normalization, event markers, optional loopback confirmation.</td><td>Bluetooth latency and device delay.</td><td>Use wired playback or measured onset markers; analyze ANS in second-level windows.</td></tr>
-                <tr><td>Wearable/autonomic</td><td>Existing research-accepted devices for HRV, EDA, respiration proxy, skin temperature, motion.</td><td>EDA latency, motion artifact, slow temperature response.</td><td>Quality flags, recovery-window analysis, artifact reporting, within-person interpretation.</td></tr>
+                <tr><td>Sound probes</td><td>Frozen, documented audio files with loudness normalization, event markers, and source documentation.</td><td>Stimuli too broad or too aestheticized.</td><td>Fixed library, auditable source sheets, reproducible playback.</td></tr>
+                <tr><td>Wearables</td><td>Existing research-accepted devices for HRV, EDA, respiration proxy, skin temperature, motion.</td><td>EDA latency, motion artifact, slow temperature response.</td><td>Quality flags, recovery-window analysis, artifact reporting, within-person interpretation.</td></tr>
                 <tr><td>EEG/fNIRS</td><td>Optional lab extension, not core proof. Treat as listening-state proxy only.</td><td>Fp1/Fp2 eye/muscle artifact; fNIRS co-wear complexity.</td><td>Predefine artifact rejection, quality thresholds, optional exclusion, no meaning-decoding claim.</td></tr>
                 <tr><td>Synchronization</td><td>Shared event log, measured onset, LSL or lab-equivalent time sync.</td><td>Clock drift and unsynchronized devices.</td><td>Reject millisecond-level claims unless timing is verified.</td></tr>
                 <tr><td>AI role</td><td>Optional production aid and editable report summarizer.</td><td>AI over-packaging / suggestion bias.</td><td>Frozen stimuli for study; AI labels are rejectable and not treated as truth.</td></tr>
@@ -595,10 +418,15 @@
             </table>
           </div>
         </div>
-        <div class="card warn span-12 secondary">
-          <div class="eyebrow">Future Hardware Boundary // 未来硬件边界</div>
-          <p>The triadic product vision remains: AI headphones for timed acoustic output, head patch for optional listening-state proxies, wristband for autonomic/body witness, and AI-QDR for interpretive return. But the first study should prove the protocol can work before the devices become the project.</p>
-          <p class="cn">三件套产品愿景保留：AI 耳机负责定时声音输出，头部贴片负责可选聆听状态代理，腕环负责自主神经/身体见证，AI-QDR 负责解释返回。但第一项研究必须先证明协议有价值，而不是让设备先吞掉项目。</p>
+        <div class="card warn span-6 secondary">
+          <div class="eyebrow">What stays optional // 哪些必须保持可选</div>
+          <p>EEG/fNIRS, custom head patch form factor, and full triadic hardware identity should remain optional until a protocol-first pilot demonstrates enough value to justify engineering complexity.</p>
+          <p class="cn">在协议优先的试点没有显示出足够价值之前，EEG/fNIRS、自研贴片形态和完整三件套身份都应保持可选，不应先吞掉项目。</p>
+        </div>
+        <div class="card green span-6 secondary">
+          <div class="eyebrow">What can already be done // 现在就能做的</div>
+          <p>Fixed sound library, pre/post self-prediction scales, qualitative naming prompts, agency-event logging, and a simple exportable session schema are already enough to start Phase 0.</p>
+          <p class="cn">固定声音库、前后自我预测量表、感质命名提示、解释自主事件记录与可导出的 session 字段，已经足够启动 Phase 0。</p>
         </div>
       </div>
     </section>
@@ -617,21 +445,9 @@
             <div class="safety-node red"><b>5. No crisis system</b><p>This is not emergency detection or therapy. High-risk disclosures leave the protocol and follow lab-approved human safety procedures.</p><p class="cn">这不是危机检测或治疗系统。高风险表露退出协议，进入实验室批准的人类安全流程。</p></div>
           </div>
         </div>
-        <div class="card span-4">
-          <div class="num">UI requirement</div><h3>Always-visible exit</h3>
-          <p>Stop must be larger than decorative controls, keyboard/touch accessible, and logged as a valid outcome rather than failure.</p>
-          <p class="cn">Stop 必须比装饰控件更显眼，支持键盘/触控，并作为有效结果记录，而不是失败。</p>
-        </div>
-        <div class="card span-4">
-          <div class="num">UI requirement</div><h3>No post-trigger analysis</h3>
-          <p>If grounding mode is triggered, AI-QDR does not produce deep interpretation. It only summarizes user-owned safety actions.</p>
-          <p class="cn">进入落地模式后，AI-QDR 不做深度解释，只总结用户拥有的安全行动。</p>
-        </div>
-        <div class="card span-4">
-          <div class="num">UI requirement</div><h3>Agency as data</h3>
-          <p>Reject, rename, stop, delete, and skip are primary interaction events, not UI afterthoughts.</p>
-          <p class="cn">拒绝、重命名、停止、删除、跳过是核心交互事件，不是界面附属品。</p>
-        </div>
+        <div class="card span-4"><div class="num">UI requirement</div><h3>Always-visible exit</h3><p>Stop must be larger than decorative controls, keyboard/touch accessible, and logged as a valid outcome rather than failure.</p><p class="cn">Stop 必须比装饰控件更显眼，支持键盘/触控，并作为有效结果记录，而不是失败。</p></div>
+        <div class="card span-4"><div class="num">UI requirement</div><h3>No post-trigger analysis</h3><p>If grounding mode is triggered, AI-QDR does not produce deep interpretation. It only summarizes user-owned safety actions.</p><p class="cn">进入落地模式后，AI-QDR 不做深度解释，只总结用户拥有的安全行动。</p></div>
+        <div class="card span-4"><div class="num">UI requirement</div><h3>Agency as data</h3><p>Reject, rename, stop, delete, and skip are primary interaction events, not UI afterthoughts.</p><p class="cn">拒绝、重命名、停止、删除、跳过是核心交互事件，不是界面附属品。</p></div>
       </div>
     </section>
 
@@ -673,7 +489,6 @@
           <div class="button-row">
             <button class="button primary" type="button" onclick="copyBrief()">Copy PI email brief</button>
             <a class="button" href="#top">Back to top</a>
-            <a class="button ghost" href="./full.html">Full appendix placeholder</a>
           </div>
           <div id="brief" class="copy-box">Subject: Lab collaboration fit call — BCI-HRP / Human Return Protocol
 
@@ -717,7 +532,6 @@ Would you be open to a 15-minute fit call?</div>
         full.classList.add('active');
       }
     }
-
     async function copyBrief() {
       const text = document.getElementById('brief').innerText;
       try {
@@ -733,7 +547,6 @@ Would you be open to a 15-minute fit call?</div>
         flash('Copied PI brief to clipboard');
       }
     }
-
     function flash(message) {
       const el = document.createElement('div');
       el.textContent = message;
@@ -747,7 +560,7 @@ Would you be open to a 15-minute fit call?</div>
       el.style.background = 'rgba(4,6,18,.92)';
       el.style.backdropFilter = 'blur(12px)';
       el.style.color = '#35ff9f';
-      el.style.fontFamily = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace';
+      el.style.fontFamily = 'IBM Plex Mono, monospace';
       el.style.fontSize = '12px';
       el.style.zIndex = '999';
       document.body.appendChild(el);
