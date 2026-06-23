@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,8 @@
   <title>BCI-HRP Lab — The Human Return Protocol</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <style> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
     :root {
       --bg: #02030a;
       --bg2: #070817;
@@ -29,7 +29,7 @@
       --shadow: 0 24px 90px rgba(0,0,0,.46);
       --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      --display: Orbitron, Inter, sans-serif;
+      --display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -74,14 +74,51 @@
     h1,h2,h3,p{margin:0}
     h1{
       font-family:var(--display);
-      max-width:1100px; font-size:clamp(48px, 8vw, 102px); line-height:.96; letter-spacing:-.035em; font-weight:900;
-      text-transform:uppercase;
+      max-width:1120px;
+      font-size:clamp(52px, 9vw, 128px);
+      line-height:.88;
+      letter-spacing:-.09em;
+      font-weight:860;
+      text-transform:none;
     }
-    .glitch{position:relative; display:inline-block; color:#f7fbff; text-shadow:0 0 12px rgba(255,255,255,.08), 0 0 28px rgba(0,245,255,.16), 0 0 42px rgba(255,43,214,.12); animation:titlePulse 3.2s ease-in-out infinite}
-    .glitch::before,.glitch::after{content:attr(data-text); position:absolute; inset:0; pointer-events:none}
-    .glitch::before{color:var(--cyan); transform:translate(-2px, -1px); clip-path:polygon(0 0, 100% 0, 100% 42%, 0 58%); opacity:.88; animation:glitchA 2.9s infinite linear alternate-reverse}
-    .glitch::after{color:var(--pink); transform:translate(3px, 1px); clip-path:polygon(0 52%, 100% 42%, 100% 100%, 0 100%); opacity:.84; animation:glitchB 2.1s infinite linear alternate-reverse}
-    .title-cutline{width:min(720px, 88%); height:2px; background:linear-gradient(90deg, transparent, var(--cyan), var(--pink), transparent); margin:18px 0 22px; box-shadow:0 0 18px rgba(0,245,255,.35)}
+    .glitch{
+      position:relative;
+      display:inline-block;
+      color:#f4f7ff;
+      white-space:nowrap;
+      text-shadow:
+        0 0 12px rgba(0,245,255,.45),
+        0 0 32px rgba(255,43,214,.22);
+      animation:titlePulse 3.2s ease-in-out infinite;
+    }
+    .glitch::before,.glitch::after{
+      content:attr(data-text);
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.68;
+    }
+    .glitch::before{
+      color:var(--cyan);
+      transform:translate(2px,0);
+      clip-path:inset(0 0 58% 0);
+      animation:glitchA 2.6s infinite linear alternate-reverse;
+    }
+    .glitch::after{
+      color:var(--pink);
+      transform:translate(-2px,0);
+      clip-path:inset(48% 0 0 0);
+      animation:glitchB 1.9s infinite linear alternate-reverse;
+    }
+    .title-cutline{
+      width:min(720px, 88%);
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--cyan), var(--pink), transparent);
+      margin:20px 0 22px;
+      box-shadow:0 0 18px rgba(0,245,255,.38), 0 0 28px rgba(255,43,214,.18);
+    }
+    .byline{font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--muted); margin:0 0 14px; text-transform:none}
+    .byline strong{color:var(--text)}
     .jump-tag{
       display:inline-flex; align-items:center; gap:8px; margin-bottom:18px; padding:7px 11px;
       font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
@@ -163,8 +200,21 @@
     .footer{padding:34px 0 54px; color:var(--dim); text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase}
     body.focus-mode .secondary, body.focus-mode .appendix-only{display:none !important}
     @keyframes titlePulse{0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)}}
-    @keyframes glitchA{0%{transform:translate(-2px,0)} 18%{transform:translate(-6px,1px)} 38%{transform:translate(-1px,-2px)} 58%{transform:translate(-5px,2px)} 100%{transform:translate(-2px,0)}}
-    @keyframes glitchB{0%{transform:translate(2px,0)} 22%{transform:translate(6px,-1px)} 46%{transform:translate(3px,2px)} 74%{transform:translate(7px,-2px)} 100%{transform:translate(2px,0)}}
+    @keyframes glitchA{
+      0%{transform:translate(2px,0)}
+      20%{transform:translate(-3px,-1px)}
+      40%{transform:translate(4px,1px)}
+      60%{transform:translate(-1px,0)}
+      80%{transform:translate(3px,-2px)}
+      100%{transform:translate(0,0)}
+    }
+    @keyframes glitchB{
+      0%{transform:translate(-2px,0)}
+      25%{transform:translate(3px,1px)}
+      50%{transform:translate(-4px,-1px)}
+      75%{transform:translate(1px,2px)}
+      100%{transform:translate(0,0)}
+    }
     @keyframes barMove{0%,100%{transform:scaleY(.88)} 50%{transform:scaleY(1.08)}}
     @keyframes scan{0%{transform:translateY(-72px)}100%{transform:translateY(320px)}}
     @media (max-width: 1120px){
@@ -198,12 +248,11 @@
       <div class="brand"><span class="dot"></span>BCI-HRP LAB // HUMAN RETURN PROTOCOL</div>
       <nav>
         <a href="#claim">Claim</a>
-        <a href="#gap">Why Now</a>
-        <a href="#layers">Model</a>
         <a href="#pilot">Pilot</a>
         <a href="#methods">Methods</a>
-        <a href="#feasibility">Feasibility</a>
+        <a href="#fit">Lab Fit</a>
         <a href="#safety">Safety</a>
+        <a href="#about">About</a>
         <a href="#collaborate">Collaborate</a>
       </nav>
     </div>
@@ -217,6 +266,7 @@
           <div class="jump-tag">Pink / Blue cyber protocol // 当前是实验室合作入口，不是消费产品 pitch</div>
           <h1 class="glitch" data-text="BCI - The Human Return Protocol">BCI - The Human Return Protocol</h1>
           <div class="title-cutline"></div>
+          <p class="byline"><strong>Wei Jueran (魏珏然) · Mellow</strong> — Learning Sciences &amp; Technologies, University of Pennsylvania GSE · Independent research proposal</p>
           <p class="hero-sub">A lab-facing protocol for testing whether sound probes, self-prediction, editable naming, and wearable/neural proxies can improve within-person self-calibration.</p>
           <p class="hero-sub cn">一个面向实验室合作的研究协议：测试声音探针、自我预测、可编辑命名与可穿戴/神经代理，是否能提升个体内自我校准。</p>
           <p class="hero-note">Current pilot: Sound-QDR first. Existing lab equipment second. Future triadic hardware last. The goal is not to prove a finished belief system, but to operationalize, falsify, narrow, or redesign a promising construct with a partner lab.</p>
@@ -228,7 +278,7 @@
           <div class="button-row">
             <a class="button primary" href="#claim">Read 3-min PI brief</a>
             <a class="button" href="#pilot">Pilot design</a>
-            <a class="button" href="#safety">Safety flow</a>
+            <a class="button" href="#about">Who I am</a>
             <button class="button ghost" type="button" onclick="copyBrief()">Copy PI email brief</button>
           </div>
         </div>
@@ -341,6 +391,12 @@
             </table>
           </div>
         </div>
+        <div class="card warn span-12">
+          <div class="eyebrow">Confound Control // 混淆控制</div>
+          <h3>Stimulus familiarity vs. self-calibration</h3>
+          <p>Because the sound files are fixed and repeated, a fall in prediction error could reflect <strong>memorizing a specific clip</strong> rather than improved self-calibration. To separate the two: (1) test prediction on <strong>unheard</strong> stimuli drawn from the same family (a transfer test), (2) and/or analyze first-exposure prediction error only, (3) and include a novel-vs-familiar factor in the model. State-naming stability carries the same familiarity confound and is reported with the same control.</p>
+          <p class="cn">音频是固定、重复播放的，所以预测误差下降可能只是<strong>记住了某一段</strong>，而非自我校准能力提升。区分办法：（1）用同一家族里<strong>没听过</strong>的新刺激测预测（迁移测试）；（2）或只分析首次暴露的预测误差；（3）并在模型中加入“新/熟”因子。命名稳定性也有同样的熟悉度混淆，按同样的控制报告。</p>
+        </div>
         <div class="card span-12 secondary">
           <div class="eyebrow">Session Flow // 单次流程</div>
           <div class="flow">
@@ -431,6 +487,33 @@
       </div>
     </section>
 
+
+    <section id="fit">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">Lab Fit Matrix // 实验室适配矩阵</div>
+          <h2>Different labs can enter from different parts of the protocol.</h2>
+          <h2 class="cn">不同实验室可以从协议的不同位置进入。</h2>
+          <p>This is not a single-discipline pitch. The first call should identify which version of the project fits the lab: HCI safety, music cognition, wearable sensing, affective computing, neuroaesthetics, or computational modeling.</p>
+          <p class="cn">这不是单一学科的 pitch。第一次通话应判断它更适合作为 HCI 安全研究、音乐认知研究、可穿戴可行性研究、情感计算研究、神经美学研究，还是计算建模项目。</p>
+        </div>
+        <div class="card span-12">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Lab type</th><th>Why this fits</th><th>What the lab can lead</th></tr></thead>
+              <tbody>
+                <tr><td>HCI / Personal Informatics</td><td>User-owned interpretation, editable labels, agency events, safety-by-interaction.</td><td>Interface design, interaction logs, user study, safety flow, diary protocol.</td></tr>
+                <tr><td>Music Cognition / Neuroaesthetics</td><td>Sound as controlled probe; subjective experience; qualia naming; musical familiarity and expectation.</td><td>Stimulus design, listening protocol, musical feature selection, experience measures.</td></tr>
+                <tr><td>Wearable Sensing</td><td>HRV / EDA / respiration / motion as within-person physiological proxies.</td><td>Device selection, signal quality, artifact criteria, synchronization, feasibility analysis.</td></tr>
+                <tr><td>Affective Computing</td><td>Editable AI hypotheses, non-diagnostic state support, anti-suggestion design.</td><td>Feedback design, model boundary, human-in-the-loop interpretation, bias / suggestion checks.</td></tr>
+                <tr><td>Computational Neuroscience</td><td>Prediction error, cross-session change, multimodal alignment, individual time-series.</td><td>Modeling, inference, mixed-effects design, event-locked analysis, falsification criteria.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="safety">
       <div class="wrap grid">
         <div class="card feature span-12">
@@ -448,6 +531,94 @@
         <div class="card span-4"><div class="num">UI requirement</div><h3>Always-visible exit</h3><p>Stop must be larger than decorative controls, keyboard/touch accessible, and logged as a valid outcome rather than failure.</p><p class="cn">Stop 必须比装饰控件更显眼，支持键盘/触控，并作为有效结果记录，而不是失败。</p></div>
         <div class="card span-4"><div class="num">UI requirement</div><h3>No post-trigger analysis</h3><p>If grounding mode is triggered, AI-QDR does not produce deep interpretation. It only summarizes user-owned safety actions.</p><p class="cn">进入落地模式后，AI-QDR 不做深度解释，只总结用户拥有的安全行动。</p></div>
         <div class="card span-4"><div class="num">UI requirement</div><h3>Agency as data</h3><p>Reject, rename, stop, delete, and skip are primary interaction events, not UI afterthoughts.</p><p class="cn">拒绝、重命名、停止、删除、跳过是核心交互事件，不是界面附属品。</p></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">About / Researcher // 研究者</div>
+          <h2>Who is proposing this.</h2>
+          <h2 class="cn">提出这个协议的人。</h2>
+        </div>
+        <div class="card span-7">
+          <h3>Wei Jueran (魏珏然) · Mellow</h3>
+          <p>Master's researcher in Learning Sciences &amp; Technologies at the University of Pennsylvania Graduate School of Education. I work across learning sciences, human–computer interaction, and sound studies, with a focus on <strong>interpretive agency</strong>: how people keep authorship over the meaning of their own bodily and cognitive states when systems — sensors, AI — try to name those states for them.</p>
+          <p class="cn">宾夕法尼亚大学教育研究生院 学习科学与技术方向 硕士研究者。研究横跨学习科学、人机交互与声音研究，核心关切是<strong>解释权（interpretive agency）</strong>：当系统（传感器、AI）试图替人命名身体与认知状态时，人如何保留对这些状态意义的作者权。</p>
+          <p>For this protocol specifically, my non-substitutable contribution is <strong>sound design</strong> — era- and genre-specific acoustic material treated as controlled probes — combined with <strong>anti-suggestion interaction ethics</strong>: designing so that AI hypotheses stay editable, rejectable, and never overwrite the user's own account.</p>
+          <p class="cn">在这个协议里，我不可替代的部分是<strong>声音设计</strong>（把特定时代/曲风的声学材料做成可控探针）加上<strong>反暗示交互伦理</strong>——确保 AI 的假设始终可编辑、可拒绝，永不覆盖用户自己的叙述。</p>
+        </div>
+        <div class="card span-5 secondary">
+          <div class="eyebrow">Affiliation &amp; Contact // 所属与联系</div>
+          <div class="stack">
+            <div class="layer"><b>Program</b><p>Learning Sciences &amp; Technologies, Penn GSE</p></div>
+            <div class="layer"><b>Academic home</b><p>Learning Sciences &amp; Technologies, Penn GSE. Advisor / lab affiliation can be listed after permission.</p></div>
+            <div class="layer"><b>Contact</b><p>Institutional email to be inserted before external outreach.</p></div>
+            <div class="layer"><b>ORCID</b><p>In preparation / to be added when available.</p></div>
+            <div class="layer"><b>CV / portfolio</b><p>Available upon request; public link to be inserted before external outreach.</p></div>
+          </div>
+          <p class="small" style="margin-top:12px; color:var(--dim)">This is an independent research proposal. It is not presented on behalf of any lab, and no participant data is collected before a partner lab's IRB approval.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">Writing / Working Papers // 写作与工作论文</div>
+          <h2>What you can read to assess the thinking.</h2>
+          <h2 class="cn">可以拿来评估这套思路的文本。</h2>
+          <p>Working papers, honestly labeled by status. Nothing below is presented as peer-reviewed unless explicitly marked.</p>
+          <p class="cn">以下为工作论文，按真实状态标注。除非明确标记，均不作为已通过同行评审的成果呈现。</p>
+        </div>
+        <div class="card span-6">
+          <div class="num">Working paper</div>
+          <h3>Interpretive self-determination in learning analytics</h3>
+          <p>On whether learners can retain interpretive authority over analytics about themselves, rather than being defined by the system's labels. Directly motivates the editable-naming and interpretive-agency design in this protocol.</p>
+          <p class="cn">关于学习者能否在关于自身的分析数据面前保留解释权，而不是被系统标签定义。直接支撑本协议里的“可编辑命名 / 解释自主”设计。</p>
+          <p class="small" style="color:var(--dim)">Status: working paper in preparation · draft available upon request once cleared for sharing.</p>
+        </div>
+        <div class="card span-6">
+          <div class="num">Research concept</div>
+          <h3>Acoustic Familiarity Memory Return (AFMR)</h3>
+          <p>A narrow, non-referential acoustic-cue concept for familiarity-before-recall in older adults, with anti-suggestion safeguards. A possible focused application of the same sound-probe + interpretive-agency logic.</p>
+          <p class="cn">面向年长者的“先熟悉、再回忆”非指涉性声学线索概念，带反暗示防护。是同一套“声音探针 + 解释自主”逻辑的一个聚焦应用方向。</p>
+          <p class="small" style="color:var(--dim)">Status: concept note in development · draft available upon request.</p>
+        </div>
+        <div class="card span-12 secondary">
+          <p class="small" style="color:var(--dim)">Curate this list per audience: a methods-focused PI cares most about the items closest to this protocol. Keep the most relevant 2–3 visible and link the rest from a CV or ORCID. Replace bracketed placeholders before sending.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="materials">
+      <div class="wrap grid">
+        <div class="card feature span-12">
+          <div class="eyebrow">Materials &amp; Reproducibility // 材料与可复现</div>
+          <h2>Everything a lab needs to check the work.</h2>
+          <h2 class="cn">实验室核查这项工作所需的一切。</h2>
+        </div>
+        <div class="card span-6">
+          <div class="stack">
+            <div class="layer"><b>Preregistration plan</b><p>Hypotheses, primary/secondary outcomes, analysis, and ablations to be preregistered before data collection. OSF page in preparation.</p></div>
+            <div class="layer"><b>Session data schema</b><p>The minimal field schema above, exportable as a documented spec. Draft schema in preparation.</p></div>
+            <div class="layer"><b>Sound-probe library</b><p>Frozen, loudness-normalized files with source / rights documentation and event markers. Stimulus sheet in preparation.</p></div>
+            <div class="layer"><b>Prototype / code</b><p>Sound-QDR interaction prototype. Repository in preparation / available upon request.</p></div>
+          </div>
+          <p class="cn">预注册计划、可导出的 session 数据字段规范、固定且带来源/版权与事件标记的声音探针库、Sound-QDR 交互原型——将通过 OSF / GitHub 或请求方式提供；正式数据收集前不会绕过合作实验室 IRB/伦理审查。</p>
+        </div>
+        <div class="card span-6 secondary">
+          <div class="eyebrow">Selected references // 主要参考文献</div>
+          <ol class="clean">
+            <li>Barrett, L. F. (2017). The theory of constructed emotion: an active inference account of interoception and categorization. <em>Social Cognitive and Affective Neuroscience</em>, 12(1), 1–23. DOI: 10.1093/scan/nsw154.</li>
+            <li>Seth, A. K. (2013). Interoceptive inference, emotion, and the embodied self. <em>Trends in Cognitive Sciences</em>, 17(11), 565–573. DOI: 10.1016/j.tics.2013.09.007.</li>
+            <li>Sterling, P. (2012). Allostasis: a model of predictive regulation. <em>Physiology &amp; Behavior</em>, 106(1), 5–15. DOI: 10.1016/j.physbeh.2011.06.004.</li>
+            <li>Clark, A. (2013). Whatever next? Predictive brains, situated agents, and the future of cognitive science. <em>Behavioral and Brain Sciences</em>, 36(3), 181–204. DOI: 10.1017/S0140525X12000477.</li>
+            <li>Li, I., Dey, A. K., &amp; Forlizzi, J. (2010). A stage-based model of personal informatics systems. <em>CHI '10</em>, 557–566. DOI: 10.1145/1753326.1753409.</li>
+            <li>Craig, A. D. (2002). How do you feel? Interoception: the sense of the physiological condition of the body. <em>Nature Reviews Neuroscience</em>, 3(8), 655–666. DOI: 10.1038/nrn894.</li>
+          </ol>
+          <p class="small" style="color:var(--dim)">Confirm citations and links before any outreach. These anchor the constructs named in the Model and Methods sections.</p>
+        </div>
       </div>
     </section>
 
