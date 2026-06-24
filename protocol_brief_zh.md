@@ -1,3 +1,15 @@
+## 数据文件说明
+
+`data_schema.csv` 是未来正式研究的数据字段模板，不是静坐前测数据。
+
+静坐前测数据的匿名派生摘要是：
+
+- `pause_qdr_preliminary_summary.csv`
+- `pause_qdr_preliminary_dataset_zh.md`
+- `pause_qdr_limitations.md`
+- `pause_qdr_codebook.md`
+
+
 # BCI-HRP Lab：Sound-QDR 协议简报（中文）
 
 **状态：** 合作草案。未通过 IRB。不是临床、诊断、治疗、危机检测或神经解码协议。

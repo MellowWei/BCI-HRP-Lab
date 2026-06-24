@@ -44,3 +44,4 @@ So uploading only `index.html` is not enough.
 5. `https://mellowwei.github.io/BCI-HRP-Lab/data_schema.csv`
 6. `https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_dataset.md`
 7. `https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_summary.csv`
+- `https://mellowwei.github.io/BCI-HRP-Lab/DATA_FILES_GUIDE.md`

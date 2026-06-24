@@ -16,6 +16,17 @@ See:
 - `pause_qdr_codebook.md`
 
 
+## Data File Clarification
+
+`data_schema.csv` is a future protocol data dictionary, not the static-pause preliminary dataset.
+
+The anonymized derived static-pause summary is:
+
+- `pause_qdr_preliminary_summary.csv`
+- `pause_qdr_preliminary_dataset.md`
+- `pause_qdr_limitations.md`
+- `pause_qdr_codebook.md`
+
 ## 1. Research Question
 
 Does a sound-probe + self-prediction + editable naming protocol improve within-person self-calibration, and do autonomic/neural proxies add explanatory value beyond self-report alone?
