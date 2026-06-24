@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BCI-HRP Lab — 中文</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#02030a; --panel:rgba(11,14,34,.74); --text:#f5f7ff; --muted:#aab2d4; --dim:#6b7396;
+  --cyan:#00f5ff; --pink:#ff2bd6; --green:#35ff9f; --yellow:#ffe66d; --red:#ff5a75;
+  --line:rgba(0,245,255,.18); --line2:rgba(255,255,255,.09);
+  --shadow:0 24px 90px rgba(0,0,0,.46);
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--text);font-family:var(--sans);background:
+radial-gradient(circle at 12% 4%,rgba(0,245,255,.16),transparent 30%),
+radial-gradient(circle at 88% 10%,rgba(255,43,214,.14),transparent 31%),
+radial-gradient(circle at 48% 88%,rgba(53,255,159,.09),transparent 38%),
+linear-gradient(180deg,var(--bg) 0%,#050612 48%,#02030a 100%);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:
+linear-gradient(rgba(0,245,255,.06) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,43,214,.05) 1px,transparent 1px);
+background-size:72px 72px;opacity:.4;mask-image:linear-gradient(to bottom,transparent 0,black 16%,black 74%,transparent 100%);z-index:-2}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.24) 58%,rgba(0,0,0,.82) 100%);z-index:-1}
+a{color:inherit}.wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
+header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(4,6,18,.88);backdrop-filter:blur(18px);box-shadow:0 0 28px rgba(0,245,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0}.brand{display:flex;align-items:center;gap:10px;min-width:230px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.dot{width:11px;height:11px;border-radius:99px;background:var(--cyan);box-shadow:0 0 16px rgba(0,245,255,.9),0 0 34px rgba(255,43,214,.25)}
+nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 14px}nav a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}nav a:hover{color:var(--cyan);text-shadow:0 0 12px rgba(0,245,255,.65)}
+section{padding:64px 0;scroll-margin-top:84px}.hero{padding:78px 0 58px}.hero-grid{display:grid;grid-template-columns:1fr;gap:26px}
+.eyebrow{color:var(--cyan);font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px;text-shadow:0 0 14px rgba(0,245,255,.55)}
+h1,h2,h3,p{margin:0}h1{font-size:clamp(52px,8.2vw,118px);line-height:.88;letter-spacing:-.09em;font-weight:860;max-width:1180px}
+.glitch{position:relative;display:block;color:#f4f7ff;max-width:100%;white-space:normal;text-shadow:0 0 12px rgba(0,245,255,.45),0 0 32px rgba(255,43,214,.22);animation:titlePulse 3.2s ease-in-out infinite}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;opacity:.68;display:block;width:100%;white-space:inherit}
+.glitch::before{color:var(--cyan);clip-path:inset(0 0 58% 0);animation:glitchA 2.6s infinite linear alternate-reverse}.glitch::after{color:var(--pink);clip-path:inset(48% 0 0 0);animation:glitchB 1.9s infinite linear alternate-reverse}
+.title-cutline{width:min(760px,88%);height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);margin:20px 0 22px;box-shadow:0 0 18px rgba(0,245,255,.38),0 0 28px rgba(255,43,214,.18)}
+h2{max-width:980px;font-size:clamp(32px,4.5vw,58px);line-height:1.04;letter-spacing:-.055em;font-weight:800;margin-bottom:16px}h3{font-size:21px;line-height:1.18;letter-spacing:-.025em;margin-bottom:10px}
+p{color:var(--muted);font-size:15.5px;line-height:1.68}.hero-sub{max-width:980px;color:rgba(245,247,255,.95);font-size:clamp(20px,2.4vw,32px);line-height:1.22;letter-spacing:-.03em;margin-top:8px}.hero-note{max-width:920px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
+.card{position:relative;padding:22px;border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,rgba(10,14,33,.78),rgba(8,11,24,.92));box-shadow:var(--shadow);overflow:hidden}.card::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(140deg,rgba(0,245,255,.05),transparent 24%,transparent 70%,rgba(255,43,214,.05));opacity:.9}.feature{border-color:rgba(0,245,255,.24)}.secondary{background:linear-gradient(180deg,rgba(10,14,33,.62),rgba(8,11,24,.86))}.warn{border-color:rgba(255,230,109,.28)}.green{border-color:rgba(53,255,159,.24)}.red{border-color:rgba(255,90,117,.28)}
+.pill,.button,.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,245,255,.21);border-radius:999px;background:linear-gradient(90deg,rgba(0,245,255,.07),rgba(255,43,214,.045)),rgba(255,255,255,.032);color:var(--muted);padding:8px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase}.button{color:var(--text);text-decoration:none;cursor:pointer;padding:12px 15px}.button.primary{border-color:rgba(53,255,159,.44);box-shadow:0 0 22px rgba(53,255,159,.12)}.button-row,.status-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.pill.good{border-color:rgba(53,255,159,.34);color:var(--green)}.pill.warn{border-color:rgba(255,230,109,.34);color:var(--yellow)}.pill.no{border-color:rgba(255,90,117,.34);color:#ffb1bf}
+.large-claim{font-size:clamp(24px,3vw,36px);line-height:1.2;color:#f7fbff;letter-spacing:-.03em}.claim-box,.mini,.layer,.phase,.safety-node,.flow-step{padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.025)}.claim-box{margin-top:18px}.stack{display:grid;gap:12px}.layer{border-left:3px solid rgba(0,245,255,.42)}.layer b,.num,.flow-step b,.phase b,.safety-node b{display:block;color:var(--cyan);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}.num{margin-bottom:12px;color:var(--cyan)}.split,.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.phase-grid{grid-template-columns:repeat(3,1fr)}
+.table-wrap{overflow:auto;margin-top:10px}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:13px 12px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;line-height:1.52}th{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;background:rgba(0,245,255,.045)}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}.safety-machine{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.clean{margin:10px 0 0;padding-left:18px;color:var(--muted)}.clean li{margin:0 0 8px;line-height:1.55}.copy-box{margin-top:14px;padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);font-size:13px;line-height:1.6;color:#dce2ff;white-space:pre-wrap}.lang-switch{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+@keyframes titlePulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes glitchA{0%{transform:translate(2px,0)}20%{transform:translate(-3px,-1px)}40%{transform:translate(4px,1px)}60%{transform:translate(-1px,0)}80%{transform:translate(3px,-2px)}100%{transform:translate(0,0)}}@keyframes glitchB{0%{transform:translate(-2px,0)}25%{transform:translate(3px,1px)}50%{transform:translate(-4px,-1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0,0)}}
+@media(max-width:1120px){.split,.phase-grid,.safety-machine{grid-template-columns:1fr!important}.flow{grid-template-columns:repeat(3,1fr)}}@media(max-width:900px){.span-8,.span-7,.span-6,.span-5,.span-4,.span-3,.span-12{grid-column:span 12}.nav{align-items:flex-start;flex-direction:column}.flow{grid-template-columns:1fr 1fr}h1{font-size:clamp(44px,12vw,82px);letter-spacing:-.075em}}@media(max-width:640px){section{padding:52px 0}.wrap{width:min(100% - 24px,1160px)}.flow{grid-template-columns:1fr}.button{width:100%;justify-content:center}h1{font-size:clamp(40px,15vw,68px);letter-spacing:-.065em}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand"><span class="dot"></span>BCI-HRP LAB // HUMAN RETURN</div><nav><a href="#claim">主张</a>
+<a href="#pilot">试点</a>
+<a href="#methods">方法</a>
+<a href="#fit">实验室适配</a>
+<a href="#pause-data">暂停数据</a>
+<a href="#materials">材料</a>
+<a href="#safety">安全</a>
+<a href="#outreach">外联</a>
+<a href="#collaborate">合作</a><a href="en.html">English</a><a href="index.html">双语首页</a></nav></div></header>
+<main>
+<section class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">中文子页 // 实验室合作入口</div>
+  <h1 class="glitch" data-text="BCI - The Human Return Protocol">BCI - The Human Return Protocol</h1>
+  <div class="title-cutline"></div>
+  <p class="hero-sub">一个面向实验室合作的研究协议：测试声音探针、自我预测、可编辑命名与可穿戴/神经代理，是否能提升个体内自我校准。</p>
+  <p class="hero-note">当前试点：Sound-QDR 协议优先；现有实验室设备其次；未来三件套硬件最后。它不是消费级 BCI 产品，也不是诊断、治疗或状态诱导系统。</p>
+  <div class="status-row"><span class="pill good">当前试点：Sound-QDR</span><span class="pill warn">未来愿景：AI 耳机 + 头贴 + 腕环</span><span class="pill no">不诊断 · 不治疗 · 不诱导状态</span></div>
+  <div class="lang-switch"><a class="button primary" href="en.html">English page</a><a class="button" href="index.html">双语首页</a></div>
+</div></section>
+
+<section id="claim"><div class="wrap grid"><div class="card feature span-12">
+  <div class="eyebrow">一个可证伪主张</div>
+  <p class="large-claim">声音探针 + 自我预测 + 可编辑命名协议，是否能提升个体内自我校准？自主神经/神经代理是否比仅自评提供额外解释价值？</p>
+  <div class="claim-box"><p>研究定位：这是可行性与构念校准，不是临床验证。“感质对齐”和“Human Return”是候选构念，可以在预注册前由合作实验室缩小、改名、否定或修正。</p></div>
+</div></div></section>
+
+<section id="gap"><div class="wrap grid"><div class="card span-7">
+  <div class="eyebrow">为什么值得做</div><h2>现有系统往往不是过度解释用户，就是过度压扁体验。</h2>
+  <p>情绪工具常把人压进 calm / stressed 这样的粗标签；消费级神经科技容易对弱生理代理做过度解释；音乐工具又常只做 mood playlist，而不处理自我预测、解释权与安全退出。BCI-HRP Lab 做的是中间缺口：声音成为可控探针，用户先预测，生理信号只是代理，AI 解释始终可编辑、可拒绝、可删除。</p>
+</div><div class="card span-5 secondary"><div class="eyebrow">研究缺口</div><div class="stack">
+  <div class="layer"><b>Gap 01</b><p>过度依赖粗情绪标签，缺少感质颗粒度。</p></div>
+  <div class="layer"><b>Gap 02</b><p>传感器权威过强，用户解释权不足。</p></div>
+  <div class="layer"><b>Gap 03</b><p>声音常被当成 mood control，而不是可证伪探针。</p></div>
+  <div class="layer"><b>Gap 04</b><p>伦理常停留在原则，缺少交互级安全设计。</p></div>
+</div></div></div></section>
+
+<section id="layers"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">科学版层级模型</div><h2>保留结构复杂度，但把它翻译成科学上可读的语言。</h2></div>
+<div class="card span-7"><div class="stack">
+  <div class="layer"><b>Layer 01 — 声音事件</b><p>固定音频文件，具有已记录的声学属性与事件标记。</p></div>
+  <div class="layer"><b>Layer 02 — 感官接触</b><p>声音如何通过听觉、身体共振、呼吸耦合与注意进入人。</p></div>
+  <div class="layer"><b>Layer 03 — 自主神经 / 身体反应</b><p>HRV、EDA、运动、皮温与身体自评，作为个体内反应轨迹。</p></div>
+  <div class="layer"><b>Layer 04 — 情绪构成</b><p>身体变化如何被体验成压强、释放、激活、安全或过载。</p></div>
+  <div class="layer"><b>Layer 05 — 认知预测</b><p>用户在播放前以为会发生什么，以及预测误差是否下降。</p></div>
+  <div class="layer"><b>Layer 06 — 意义生成</b><p>记忆、未来方向、自传性共振与价值意义笔记。</p></div>
+  <div class="layer"><b>Layer 07 — 解释自主</b><p>接受、编辑、拒绝、重命名、删除、停止、落地、跳过。</p></div>
+</div></div><div class="card span-5 secondary"><div class="eyebrow">科学锚点</div><div class="stack">
+  <div class="layer"><b>Interoception</b><p>身体内部状态感知与解释。</p></div>
+  <div class="layer"><b>Allostasis</b><p>调节与恢复，而不是静态平衡。</p></div>
+  <div class="layer"><b>Constructed Emotion</b><p>情绪不是从信号中直接读出。</p></div>
+  <div class="layer"><b>Predictive Processing</b><p>声音前预测误差是可操作目标。</p></div>
+  <div class="layer"><b>Personal Informatics</b><p>收集、反思、行动，但不把数据当绝对真相。</p></div>
+</div></div></div></section>
+
+<section id="protocol-snapshot"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">协议快照</div><h2>PI 应该能在三分钟内判断是否值得一次 fit call。</h2></div>
+<div class="card span-4"><div class="num">研究单位</div><h3>Session，不是设备</h3><p>一次声音反应 session：预测、声音探针、报告、可编辑命名与解释自主事件。</p></div>
+<div class="card span-4"><div class="num">主要测试</div><h3>预测误差</h3><p>个体内声音前预测误差是否跨 session 变化，并能否迁移到未听过的新刺激。</p></div>
+<div class="card span-4"><div class="num">安全原则</div><h3>解释前先保留自主</h3><p>AI 总结始终可编辑、可拒绝。停止、落地、删除、重命名、跳过是主要数据。</p></div>
+</div></section>
+
+<section id="pilot"><div class="wrap grid"><div class="card span-12"><div class="eyebrow">试点研究设计</div><h2>小样本、个体内、可消融。</h2><div class="table-wrap"><table><thead><tr><th>项目</th><th>设计</th></tr></thead><tbody>
+<tr><td>研究类型</td><td>个体内可行性试点；重复 session；非临床参与者；不做治疗声明。</td></tr>
+<tr><td>样本依据</td><td>N=5–12 只支持可用性、数据质量、负面交互发现，以及为后续功效研究估计方差。</td></tr>
+<tr><td>主要结果</td><td>跨 session 的个体内声音前预测误差变化。</td></tr>
+<tr><td>次要结果</td><td>状态命名稳定性、感质颗粒度、解释自主事件、完成率、不适/停止事件。</td></tr>
+<tr><td>信号</td><td>自评优先；HRV/RMSSD、EDA/SCR、呼吸、皮温、运动其次；EEG/fNIRS 可选且由实验室条件决定。</td></tr>
+<tr><td>消融</td><td>仅自评；固定声音 + 自评；腕 + 声音；头 + 声音；完整三件套；静默/中性场。</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="methods"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">操作化定义</div><h2>让“人类返回”可测，但不把它压扁成隐藏信号。</h2></div>
+<div class="card span-6"><h3>自我预测误差</h3><p>声音前预测向量与播放后报告向量比较。候选维度：紧张度、清晰度、身体返回、行动冲动、情绪压强、安全感。</p></div>
+<div class="card span-6"><h3>感质颗粒度</h3><p>从“舒服/难受”的泛化词，转向更细的身体—情绪—感知—行动描述。</p></div>
+<div class="card span-6"><h3>状态命名稳定性</h3><p>重复声音条件下，用户是否能复用、细化或稳定个人标签，而不是被 AI 标签强行牵引。</p></div>
+<div class="card span-6"><h3>解释自主</h3><p>停止、落地、删除、拒绝、重命名、跳过、编辑是主要数据事件，不是 UI 附属品。</p></div>
+</div></section>
+
+<section id="feasibility"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">技术可行性</div><h2>试点不应依赖自研硬件。</h2></div>
+<div class="card span-12"><div class="table-wrap"><table><thead><tr><th>领域</th><th>现实可行版本</th><th>边界</th></tr></thead><tbody>
+<tr><td>声音探针</td><td>冻结、可复现、有 loudness、事件标记、来源与授权记录的音频。</td><td>不是普适声音处方。</td></tr>
+<tr><td>可穿戴</td><td>使用现有研究可接受设备记录 HRV、EDA、呼吸代理、皮温、运动。</td><td>只做个体内代理，不推断隐藏真相。</td></tr>
+<tr><td>EEG/fNIRS</td><td>可选扩展，不是核心证明。</td><td>只作为聆听状态代理，不做意义解码。</td></tr>
+<tr><td>AI 角色</td><td>可选生产辅助和可编辑总结器。</td><td>AI 标签可拒绝，不被当成真相。</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="fit"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">实验室适配矩阵</div><h2>不同实验室可以从协议的不同位置进入。</h2></div>
+<div class="card span-12"><div class="table-wrap"><table><thead><tr><th>实验室类型</th><th>适配原因</th><th>可主导内容</th></tr></thead><tbody>
+<tr><td>HCI / Personal Informatics</td><td>用户拥有解释权、可编辑标签、agency events、交互安全。</td><td>界面、用户研究、安全流程、日记协议。</td></tr>
+<tr><td>Music Cognition / Neuroaesthetics</td><td>声音探针、审美经验、熟悉性、期待与感质命名。</td><td>刺激设计、聆听研究、体验测量。</td></tr>
+<tr><td>Wearable Sensing</td><td>HRV、EDA、运动、呼吸作为个体内生理代理。</td><td>设备选择、信号质量、伪迹标准、同步。</td></tr>
+<tr><td>Affective Computing</td><td>非诊断 AI 反馈、反暗示设计、可编辑假设。</td><td>反馈边界、人机解释、suggestion bias 检查。</td></tr>
+<tr><td>Computational Neuroscience</td><td>预测误差、跨 session 变化、多模态对齐。</td><td>建模、推断、混合效应模型、事件锁定分析。</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="pause-data"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Pause-QDR 静坐暂停前测数据</div><h2>在声音探针之前，必须先测量“暂停本身”。</h2><p>这组约 10 人静坐暂停探索性数据，不是 BCI-HRP 或 Sound-QDR 有效性证据。它作为 Phase -1 可行性材料：说明参与者可以完成前后自评、产生丰富感质笔记，并暴露任务需求、环境、脱离手机和纯暂停效应等关键混淆因素。</p></div>
+<div class="card span-4"><div class="num">数据类型</div><h3>Pause-only baseline</h3><p>暂停日常任务约 10–12 分钟，记录前后心情、专注、身体状态评分与开放式笔记。</p></div>
+<div class="card span-4"><div class="num">描述性信号</div><h3>身体放松最明显</h3><p>描述性看，N=9 的平均身体放松改善约 2.11；心情和专注变化异质性更高，不应夸大。</p></div>
+<div class="card span-4"><div class="num">设计含义</div><h3>必须加入 pause-only baseline</h3><p>未来 Sound-QDR 试点必须区分暂停效应、环境效应、任务需求效应、声音效应与解释自主效应。</p></div>
+<div class="card span-12 secondary"><div class="stack">
+  <div class="layer"><b>中文数据摘要</b><p><a href="./pause_qdr_preliminary_dataset_zh.md">pause_qdr_preliminary_dataset_zh.md</a></p></div>
+  <div class="layer"><b>匿名 CSV</b><p><a href="./pause_qdr_preliminary_summary.csv">pause_qdr_preliminary_summary.csv</a></p></div>
+  <div class="layer"><b>限制说明</b><p><a href="./pause_qdr_limitations.md">pause_qdr_limitations.md</a></p></div>
+</div></div></div></section>
+
+<section id="materials"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">研究材料包</div><h2>网站只是入口；材料包才让项目进入真实研究合作。</h2></div>
+<div class="card span-6"><div class="stack">
+  <div class="layer"><b>中文协议简报</b><p><a href="./protocol_brief_zh.md">protocol_brief_zh.md</a></p></div>
+  <div class="layer"><b>英文协议简报</b><p><a href="./protocol_brief.md">protocol_brief.md</a></p></div>
+  <div class="layer"><b>数据字段</b><p><a href="./data_schema.csv">data_schema.csv</a></p></div>
+  <div class="layer"><b>声音刺激模板</b><p><a href="./stimulus_sheet_template.csv">stimulus_sheet_template.csv</a></p></div>
+</div></div>
+<div class="card span-6 secondary"><div class="stack">
+  <div class="layer"><b>中文安全流程</b><p><a href="./safety_flow_zh.md">safety_flow_zh.md</a></p></div>
+  <div class="layer"><b>英文安全流程</b><p><a href="./safety_flow.md">safety_flow.md</a></p></div>
+  <div class="layer"><b>OSF 结构</b><p><a href="./osf_structure.md">osf_structure.md</a></p></div>
+  <div class="layer"><b>参考文献</b><p><a href="./references.bib">references.bib</a></p></div>
+</div></div></div></section>
+
+<section id="safety"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">安全交互流程</div><h2>伦理必须落实为交互，而不能只停留在原则声明。</h2></div>
+<div class="card span-3"><h3>同意门槛</h3><p>用户选择声音家族、强度上限、停止方式、数据分享和 AI 总结许可。</p></div>
+<div class="card span-3"><h3>持续控制</h3><p>Stop / Ground / Volume Down / Skip / Delete 始终可见。</p></div>
+<div class="card span-3"><h3>自动暂停</h3><p>自评不安全、重复停止、不回应、不适上升或实验室阈值触发暂停。</p></div>
+<div class="card span-3 red"><h3>非危机系统</h3><p>高风险表露退出协议，进入实验室批准的人类安全流程。</p></div>
+</div></section>
+
+<section id="outreach"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">PI 外联策略</div><h2>不要用同一封通用邮件发给所有实验室。</h2><p>项目有同一个协议核心，但不同实验室应该看到不同入口。外联邮件应匹配该实验室的方法学归属。</p></div>
+<div class="card span-12"><p>邮件模板见：<a href="./pi_email_variants.md">pi_email_variants.md</a></p></div></div></section>
+
+<section id="collaborate"><div class="wrap grid"><div class="card span-12"><div class="eyebrow">合作模型</div><h2>不是请实验室执行一个已经封闭的系统。</h2><div class="split"><div class="mini"><h3>我带来</h3><ul class="clean"><li>Human Return / QDR 构念与用户界面逻辑。</li><li>感质命名提示与解释自主设计。</li><li>声音探针交互原型与叙事设计。</li><li>AI 可编辑、可拒绝、可删除的伦理结构。</li></ul></div><div class="mini"><h3>实验室带来</h3><ul class="clean"><li>方法学严谨、IRB 路径和安全审查。</li><li>传感器选择、信号处理和伪迹标准。</li><li>招募、统计建模和预注册。</li><li>缩小、改名、否定或拆分假设的权力。</li></ul></div></div></div>
+<div class="card feature span-12"><div class="eyebrow">第一请求</div><h2>一次 15 分钟的契合对话。</h2><p>第一次对话不是融资请求，也不是硬件请求，只是判断这个方向更适合成为软件协议、可穿戴可行性试点、HCI 安全研究，还是音乐认知/神经美学项目。</p></div></div></section>
+</main>
+<footer style="padding:34px 0 54px;color:var(--dim);text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase"><div class="wrap">BCI-HRP LAB // Research prototype · non-diagnostic · non-treatment · user-owned interpretation.</div></footer>
+</body>
+</html>

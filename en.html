@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BCI-HRP Lab — English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#02030a; --panel:rgba(11,14,34,.74); --text:#f5f7ff; --muted:#aab2d4; --dim:#6b7396;
+  --cyan:#00f5ff; --pink:#ff2bd6; --green:#35ff9f; --yellow:#ffe66d; --red:#ff5a75;
+  --line:rgba(0,245,255,.18); --line2:rgba(255,255,255,.09);
+  --shadow:0 24px 90px rgba(0,0,0,.46);
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--text);font-family:var(--sans);background:
+radial-gradient(circle at 12% 4%,rgba(0,245,255,.16),transparent 30%),
+radial-gradient(circle at 88% 10%,rgba(255,43,214,.14),transparent 31%),
+radial-gradient(circle at 48% 88%,rgba(53,255,159,.09),transparent 38%),
+linear-gradient(180deg,var(--bg) 0%,#050612 48%,#02030a 100%);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:
+linear-gradient(rgba(0,245,255,.06) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,43,214,.05) 1px,transparent 1px);
+background-size:72px 72px;opacity:.4;mask-image:linear-gradient(to bottom,transparent 0,black 16%,black 74%,transparent 100%);z-index:-2}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.24) 58%,rgba(0,0,0,.82) 100%);z-index:-1}
+a{color:inherit}.wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
+header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(4,6,18,.88);backdrop-filter:blur(18px);box-shadow:0 0 28px rgba(0,245,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0}.brand{display:flex;align-items:center;gap:10px;min-width:230px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.dot{width:11px;height:11px;border-radius:99px;background:var(--cyan);box-shadow:0 0 16px rgba(0,245,255,.9),0 0 34px rgba(255,43,214,.25)}
+nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 14px}nav a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}nav a:hover{color:var(--cyan);text-shadow:0 0 12px rgba(0,245,255,.65)}
+section{padding:64px 0;scroll-margin-top:84px}.hero{padding:78px 0 58px}.hero-grid{display:grid;grid-template-columns:1fr;gap:26px}
+.eyebrow{color:var(--cyan);font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px;text-shadow:0 0 14px rgba(0,245,255,.55)}
+h1,h2,h3,p{margin:0}h1{font-size:clamp(52px,8.2vw,118px);line-height:.88;letter-spacing:-.09em;font-weight:860;max-width:1180px}
+.glitch{position:relative;display:block;color:#f4f7ff;max-width:100%;white-space:normal;text-shadow:0 0 12px rgba(0,245,255,.45),0 0 32px rgba(255,43,214,.22);animation:titlePulse 3.2s ease-in-out infinite}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;opacity:.68;display:block;width:100%;white-space:inherit}
+.glitch::before{color:var(--cyan);clip-path:inset(0 0 58% 0);animation:glitchA 2.6s infinite linear alternate-reverse}.glitch::after{color:var(--pink);clip-path:inset(48% 0 0 0);animation:glitchB 1.9s infinite linear alternate-reverse}
+.title-cutline{width:min(760px,88%);height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);margin:20px 0 22px;box-shadow:0 0 18px rgba(0,245,255,.38),0 0 28px rgba(255,43,214,.18)}
+h2{max-width:980px;font-size:clamp(32px,4.5vw,58px);line-height:1.04;letter-spacing:-.055em;font-weight:800;margin-bottom:16px}h3{font-size:21px;line-height:1.18;letter-spacing:-.025em;margin-bottom:10px}
+p{color:var(--muted);font-size:15.5px;line-height:1.68}.hero-sub{max-width:980px;color:rgba(245,247,255,.95);font-size:clamp(20px,2.4vw,32px);line-height:1.22;letter-spacing:-.03em;margin-top:8px}.hero-note{max-width:920px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
+.card{position:relative;padding:22px;border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,rgba(10,14,33,.78),rgba(8,11,24,.92));box-shadow:var(--shadow);overflow:hidden}.card::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(140deg,rgba(0,245,255,.05),transparent 24%,transparent 70%,rgba(255,43,214,.05));opacity:.9}.feature{border-color:rgba(0,245,255,.24)}.secondary{background:linear-gradient(180deg,rgba(10,14,33,.62),rgba(8,11,24,.86))}.warn{border-color:rgba(255,230,109,.28)}.green{border-color:rgba(53,255,159,.24)}.red{border-color:rgba(255,90,117,.28)}
+.pill,.button,.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,245,255,.21);border-radius:999px;background:linear-gradient(90deg,rgba(0,245,255,.07),rgba(255,43,214,.045)),rgba(255,255,255,.032);color:var(--muted);padding:8px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase}.button{color:var(--text);text-decoration:none;cursor:pointer;padding:12px 15px}.button.primary{border-color:rgba(53,255,159,.44);box-shadow:0 0 22px rgba(53,255,159,.12)}.button-row,.status-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.pill.good{border-color:rgba(53,255,159,.34);color:var(--green)}.pill.warn{border-color:rgba(255,230,109,.34);color:var(--yellow)}.pill.no{border-color:rgba(255,90,117,.34);color:#ffb1bf}
+.large-claim{font-size:clamp(24px,3vw,36px);line-height:1.2;color:#f7fbff;letter-spacing:-.03em}.claim-box,.mini,.layer,.phase,.safety-node,.flow-step{padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.025)}.claim-box{margin-top:18px}.stack{display:grid;gap:12px}.layer{border-left:3px solid rgba(0,245,255,.42)}.layer b,.num,.flow-step b,.phase b,.safety-node b{display:block;color:var(--cyan);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}.num{margin-bottom:12px;color:var(--cyan)}.split,.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.phase-grid{grid-template-columns:repeat(3,1fr)}
+.table-wrap{overflow:auto;margin-top:10px}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:13px 12px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;line-height:1.52}th{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;background:rgba(0,245,255,.045)}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}.safety-machine{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.clean{margin:10px 0 0;padding-left:18px;color:var(--muted)}.clean li{margin:0 0 8px;line-height:1.55}.copy-box{margin-top:14px;padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);font-size:13px;line-height:1.6;color:#dce2ff;white-space:pre-wrap}.lang-switch{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+@keyframes titlePulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes glitchA{0%{transform:translate(2px,0)}20%{transform:translate(-3px,-1px)}40%{transform:translate(4px,1px)}60%{transform:translate(-1px,0)}80%{transform:translate(3px,-2px)}100%{transform:translate(0,0)}}@keyframes glitchB{0%{transform:translate(-2px,0)}25%{transform:translate(3px,1px)}50%{transform:translate(-4px,-1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0,0)}}
+@media(max-width:1120px){.split,.phase-grid,.safety-machine{grid-template-columns:1fr!important}.flow{grid-template-columns:repeat(3,1fr)}}@media(max-width:900px){.span-8,.span-7,.span-6,.span-5,.span-4,.span-3,.span-12{grid-column:span 12}.nav{align-items:flex-start;flex-direction:column}.flow{grid-template-columns:1fr 1fr}h1{font-size:clamp(44px,12vw,82px);letter-spacing:-.075em}}@media(max-width:640px){section{padding:52px 0}.wrap{width:min(100% - 24px,1160px)}.flow{grid-template-columns:1fr}.button{width:100%;justify-content:center}h1{font-size:clamp(40px,15vw,68px);letter-spacing:-.065em}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand"><span class="dot"></span>BCI-HRP LAB // HUMAN RETURN</div><nav><a href="#claim">Claim</a>
+<a href="#pilot">Pilot</a>
+<a href="#methods">Methods</a>
+<a href="#fit">Lab Fit</a>
+<a href="#pause-data">Pause Data</a>
+<a href="#materials">Materials</a>
+<a href="#safety">Safety</a>
+<a href="#outreach">Outreach</a>
+<a href="#collaborate">Collaborate</a><a href="zh.html">中文</a><a href="index.html">Bilingual Home</a></nav></div></header>
+<main>
+<section class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">English Subpage // Lab Collaboration Brief</div>
+  <h1 class="glitch" data-text="BCI - The Human Return Protocol">BCI - The Human Return Protocol</h1>
+  <div class="title-cutline"></div>
+  <p class="hero-sub">A lab-facing protocol for testing whether sound probes, self-prediction, editable naming, and wearable/neural proxies can improve within-person self-calibration.</p>
+  <p class="hero-note">Current pilot: Sound-QDR first. Existing lab equipment second. Future triadic hardware last. This is not a consumer BCI product, not diagnosis, not treatment, and not state induction.</p>
+  <div class="status-row"><span class="pill good">Current Pilot: Sound-QDR</span><span class="pill warn">Future Vision: AI headphones + head patch + wristband</span><span class="pill no">No diagnosis · no treatment · no state induction</span></div>
+  <div class="lang-switch"><a class="button primary" href="zh.html">中文页面</a><a class="button" href="index.html">Bilingual Home</a></div>
+</div></section>
+
+<section id="claim"><div class="wrap grid"><div class="card feature span-12">
+  <div class="eyebrow">One Testable Claim</div>
+  <p class="large-claim">Does a sound-probe + self-prediction + editable naming protocol improve within-person self-calibration, and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
+  <div class="claim-box"><p><strong>Research stance:</strong> this is feasibility and construct calibration, not clinical validation. “Qualia alignment” and “Human Return” are candidate constructs that can be narrowed, renamed, rejected, or revised by a partner lab before preregistration.</p></div>
+</div></div></section>
+
+<section id="gap"><div class="wrap grid"><div class="card span-7">
+  <div class="eyebrow">Why This Matters</div><h2>Most systems either over-interpret the user or under-describe experience.</h2>
+  <p>Emotion tools often force users into coarse labels like calm / stressed. Consumer neurotech often overclaims hidden insight from weak physiological proxies. Music tools often optimize for mood playlists without modeling user prediction, interpretive control, or safe exit. BCI-HRP Lab targets the missing middle: sound as a controlled probe, user prediction first, physiology as proxy, and AI explanations as editable and rejectable.</p>
+</div><div class="card span-5 secondary"><div class="eyebrow">Research Gap</div><div class="stack">
+  <div class="layer"><b>Gap 01</b><p>Too much reliance on coarse affect labels; too little on qualia granularity.</p></div>
+  <div class="layer"><b>Gap 02</b><p>Too much sensor authority; too little user-owned interpretation.</p></div>
+  <div class="layer"><b>Gap 03</b><p>Too much sound-as-mood-control; too little sound-as-probe-with-falsifiable outcomes.</p></div>
+  <div class="layer"><b>Gap 04</b><p>Too much ethics rhetoric; too little interaction-level safety design.</p></div>
+</div></div></div></section>
+
+<section id="layers"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Scientific Layer Model</div><h2>Keep the architecture rich, but scientifically legible.</h2></div>
+<div class="card span-7"><div class="stack">
+  <div class="layer"><b>Layer 01 — Sound Event</b><p>A fixed audio file with documented acoustic properties and event markers.</p></div>
+  <div class="layer"><b>Layer 02 — Sensory Contact</b><p>How sound enters through hearing, bodily resonance, respiration coupling, and attention.</p></div>
+  <div class="layer"><b>Layer 03 — Autonomic / Body Response</b><p>HRV, EDA, movement, temperature, and body self-report as within-person response traces.</p></div>
+  <div class="layer"><b>Layer 04 — Affective Construction</b><p>How bodily change becomes felt pressure, relief, activation, safety, or overwhelm.</p></div>
+  <div class="layer"><b>Layer 05 — Cognitive Prediction</b><p>What the user thought would happen before the sound, and whether prediction error decreases.</p></div>
+  <div class="layer"><b>Layer 06 — Meaning Making</b><p>Memory, future direction, autobiographical resonance, or value-significance notes.</p></div>
+  <div class="layer"><b>Layer 07 — Interpretive Agency</b><p>Accept, edit, reject, rename, delete, stop, ground, and skip.</p></div>
+</div></div><div class="card span-5 secondary"><div class="eyebrow">Scientific Anchors</div><div class="stack">
+  <div class="layer"><b>Interoception</b><p>Body-state sensing and interpretation.</p></div>
+  <div class="layer"><b>Allostasis</b><p>Regulation and recovery rather than static homeostasis.</p></div>
+  <div class="layer"><b>Constructed Emotion</b><p>Emotion is not simply read out from signals.</p></div>
+  <div class="layer"><b>Predictive Processing</b><p>Pre-probe prediction error is an operational target.</p></div>
+  <div class="layer"><b>Personal Informatics</b><p>Collect, reflect, act — without turning data into absolute truth.</p></div>
+</div></div></div></section>
+
+<section id="protocol-snapshot"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Protocol Snapshot</div><h2>A PI should be able to decide whether this is worth a fit call in three minutes.</h2></div>
+<div class="card span-4"><div class="num">Core unit</div><h3>Session, not device</h3><p>One sound-response session: prediction, sound probe, report, editable naming, and agency events.</p></div>
+<div class="card span-4"><div class="num">Primary test</div><h3>Prediction error</h3><p>Whether within-person pre-probe prediction error changes across sessions and transfers beyond memorized clips.</p></div>
+<div class="card span-4"><div class="num">Safety principle</div><h3>Agency before interpretation</h3><p>AI summaries are editable and rejectable. Stop, Ground, Delete, Rename, and Skip are primary data.</p></div>
+</div></section>
+
+<section id="pilot"><div class="wrap grid"><div class="card span-12"><div class="eyebrow">Pilot Design</div><h2>Small, within-subject, ablated.</h2><div class="table-wrap"><table><thead><tr><th>Item</th><th>Design</th></tr></thead><tbody>
+<tr><td>Study type</td><td>Within-subject feasibility pilot; repeated sessions; non-clinical participants; no treatment claim.</td></tr>
+<tr><td>Sample rationale</td><td>N = 5–12 supports usability, data-quality estimation, adverse UX discovery, and variance estimates for later powered study.</td></tr>
+<tr><td>Primary outcome</td><td>Within-person change in pre-probe prediction error across sessions.</td></tr>
+<tr><td>Secondary outcomes</td><td>State-naming stability, qualia granularity, interpretive-agency events, completion rate, discomfort / stop events.</td></tr>
+<tr><td>Signals</td><td>Self-report first; HRV/RMSSD, EDA/SCR, respiration, temperature, motion second; EEG/fNIRS optional and lab-dependent.</td></tr>
+<tr><td>Ablations</td><td>Self-report only; fixed sound + self-report; wrist + sound; head + sound; full triad; silence / neutral field where appropriate.</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="methods"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Operational Definitions</div><h2>Make “Human Return” measurable without reducing it to a hidden signal.</h2></div>
+<div class="card span-6"><h3>Self-prediction error</h3><p>Pre-probe predicted vector compared with post-probe reported vector. Candidate dimensions: tension, clarity, body return, movement urge, emotional pressure, safety.</p></div>
+<div class="card span-6"><h3>Qualia granularity</h3><p>Shift from generic terms (“good / bad”) to differentiated bodily-affective-perceptual-action descriptions.</p></div>
+<div class="card span-6"><h3>State-naming stability</h3><p>Whether users reuse, refine, or stabilize personal labels without being forced into AI labels.</p></div>
+<div class="card span-6"><h3>Interpretive agency</h3><p>Stop, Ground, Delete, Reject, Rename, Skip, and Edit are primary data events, not UI afterthoughts.</p></div>
+</div></section>
+
+<section id="feasibility"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Technical Feasibility</div><h2>The pilot should not depend on custom hardware.</h2></div>
+<div class="card span-12"><div class="table-wrap"><table><thead><tr><th>Domain</th><th>Realistic now</th><th>Boundary</th></tr></thead><tbody>
+<tr><td>Sound probes</td><td>Frozen, reproducible audio with loudness, markers, source and license documentation.</td><td>Not universal sound prescriptions.</td></tr>
+<tr><td>Wearables</td><td>Existing research-accepted devices for HRV, EDA, respiration proxy, skin temperature, and motion.</td><td>Within-person proxies only; not hidden truth.</td></tr>
+<tr><td>EEG/fNIRS</td><td>Optional extension, not core proof.</td><td>Listening-state proxy only; no meaning decoding.</td></tr>
+<tr><td>AI role</td><td>Optional production aid and editable report summarizer.</td><td>AI labels are rejectable, not truth.</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="fit"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Lab Fit Matrix</div><h2>Different labs can enter from different parts of the protocol.</h2></div>
+<div class="card span-12"><div class="table-wrap"><table><thead><tr><th>Lab type</th><th>Why this fits</th><th>What the lab can lead</th></tr></thead><tbody>
+<tr><td>HCI / Personal Informatics</td><td>User-owned interpretation, editable labels, agency events, interaction safety.</td><td>Interface design, user study, safety flow, diary protocol.</td></tr>
+<tr><td>Music Cognition / Neuroaesthetics</td><td>Sound probes, aesthetic experience, familiarity, expectation, qualia naming.</td><td>Stimulus design, listening protocol, experience measures.</td></tr>
+<tr><td>Wearable Sensing</td><td>HRV, EDA, motion, respiration as within-person physiological proxies.</td><td>Device selection, signal quality, artifact criteria, synchronization.</td></tr>
+<tr><td>Affective Computing</td><td>Non-diagnostic AI feedback, anti-suggestion design, editable hypotheses.</td><td>Feedback boundary, human-in-the-loop interpretation, suggestion bias checks.</td></tr>
+<tr><td>Computational Neuroscience</td><td>Prediction error, cross-session change, multimodal alignment.</td><td>Modeling, inference, mixed-effects model, event-locked analysis.</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="pause-data"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Preliminary Pause-QDR Dataset</div><h2>Before sound probes, pause itself must be measured.</h2><p>This exploratory N≈10 static-pause dataset is not evidence that BCI-HRP or Sound-QDR is effective. It is Phase -1 feasibility material: participants can complete pre/post self-report, produce rich qualia notes, and reveal confounds such as task demand, environment, phone absence, and pause-only effects.</p></div>
+<div class="card span-4"><div class="num">Dataset type</div><h3>Pause-only baseline</h3><p>Roughly 10–12 minutes of pausing ordinary tasks with pre/post mood, focus, body-state ratings and open notes.</p></div>
+<div class="card span-4"><div class="num">Preliminary signal</div><h3>Body relaxation is strongest</h3><p>Descriptively, mean body-relaxation gain is 2.11 across N=9; mood and focus shifts are heterogeneous and should not be overclaimed.</p></div>
+<div class="card span-4"><div class="num">Design implication</div><h3>Add pause-only baseline</h3><p>Future Sound-QDR pilots should separate pause, context, task-demand, acoustic, and interpretive-agency effects.</p></div>
+<div class="card span-12 secondary"><div class="stack">
+  <div class="layer"><b>English dataset summary</b><p><a href="./pause_qdr_preliminary_dataset.md">pause_qdr_preliminary_dataset.md</a></p></div>
+  <div class="layer"><b>Derived CSV</b><p><a href="./pause_qdr_preliminary_summary.csv">pause_qdr_preliminary_summary.csv</a></p></div>
+  <div class="layer"><b>Limitations</b><p><a href="./pause_qdr_limitations.md">pause_qdr_limitations.md</a></p></div>
+</div></div></div></section>
+
+<section id="materials"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Research Materials Stack</div><h2>The website is the entrance; the materials make the project research-ready.</h2></div>
+<div class="card span-6"><div class="stack">
+  <div class="layer"><b>Protocol brief</b><p><a href="./protocol_brief.md">protocol_brief.md</a></p></div>
+  <div class="layer"><b>Chinese protocol brief</b><p><a href="./protocol_brief_zh.md">protocol_brief_zh.md</a></p></div>
+  <div class="layer"><b>Data schema</b><p><a href="./data_schema.csv">data_schema.csv</a></p></div>
+  <div class="layer"><b>Stimulus sheet</b><p><a href="./stimulus_sheet_template.csv">stimulus_sheet_template.csv</a></p></div>
+</div></div>
+<div class="card span-6 secondary"><div class="stack">
+  <div class="layer"><b>Safety flow</b><p><a href="./safety_flow.md">safety_flow.md</a></p></div>
+  <div class="layer"><b>Chinese safety flow</b><p><a href="./safety_flow_zh.md">safety_flow_zh.md</a></p></div>
+  <div class="layer"><b>OSF structure</b><p><a href="./osf_structure.md">osf_structure.md</a></p></div>
+  <div class="layer"><b>References</b><p><a href="./references.bib">references.bib</a></p></div>
+</div></div></div></section>
+
+<section id="safety"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Safety Interaction Flow</div><h2>Ethics must appear as interaction, not only as principle.</h2></div>
+<div class="card span-3"><h3>Consent gate</h3><p>User chooses sound family, intensity ceiling, stop method, data sharing, and AI-summary permission.</p></div>
+<div class="card span-3"><h3>Persistent controls</h3><p>Stop / Ground / Volume Down / Skip / Delete remain visible.</p></div>
+<div class="card span-3"><h3>Auto-pause</h3><p>Unsafe self-report, repeated stop, non-response, discomfort increase, or lab-defined threshold.</p></div>
+<div class="card span-3 red"><h3>No crisis system</h3><p>High-risk disclosures leave the protocol and follow lab-approved human safety procedures.</p></div>
+</div></section>
+
+<section id="outreach"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">PI Outreach Strategy</div><h2>Do not send one generic email to every lab.</h2><p>The project has one protocol core, but different labs should see different entry points.</p></div>
+<div class="card span-12"><p>Email variants: <a href="./pi_email_variants.md">pi_email_variants.md</a></p></div></div></section>
+
+<section id="collaborate"><div class="wrap grid"><div class="card span-12"><div class="eyebrow">Collaboration Model</div><h2>Not asking a lab to execute a finished system.</h2><div class="split"><div class="mini"><h3>What I bring</h3><ul class="clean"><li>Human Return / QDR construct and interface logic.</li><li>Qualia naming and interpretive-agency design.</li><li>Sound-probe interaction prototype and narrative design.</li><li>AI hypotheses as editable, rejectable, and deletable.</li></ul></div><div class="mini"><h3>What a lab brings</h3><ul class="clean"><li>Methodological rigor, IRB, and safety review.</li><li>Sensor selection, signal processing, artifact criteria.</li><li>Recruitment, statistical modeling, preregistration.</li><li>Authority to narrow, rename, reject, or split hypotheses.</li></ul></div></div></div>
+<div class="card feature span-12"><div class="eyebrow">First Ask</div><h2>A 15-minute fit call.</h2><p>The first meeting is not a funding ask and not a hardware ask. It is a fit call to decide whether this belongs as a software protocol, wearable feasibility pilot, HCI safety study, or music-cognition / neuroaesthetics project.</p></div></div></section>
+</main>
+<footer style="padding:34px 0 54px;color:var(--dim);text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase"><div class="wrap">BCI-HRP LAB // Research prototype · non-diagnostic · non-treatment · user-owned interpretation.</div></footer>
+</body>
+</html>

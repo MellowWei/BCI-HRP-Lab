@@ -1,0 +1,4 @@
+stimulus_id,family,file_name,duration_s,loudness_lufs,bpm,density,predictability,arousal_contour,event_markers_json,source,license,file_hash,notes
+SND001,steady_grid,example_steady_grid.wav,60,-18,96,low,high,low_to_medium,"[{""t"":0,""event"":""onset""},{""t"":30,""event"":""hook""},{""t"":60,""event"":""offset""}]",in_preparation,in_preparation,TBD,Replace before study
+SND002,high_density_glitch,example_high_density.wav,45,-18,160,high,medium,medium_to_high,"[{""t"":0,""event"":""onset""},{""t"":20,""event"":""glitch_peak""},{""t"":45,""event"":""offset""}]",in_preparation,in_preparation,TBD,Requires stop-ready UI
+SND003,ambient_scaffold,example_ambient_scaffold.wav,90,-20,72,low,high,low,"[{""t"":0,""event"":""onset""},{""t"":45,""event"":""texture_shift""},{""t"":90,""event"":""offset""}]",in_preparation,in_preparation,TBD,Neutral/low intensity candidate

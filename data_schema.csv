@@ -1,0 +1,43 @@
+group,field,type,required,allowed_values,notes
+session,participant_hash,string,yes,,Non-identifying participant key
+session,session_id,string,yes,,Unique session id
+session,session_date,datetime,yes,,Local timestamp
+session,consent_version,string,yes,,Consent form/protocol version
+session,lab_site,string,no,,Lab/site id if applicable
+stimulus,stimulus_id,string,yes,,Matches stimulus sheet
+stimulus,file_hash,string,yes,,Hash of frozen stimulus file
+stimulus,loudness_lufs,number,yes,,Integrated loudness
+stimulus,duration_s,number,yes,,Duration in seconds
+stimulus,event_markers_json,string,yes,,JSON list of event names and timestamps
+prediction,pre_tension,number,yes,0-100,Visual analog scale
+prediction,pre_clarity,number,yes,0-100,Visual analog scale
+prediction,pre_body_return,number,yes,0-100,Visual analog scale
+prediction,pre_action_urge,number,yes,0-100,Visual analog scale
+prediction,pre_emotional_pressure,number,yes,0-100,Visual analog scale
+prediction,pre_safety,number,yes,0-100,Visual analog scale
+prediction,prediction_confidence,number,yes,0-100,Confidence in prediction
+post_report,post_tension,number,yes,0-100,Visual analog scale
+post_report,post_clarity,number,yes,0-100,Visual analog scale
+post_report,post_body_return,number,yes,0-100,Visual analog scale
+post_report,post_action_urge,number,yes,0-100,Visual analog scale
+post_report,post_emotional_pressure,number,yes,0-100,Visual analog scale
+post_report,post_safety,number,yes,0-100,Visual analog scale
+post_report,free_text,string,no,,Participant description
+post_report,qualia_terms,string,no,,Delimited list of participant terms
+post_report,action_tendency,string,no,,Continue/stop/cry/write/move/rest/contact/other
+post_report,meaning_note,string,no,,Autobiographical or value-significance note
+agency,stop_event,boolean,yes,true/false,User pressed stop
+agency,ground_event,boolean,yes,true/false,User entered grounding mode
+agency,reject_event,boolean,yes,true/false,User rejected AI label
+agency,rename_event,boolean,yes,true/false,User renamed label
+agency,edit_event,boolean,yes,true/false,User edited summary
+agency,delete_event,boolean,yes,true/false,User deleted session
+agency,skip_event,boolean,yes,true/false,User skipped stimulus/report
+optional_sensors,hrv_rmssd,number,no,,Only if reliable
+optional_sensors,eda_scr,number,no,,Only if reliable
+optional_sensors,respiration_proxy,number,no,,Only if available
+optional_sensors,skin_temp,number,no,,Slow signal; interpret cautiously
+optional_sensors,motion_index,number,no,,Movement/IMU proxy
+optional_sensors,eeg_quality_flag,string,no,good/fair/poor/excluded,No meaning-decoding claim
+quality,artifact_flag,string,no,none/motion/sync/dropout/other,Artifact report
+quality,sync_quality,string,no,verified/estimated/unverified,Timing reliability
