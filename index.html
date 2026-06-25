@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>BCI-HRP // The Human Return Protocol — Lab Collaboration Brief</title>
 <meta name="description" content="BCI-HRP // The Human Return Protocol: a PI-facing research protocol testing whether sound probes, self-prediction, and editable AI naming improve within-person self-calibration. Independent research proposal, University of Pennsylvania GSE." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mellowwei.github.io/BCI-HRP-Lab/" />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -134,6 +137,15 @@
   .panel{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
   .panel h3{font-size:14px; margin:0 0 9px; font-family:var(--mono); font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--accent)}
 
+
+  /* AI-readable FAQ */
+  .qa-list{display:grid; gap:10px; margin:8px 0 0}
+  .qa{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+  .qa h3{font-size:14.5px; margin:0 0 5px}
+  .qa p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.52}
+  .badge-row{display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 0}
+  .badge{font-family:var(--mono); font-size:10.5px; border:1px solid var(--line); border-radius:999px; padding:4px 9px; color:var(--muted); background:#fff}
+
   /* copy brief block */
   .briefwrap{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:6px 0 0}
   .briefwrap pre{font-family:var(--mono); font-size:12.5px; line-height:1.6; color:#2a3331; white-space:pre-wrap; margin:12px 0 0}
@@ -169,7 +181,9 @@
       <a href="#methods">Methods</a>
       <a href="#fit">Lab fit</a>
       <a href="#pause-data">Pause data</a>
+      <a href="#faq">FAQ</a>
       <a href="#materials">Materials</a>
+      <a href="#ai-readable">AI docs</a>
       <a href="#safety">Safety</a>
       <a href="#writing">Writing</a>
       <a href="#about">About</a>
@@ -478,6 +492,26 @@
   </div>
 </section>
 
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <p class="sec-eyebrow">AI-readable FAQ</p>
+    <h2>Short answers for PI collaborators, search engines, and AI agents.</h2>
+    <p class="sub">This section translates the protocol into direct questions without replacing the formal research brief above.</p>
+    <div class="qa-list">
+      <div class="qa"><h3>Is this a treatment or diagnostic study?</h3><p>No. BCI-HRP is a non-diagnostic, non-treatment research proposal. It does not claim clinical benefit, crisis detection, or state induction.</p></div>
+      <div class="qa"><h3>Does Phase 0 require custom BCI hardware?</h3><p>No. Phase 0 is a software protocol: self-prediction, sound probe, post-report, editable naming, and agency-event logging. Custom BCI hardware is future-facing and not required for the first pilot.</p></div>
+      <div class="qa"><h3>What is self-calibration?</h3><p>Self-calibration is operationalized as within-person change in prediction error between pre-probe predicted state vectors and post-probe reported state vectors, supported by secondary measures such as naming stability, qualia granularity, and agency events.</p></div>
+      <div class="qa"><h3>What is Human Return?</h3><p>Human Return refers to keeping the participant's own interpretation central: AI summaries are editable, rejectable, and deletable; physiological and neural signals remain optional proxies rather than hidden truth.</p></div>
+      <div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is a Phase −1 pause-only baseline. It helps identify baseline effects, task demand, environmental factors, and qualitative coding categories before testing sound probes.</p></div>
+      <div class="qa"><h3>Is data_schema.csv collected pause data?</h3><p>No. data_schema.csv is a future protocol data dictionary / field template. The actual preliminary static-pause summary is pause_qdr_preliminary_summary.csv, with interpretation in pause_qdr_preliminary_dataset.md.</p></div>
+      <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency over endogenous experience: how people predict, name, revise, and own their internal state descriptions.</p></div>
+      <div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- MATERIALS -->
 <section id="materials">
   <div class="wrap">
@@ -500,8 +534,36 @@
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/references.bib" target="_blank" rel="noopener">references.bib ↗</a><span>Starter BibTeX: interoception, allostasis, constructed emotion, predictive processing, personal informatics.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pi_email_variants.md" target="_blank" rel="noopener">pi_email_variants.md ↗</a><span>PI outreach variants by lab type.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/README.md" target="_blank" rel="noopener">README.md ↗</a><span>File list and boundary statement.</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/llms.txt" target="_blank" rel="noopener">llms.txt ↗</a><span>AI-readable project summary, boundaries, key concepts, and file map.</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml" target="_blank" rel="noopener">sitemap.xml ↗</a><span>Standard URL map for search engines and crawlers.</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/robots.txt" target="_blank" rel="noopener">robots.txt ↗</a><span>Crawler access and sitemap pointer.</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/ai-index.md" target="_blank" rel="noopener">ai-index.md ↗</a><span>Extended AI-agent reading guide and FAQ.</span></div>
     </div>
     <div class="note"><p style="font-size:13px; color:var(--muted); margin:0">All materials are collaboration drafts meant to make the first PI conversation concrete — not to bypass lab review, preregistration, IRB, or safety approval. Any study with human participants must be redesigned and approved with the partner lab.</p></div>
+  </div>
+</section>
+
+
+<!-- AI READABLE -->
+<section id="ai-readable">
+  <div class="wrap">
+    <p class="sec-eyebrow">AI-readable deployment layer</p>
+    <h2>Files that help crawlers, AI agents, and collaborators understand the project correctly.</h2>
+    <p class="sub">These files do not turn the project into a SaaS product. They make the current GitHub Pages research site easier to parse, cite, and audit.</p>
+    <div class="grid">
+      <div class="card"><span class="k">Required</span><h3>sitemap.xml</h3><p>Lists public pages and research-material URLs so crawlers can discover the site structure.</p></div>
+      <div class="card"><span class="k">Recommended</span><h3>llms.txt</h3><p>Summarizes the project for language models: what it is, what it is not, phases, constructs, materials, and safety boundaries.</p></div>
+      <div class="card"><span class="k">Recommended</span><h3>robots.txt</h3><p>Allows crawling and points crawlers to the sitemap. It is not a copyright enforcement mechanism.</p></div>
+      <div class="card"><span class="k">Optional</span><h3>ai-index.md</h3><p>Provides an extended reading guide for AI agents and human reviewers.</p></div>
+    </div>
+    <div class="note data-clarify">
+      <span class="k">Future machine-readable interface candidates</span>
+      <p>No MCP server, API, or SaaS feature is currently implemented. Future candidates may include session-export validation, stimulus metadata validation, agency-event log validation, and dataset-schema checking. These remain future research/product directions, not current operational claims.</p>
+    </div>
+    <div class="note">
+      <span class="k">Static hosting note</span>
+      <p>On plain GitHub Pages, existing files should resolve normally, missing files should use a 404 page, and advanced rate-limit behavior such as 429 requires a separate backend, proxy, or CDN layer.</p>
+    </div>
   </div>
 </section>
 
@@ -559,7 +621,7 @@ CV (PDF): https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view
 
 <footer>
   <div class="wrap">
-    <span class="mono">BCI-HRP // Human Return Protocol · protocol-first · non-diagnostic · non-treatment</span>
+    <span class="mono">© 2026 Wei Jueran / Mellow Wei. All rights reserved. BCI-HRP // Human Return Protocol · protocol-first · non-diagnostic · non-treatment</span>
     <span><a href="#top">Back to top ↑</a> · <a href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html">中文</a></span>
   </div>
 </footer>

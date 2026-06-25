@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml

@@ -1,0 +1,65 @@
+# BCI-HRP // The Human Return Protocol
+
+> A PI-facing lab collaboration brief for a protocol-first research proposal on sound probes, self-prediction, editable AI naming, and within-person self-calibration.
+
+## What this site is
+
+BCI-HRP // The Human Return Protocol is an independent research proposal by Wei Jueran / Mellow Wei, M.S.Ed. in Learning Sciences and Technologies at the University of Pennsylvania Graduate School of Education.
+
+The current empirical object is a protocol, not a consumer device: prediction -> sound probe -> post-report -> editable naming -> agency events.
+
+## What this site is not
+
+- Not a diagnostic system
+- Not a treatment study
+- Not a crisis-detection system
+- Not a state-induction promise
+- Not a consumer BCI product
+- Not a hidden-truth neuro-signal claim
+- Not a custom-hardware requirement for Phase 0
+
+## Core research question
+
+Does a sound-probe + self-prediction + editable-naming protocol improve within-person self-calibration, and do optional autonomic/neural proxies add explanatory value beyond self-report alone?
+
+## Project phases
+
+- Phase -1: Pause-QDR baseline. Static-pause preliminary material used to examine baseline effects, task demand, environment, phone absence, and qualitative coding.
+- Phase 0: Sound-QDR software protocol. No custom hardware required.
+- Phase 1: Optional wearable/autonomic proxy extension.
+- Phase 2: Optional neural / BCI extension only if earlier phases justify it.
+
+## Key constructs
+
+### Self-calibration
+Operationalized as within-person prediction error between pre-probe predicted state vectors and post-probe reported state vectors, plus secondary measures such as naming stability, qualia granularity, and interpretive-agency events.
+
+### Human Return
+A design principle: the participant retains interpretive authorship over their own bodily/cognitive state descriptions. AI summaries are editable, rejectable, and deletable.
+
+### Interpretive agency
+Stop, Ground, Delete, Reject, Rename, Skip, and Edit are primary agency events, not failures.
+
+## Correct file interpretation
+
+- data_schema.csv is a future protocol data dictionary / field template. It is not collected pause data.
+- pause_qdr_preliminary_summary.csv is the anonymized derived static-pause preliminary summary.
+- pause_qdr_preliminary_dataset.md explains the Pause-QDR preliminary dataset and its correct use.
+- DATA_FILES_GUIDE.md separates protocol templates from actual preliminary Pause-QDR materials.
+
+## Main pages and files
+
+- Homepage: https://mellowwei.github.io/BCI-HRP-Lab/
+- Chinese page: https://mellowwei.github.io/BCI-HRP-Lab/zh.html
+- English page: https://mellowwei.github.io/BCI-HRP-Lab/en.html
+- Protocol brief: https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief.md
+- Data guide: https://mellowwei.github.io/BCI-HRP-Lab/DATA_FILES_GUIDE.md
+- Sitemap: https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml
+- Robots: https://mellowwei.github.io/BCI-HRP-Lab/robots.txt
+- AI index: https://mellowwei.github.io/BCI-HRP-Lab/ai-index.md
+
+## Collaboration route
+
+The first ask is a 15-minute fit call. A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the constructs.
+
+Contact: jueran@upenn.edu
