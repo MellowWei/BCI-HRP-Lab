@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BCI-HRP Lab index: PI-first v2.2; adds affective-action calibration layer from emotion-action / intentionality lecture, without changing PI-first structure. -->
+<!-- BCI-HRP Lab index: PI-first v2.3; adds concise related-work positioning without overloading homepage. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -180,6 +180,7 @@
       <a href="#pilot">Pilot</a>
       <a href="#methods">Methods</a>
       <a href="#fit">Lab fit</a>
+      <a href="#related">Related</a>
       <a href="#pause-data">Pause data</a>
       <a href="#faq">FAQ</a>
       <a href="#materials">Materials</a>
@@ -420,6 +421,42 @@
   </div>
 </section>
 
+
+<!-- RELATED WORK -->
+<section id="related">
+  <div class="wrap">
+    <p class="sec-eyebrow">Related work positioning</p>
+    <h2>Adjacent to affective BCI and neurofeedback, but centered on participant-owned calibration.</h2>
+    <p class="sub">BCI-HRP does not claim that sound, AI, or neural signals are new by themselves. Its contribution is the protocol arrangement: sound as probe, participant prediction first, phenomenological report, editable naming, and agency events as data.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="k">Adjacent field</span>
+        <h3>Affective BCI</h3>
+        <p>Often estimates, classifies, or adapts to affective states using neural, physiological, or behavioral signals. BCI-HRP instead asks how participants can predict, report, revise, and own the meaning of felt states.</p>
+      </div>
+      <div class="card">
+        <span class="k">Adjacent field</span>
+        <h3>Brain-computer music interfaces</h3>
+        <p>Often map brain or affective signals to musical feedback or generation. BCI-HRP treats sound first as a controlled probe for calibration, not as an automatic mood-regulation output.</p>
+      </div>
+      <div class="card">
+        <span class="k">Adjacent field</span>
+        <h3>EEG / fNIRS music-emotion studies</h3>
+        <p>Often analyze responses to music or sound through valence, arousal, attention, or neural/hemodynamic features. BCI-HRP adds first-person prediction, action tendency, object relation, and fittingness as calibration materials.</p>
+      </div>
+      <div class="card">
+        <span class="k">Adjacent field</span>
+        <h3>Neurofeedback and biofeedback</h3>
+        <p>Often train users toward calm, focus, or coherence. BCI-HRP does not optimize for a single “good” state; it tests whether participants can better understand and revise their own affective-action structure.</p>
+      </div>
+    </div>
+    <div class="note data-clarify">
+      <span class="k">Differentiation boundary</span>
+      <p>The project should not be described as “music + BCI + emotion regulation” alone. That space is already crowded. BCI-HRP is better positioned as a participant-centered calibration protocol for non-invasive affective BCI: optional EEG, fNIRS, HRV, or EDA remain proxies inside a user-owned interpretive workflow, not authorities over hidden emotion.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SAFETY -->
 <section id="safety">
   <div class="wrap">
@@ -532,6 +569,9 @@
       <div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is a Phase −1 pause-only baseline. It helps identify baseline effects, task demand, environmental factors, and qualitative coding categories before testing sound probes.</p></div>
       <div class="qa"><h3>Is data_schema.csv collected pause data?</h3><p>No. data_schema.csv is a future protocol data dictionary / field template. The actual preliminary static-pause summary is pause_qdr_preliminary_summary.csv, with interpretation in pause_qdr_preliminary_dataset.md.</p></div>
       <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency and affective-action calibration over endogenous experience: how people predict, name, revise, and own the meaning of their internal state descriptions.</p></div>
+
+      <div class="qa"><h3>Is this already covered by affective BCI or neurofeedback?</h3><p>Partly adjacent, but not identical. BCI-HRP is close to affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is participant-owned calibration: sound as probe, self-prediction, phenomenological report, editable AI naming, and reject / rename / edit / delete as agency data.</p></div>
+
       <div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
     </div>
   </div>
