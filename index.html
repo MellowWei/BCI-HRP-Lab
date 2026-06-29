@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BCI-HRP Lab index: PI-first v2.4; adds prominent positioning block and Not Another Brain Decoder statement. -->
+<!-- BCI-HRP Lab index: PI-first v2.5; adds prominent positioning, risk/falsification criteria, and failure-mode framing. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -130,6 +130,7 @@
       <a href="#why">Why</a>
       <a href="#protocol">Protocol</a>
       <a href="#pilot">Pilot</a>
+      <a href="#risks">Risks</a>
       <a href="#methods">Methods</a>
       <a href="#fit">Lab fit</a>
       <a href="#related">Related</a>
@@ -172,12 +173,10 @@
     <div class="claim">
       <p class="q">Does a sound-probe + self-prediction + phenomenological report + editable-naming protocol improve within-person self-calibration and affective-action calibration — and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
     </div>
-
     <div class="note data-clarify">
       <span class="k">Not another brain decoder</span>
       <p><b>This is not another brain decoder.</b> BCI-HRP is a calibration protocol for subjective experience — where the participant, not the signal, holds the final interpretation.</p>
     </div>
-
     <div class="body">
       <p><b>Research stance.</b> The first study is feasibility and construct calibration, not clinical validation. “Self-calibration” and “Human Return” are candidate constructs — a partner lab is free to narrow, rename, reject, or revise them before preregistration.</p>
     </div>
@@ -201,26 +200,10 @@
     <h2>Not “music + BCI + emotion regulation,” but a participant-centered calibration layer.</h2>
     <p class="sub">The project sits near affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is not a new sensor or a new emotion classifier, but a protocol that protects interpretation while making calibration testable.</p>
     <div class="grid">
-      <div class="card">
-        <span class="k">Traditional BCI</span>
-        <h3>Signal decoding / control</h3>
-        <p>Often emphasizes decoding neural signals for external control, intention inference, or state estimation.</p>
-      </div>
-      <div class="card">
-        <span class="k">Affective computing</span>
-        <h3>Emotion classification</h3>
-        <p>Often estimates affective categories or valence/arousal from physiological, behavioral, or multimodal features.</p>
-      </div>
-      <div class="card">
-        <span class="k">Neurofeedback / BCMI</span>
-        <h3>Feedback or regulation</h3>
-        <p>Often trains users toward calm, focus, coherence, or adaptive emotional feedback through sound or music.</p>
-      </div>
-      <div class="card">
-        <span class="k">BCI-HRP</span>
-        <h3>Participant-owned calibration</h3>
-        <p>Uses sound as a probe, asks the participant to predict and report first, treats AI labels as editable hypotheses, and records reject / rename / edit / delete as agency data.</p>
-      </div>
+      <div class="card"><span class="k">Traditional BCI</span><h3>Signal decoding / control</h3><p>Often emphasizes decoding neural signals for external control, intention inference, or state estimation.</p></div>
+      <div class="card"><span class="k">Affective computing</span><h3>Emotion classification</h3><p>Often estimates affective categories or valence/arousal from physiological, behavioral, or multimodal features.</p></div>
+      <div class="card"><span class="k">Neurofeedback / BCMI</span><h3>Feedback or regulation</h3><p>Often trains users toward calm, focus, coherence, or adaptive emotional feedback through sound or music.</p></div>
+      <div class="card"><span class="k">BCI-HRP</span><h3>Participant-owned calibration</h3><p>Uses sound as a probe, asks the participant to predict and report first, treats AI labels as editable hypotheses, and records reject / rename / edit / delete as agency data.</p></div>
     </div>
     <div class="note">
       <span class="k">Operational difference</span>
@@ -316,6 +299,51 @@
       <div class="card"><span class="k">Phase 0</span><h3>Software only</h3><p>Sound-QDR protocol: prediction, report, rename, and agency logs — no hardware.</p></div>
       <div class="card"><span class="k">Phase 1</span><h3>Add wearable proxies</h3><p>Existing devices for HRV, EDA, respiration, motion, and temperature.</p></div>
       <div class="card"><span class="k">Phase 2</span><h3>Optional EEG / fNIRS</h3><p>A listening-state extension only when lab conditions and data quality justify it.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="risks">
+  <div class="wrap">
+    <p class="sec-eyebrow">Risks and falsification criteria</p>
+    <h2>The first study is designed to surface failure modes, not to claim efficacy.</h2>
+    <p class="sub">BCI-HRP becomes stronger if its risks are explicit. A Phase 0 pilot should show whether the protocol is understandable, safe, and data-generating — and where the construct fails, shrinks, or needs to be renamed.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="k">Risk 01</span>
+        <h3>Task learning, not self-calibration</h3>
+        <p>A drop in prediction error may mean participants learned the task or memorized clips. Use novel-vs-familiar stimuli, transfer tests, first-exposure analyses, and post-study suspicion checks.</p>
+      </div>
+      <div class="card">
+        <span class="k">Risk 02</span>
+        <h3>Demand characteristics</h3>
+        <p>Participants may infer what the protocol wants them to report. Use neutral prompts, blinded sound-family labels where possible, and treat “I don’t know / no change” as valid data.</p>
+      </div>
+      <div class="card">
+        <span class="k">Risk 03</span>
+        <h3>Small or heterogeneous effects</h3>
+        <p>Sound-probe effects may be small, inconsistent, or person-specific. Phase 0 should estimate variance and usability, not prove efficacy.</p>
+      </div>
+      <div class="card">
+        <span class="k">Risk 04</span>
+        <h3>Ecological validity</h3>
+        <p>Fixed, repeatable sounds improve control but may not reflect everyday listening. Later phases can test personalized sounds, daily-life contexts, or transfer beyond the lab.</p>
+      </div>
+      <div class="card">
+        <span class="k">Risk 05</span>
+        <h3>Proxies may add no value</h3>
+        <p>EEG, fNIRS, HRV, EDA, or motion may fail to explain more than first-person reports. If so, they remain optional proxies rather than becoming required evidence.</p>
+      </div>
+      <div class="card">
+        <span class="k">Risk 06</span>
+        <h3>The construct may need revision</h3>
+        <p>A partner PI may narrow, split, rename, or reject “self-calibration” or “Human Return.” That is treated as construct calibration, not project failure.</p>
+      </div>
+    </div>
+    <div class="note warn">
+      <span class="k">Stop condition</span>
+      <p>If participants cannot understand the prediction/report task, if agency controls are rarely used or misunderstood, if discomfort is elevated, or if prediction changes collapse under transfer tests, the protocol should be revised before adding sensors or larger samples.</p>
     </div>
   </div>
 </section>
@@ -583,7 +611,7 @@
 
 Dear Professor [Name],
 
-I'm a master's researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I'm developing an independent lab-facing proposal — the Human Return Protocol — rather than a consumer device or lab-sponsored study. This is not another brain decoder; it is a participant-centered calibration protocol where the user, not the signal, holds the final interpretation. The testable question is whether brief sound probes plus a self-prediction and editable-naming step support within-person self-calibration and affective-action calibration, measured through cross-session prediction error, action-tendency/object-relation reports, and transfer controls that rule out memorization; autonomic/neural signals are optional proxies.
+I'm a master's researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I'm developing an independent lab-facing proposal — the Human Return Protocol — rather than a consumer device or lab-sponsored study. This is not another brain decoder; it is a participant-centered calibration protocol where the user, not the signal, holds the final interpretation. The testable question is whether brief sound probes plus a self-prediction and editable-naming step support within-person self-calibration and affective-action calibration, measured through cross-session prediction error, action-tendency/object-relation reports, and transfer controls that rule out memorization; autonomic/neural signals are optional proxies. The first study is designed to surface failure modes such as task learning, demand characteristics, stimulus familiarity, small or heterogeneous effects, and whether optional proxies add value beyond reports.
 
 I have a drafted protocol, data schema, stimulus documentation, and an anti-suggestion safety flow, and I'd do the build and analysis. I'm looking for an IRB-holding lab to host a small Phase 0 feasibility pilot — and the authority to narrow, rename, or reject the construct.
 
