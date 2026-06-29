@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BCI-HRP Lab index: PI-first v2.3; adds concise related-work positioning without overloading homepage. -->
+<!-- BCI-HRP Lab index: PI-first v2.4; adds prominent positioning block and Not Another Brain Decoder statement. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -8,7 +8,6 @@
 <meta name="description" content="BCI-HRP // The Human Return Protocol: a PI-facing research protocol testing whether sound probes, self-prediction, phenomenological reporting, and editable AI naming support within-person self-calibration and affective-action calibration. Independent research proposal, University of Pennsylvania GSE." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mellowwei.github.io/BCI-HRP-Lab/" />
-<link rel="sitemap" type="application/xml" title="Sitemap" href="https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,24 +29,18 @@
   h1,h2,h3{margin:0; font-weight:700; letter-spacing:-.01em; line-height:1.18}
   p{margin:0 0 .85em}
   .wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
-
-  /* nav */
   nav{position:sticky; top:0; z-index:50; background:rgba(244,246,246,.86);
       backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid var(--line)}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
-  .brand{font-family:var(--mono); font-size:12.5px; font-weight:500; letter-spacing:.02em;
-         color:var(--ink); white-space:nowrap}
+  .brand{font-family:var(--mono); font-size:12.5px; font-weight:500; letter-spacing:.02em; color:var(--ink); white-space:nowrap}
   .brand b{color:var(--accent)}
   .navlinks{display:flex; gap:12px; align-items:center; overflow-x:auto; scrollbar-width:none; padding:2px 0}
   .navlinks::-webkit-scrollbar{display:none}
   .navlinks a{font-size:13px; color:var(--muted); white-space:nowrap}
   .navlinks a:hover{color:var(--accent); text-decoration:none}
   .navlinks .zh{font-family:var(--mono); font-size:12px; color:var(--accent)}
-
-  /* hero */
   header.hero{padding:62px 0 40px; border-bottom:1px solid var(--line)}
-  .eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.15em;
-           color:var(--accent); margin:0 0 16px}
+  .eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.15em; color:var(--accent); margin:0 0 16px}
   h1{font-size:34px; margin:0 0 14px}
   .title-bci{display:inline-block; background:linear-gradient(90deg,var(--blue),var(--red)); -webkit-background-clip:text; background-clip:text; color:transparent}
   .signal-line{width:100%; max-width:520px; height:2px; margin:0 0 22px; background:linear-gradient(90deg,var(--blue),var(--accent),var(--red)); opacity:.72; border-radius:999px}
@@ -56,113 +49,71 @@
   .byline b{color:var(--ink); font-weight:600}
   .lede{font-size:17px; line-height:1.55; color:var(--ink); max-width:62ch; margin:0 0 22px}
   .chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 26px}
-  .chip{font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--muted);
-        border:1px solid var(--line); border-radius:100px; padding:5px 11px; background:var(--surface)}
+  .chip{font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--muted); border:1px solid var(--line); border-radius:100px; padding:5px 11px; background:var(--surface)}
   .cta{display:flex; flex-wrap:wrap; gap:10px}
-  .btn{font-family:var(--sans); font-size:13.5px; font-weight:600; cursor:pointer;
-       border:1px solid var(--accent); border-radius:8px; padding:9px 16px; background:var(--accent);
-       color:#fff; transition:background .15s}
+  .btn{font-family:var(--sans); font-size:13.5px; font-weight:600; cursor:pointer; border:1px solid var(--accent); border-radius:8px; padding:9px 16px; background:var(--accent); color:#fff; transition:background .15s}
   .btn:hover{background:var(--accent-deep)}
   .btn-ghost{background:transparent; color:var(--accent)}
   .btn-ghost:hover{background:var(--accent-soft)}
-
-  /* sections */
   section{padding:46px 0; border-bottom:1px solid var(--line2)}
-  .sec-eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.14em;
-               color:var(--accent); margin:0 0 10px}
+  .sec-eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--accent); margin:0 0 10px}
   h2{font-size:22px; margin:0 0 8px}
   .sub{font-size:15px; color:var(--muted); max-width:64ch; margin:0 0 22px}
   .body{max-width:68ch}
   .body p{color:#222b29}
-
-  /* claim panel */
-  .claim{background:var(--accent-soft); border:1px solid #cfe0df; border-left:3px solid var(--accent);
-         border-radius:10px; padding:22px 24px; margin:0 0 20px}
+  .claim{background:var(--accent-soft); border:1px solid #cfe0df; border-left:3px solid var(--accent); border-radius:10px; padding:22px 24px; margin:0 0 20px}
   .claim .q{font-size:18px; font-weight:600; color:var(--accent-deep); line-height:1.45; margin:0}
-  .stance{font-size:14px; color:var(--muted); border-left:2px solid var(--line); padding-left:14px; margin:18px 0 0}
-
-  /* generic grid of cards */
   .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); margin:6px 0 0}
   .card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:15px 16px}
   .card h3{font-size:14.5px; margin:0 0 5px}
   .card p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.5}
   .card .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; display:block; margin:0 0 6px}
-
-  /* numbered (ordered architecture / process) */
   .steps{display:grid; gap:12px; margin:6px 0 0}
-  .step{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start;
-        background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
-  .step .n{font-family:var(--mono); font-size:12px; font-weight:500; color:#fff; background:var(--accent);
-           border-radius:6px; min-width:30px; height:26px; display:flex; align-items:center; justify-content:center}
+  .step{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+  .step .n{font-family:var(--mono); font-size:12px; font-weight:500; color:#fff; background:var(--accent); border-radius:6px; min-width:30px; height:26px; display:flex; align-items:center; justify-content:center}
   .step h3{font-size:14.5px; margin:0 0 3px}
   .step p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.5}
-
-  /* tables */
   .tbl{width:100%; border-collapse:collapse; margin:8px 0 0; font-size:13.5px}
-  .tbl th{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em;
-          text-align:left; color:var(--accent); font-weight:500; padding:0 14px 8px 0;
-          border-bottom:1.5px solid var(--accent); vertical-align:bottom}
+  .tbl th{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; text-align:left; color:var(--accent); font-weight:500; padding:0 14px 8px 0; border-bottom:1.5px solid var(--accent); vertical-align:bottom}
   .tbl td{padding:11px 14px 11px 0; border-bottom:1px solid var(--line2); color:#2a3331; vertical-align:top; line-height:1.5}
   .tbl td:first-child{font-weight:600; color:var(--ink); white-space:nowrap}
   .tbl.wide td:first-child{white-space:normal}
   .scroll{overflow-x:auto}
-
-  /* callout */
   .note{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:15px 17px; margin:16px 0 0}
   .data-clarify{border-left:3px solid var(--blue); background:linear-gradient(90deg,var(--blue-soft),#fff)}
   .note .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; display:block; margin:0 0 6px}
   .note p{margin:0; font-size:13.5px; color:#2a3331; line-height:1.55}
   .warn{border-left:3px solid #b5732f; background:#fbf5ee}
   .warn .k{color:#9c5f22}
-
-  /* about / contact */
   .contact{display:grid; gap:0; margin:6px 0 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--surface)}
   .row{display:grid; grid-template-columns:148px 1fr; gap:14px; padding:11px 16px; border-bottom:1px solid var(--line2)}
   .row:last-child{border-bottom:0}
   .row .k{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); padding-top:1px}
   .row .v{font-size:14px; color:var(--ink)}
-
-  /* materials links */
   .files{display:grid; gap:9px; margin:6px 0 0}
-  .file{display:grid; grid-template-columns:1fr; gap:1px; padding:11px 14px; border:1px solid var(--line);
-        border-radius:9px; background:var(--surface)}
+  .file{display:grid; grid-template-columns:1fr; gap:1px; padding:11px 14px; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
   .file a{font-size:14px; font-weight:600}
   .file span{font-size:12.5px; color:var(--muted)}
-
-  /* lists */
   ul.plain{margin:6px 0 0; padding-left:18px}
   ul.plain li{margin:0 0 6px; color:#2a3331; line-height:1.5; font-size:14px}
-
   .two{display:grid; gap:16px; grid-template-columns:1fr 1fr; margin:6px 0 0}
   .panel{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
   .panel h3{font-size:14px; margin:0 0 9px; font-family:var(--mono); font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--accent)}
-
-
-  /* FAQ */
   .qa-list{display:grid; gap:10px; margin:8px 0 0}
   .qa{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
   .qa h3{font-size:14.5px; margin:0 0 5px}
   .qa p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.52}
-  .badge-row{display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 0}
-  .badge{font-family:var(--mono); font-size:10.5px; border:1px solid var(--line); border-radius:999px; padding:4px 9px; color:var(--muted); background:#fff}
-
-  /* copy brief block */
   .briefwrap{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:6px 0 0}
   .briefwrap pre{font-family:var(--mono); font-size:12.5px; line-height:1.6; color:#2a3331; white-space:pre-wrap; margin:12px 0 0}
-
   footer{padding:34px 0 48px; color:var(--faint); font-size:12.5px}
   footer .wrap{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; justify-content:space-between}
   footer .mono{font-family:var(--mono); letter-spacing:.03em}
-
   :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
-
   @media (max-width:680px){
     h1{font-size:27px} .lede{font-size:15.5px} h2{font-size:19px}
     .two{grid-template-columns:1fr} .row{grid-template-columns:1fr; gap:3px}
     nav .wrap{height:auto; min-height:56px; align-items:flex-start; padding-top:12px; padding-bottom:10px}
-    .brand{padding-top:2px}
-    .navlinks{max-width:100%; padding-bottom:2px}
-    .navlinks a{font-size:12.5px}
+    .brand{padding-top:2px} .navlinks{max-width:100%; padding-bottom:2px} .navlinks a{font-size:12.5px}
     section{padding:38px 0}
   }
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
@@ -175,17 +126,15 @@
     <div class="brand">BCI-HRP <b>//</b> Human Return Protocol</div>
     <div class="navlinks">
       <a href="#claim">Claim</a>
+      <a href="#positioning">Positioning</a>
       <a href="#why">Why</a>
       <a href="#protocol">Protocol</a>
       <a href="#pilot">Pilot</a>
       <a href="#methods">Methods</a>
       <a href="#fit">Lab fit</a>
       <a href="#related">Related</a>
-      <a href="#pause-data">Pause data</a>
-      <a href="#faq">FAQ</a>
-      <a href="#materials">Materials</a>
       <a href="#safety">Safety</a>
-      <a href="#writing">Writing</a>
+      <a href="#faq">FAQ</a>
       <a href="#about">About</a>
       <a href="#collaborate">Collaborate</a>
       <a class="zh" href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html">中文</a>
@@ -216,7 +165,6 @@
   </div>
 </header>
 
-<!-- CLAIM -->
 <section id="claim">
   <div class="wrap">
     <p class="sec-eyebrow">One testable claim</p>
@@ -224,6 +172,12 @@
     <div class="claim">
       <p class="q">Does a sound-probe + self-prediction + phenomenological report + editable-naming protocol improve within-person self-calibration and affective-action calibration — and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
     </div>
+
+    <div class="note data-clarify">
+      <span class="k">Not another brain decoder</span>
+      <p><b>This is not another brain decoder.</b> BCI-HRP is a calibration protocol for subjective experience — where the participant, not the signal, holds the final interpretation.</p>
+    </div>
+
     <div class="body">
       <p><b>Research stance.</b> The first study is feasibility and construct calibration, not clinical validation. “Self-calibration” and “Human Return” are candidate constructs — a partner lab is free to narrow, rename, reject, or revise them before preregistration.</p>
     </div>
@@ -231,7 +185,6 @@
       <span class="k">Naming boundary</span>
       <p><b>BCI-HRP</b> is used here as the project name and long-range research direction. The immediate pilot is not a custom BCI build. The first empirical object is the protocol: prediction → probe → report → editable naming → agency events.</p>
     </div>
-
     <div class="grid">
       <div class="card"><span class="k">Not a device pitch</span><p>The first study does not require any custom hardware.</p></div>
       <div class="card"><span class="k">Not mind-reading</span><p>Proxies do not reveal meaning or “true” emotion.</p></div>
@@ -241,7 +194,41 @@
   </div>
 </section>
 
-<!-- WHY -->
+
+<section id="positioning">
+  <div class="wrap">
+    <p class="sec-eyebrow">Positioning</p>
+    <h2>Not “music + BCI + emotion regulation,” but a participant-centered calibration layer.</h2>
+    <p class="sub">The project sits near affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is not a new sensor or a new emotion classifier, but a protocol that protects interpretation while making calibration testable.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="k">Traditional BCI</span>
+        <h3>Signal decoding / control</h3>
+        <p>Often emphasizes decoding neural signals for external control, intention inference, or state estimation.</p>
+      </div>
+      <div class="card">
+        <span class="k">Affective computing</span>
+        <h3>Emotion classification</h3>
+        <p>Often estimates affective categories or valence/arousal from physiological, behavioral, or multimodal features.</p>
+      </div>
+      <div class="card">
+        <span class="k">Neurofeedback / BCMI</span>
+        <h3>Feedback or regulation</h3>
+        <p>Often trains users toward calm, focus, coherence, or adaptive emotional feedback through sound or music.</p>
+      </div>
+      <div class="card">
+        <span class="k">BCI-HRP</span>
+        <h3>Participant-owned calibration</h3>
+        <p>Uses sound as a probe, asks the participant to predict and report first, treats AI labels as editable hypotheses, and records reject / rename / edit / delete as agency data.</p>
+      </div>
+    </div>
+    <div class="note">
+      <span class="k">Operational difference</span>
+      <p>BCI-HRP does not ask whether a system can infer the user’s “true emotion.” It asks whether a structured protocol can improve how a participant predicts, describes, revises, and owns the meaning of their own bodily-affective-action state.</p>
+    </div>
+  </div>
+</section>
+
 <section id="why">
   <div class="wrap">
     <p class="sec-eyebrow">Why this matters</p>
@@ -255,7 +242,6 @@
       <div class="card"><span class="k">Gap 03</span><p>Too much sound-as-mood-control; too little sound-as-probe with falsifiable outcomes.</p></div>
       <div class="card"><span class="k">Gap 04</span><p>Too much ethics rhetoric; too little interaction-level safety design.</p></div>
     </div>
-
     <div class="note data-clarify">
       <span class="k">Affective-action stance</span>
       <p>BCI-HRP does not treat emotion as a hidden internal state, a universal neural fingerprint, or a score to be made simply more positive. It treats felt state as an embodied, action-oriented relation to the world. Sound probes are used as repeatable situations in which participants can notice bodily feeling, track action tendency, identify emotional affordances, and revise the meaning of their own state. The AI layer functions as an editable affective scaffold, not as a diagnostic authority.</p>
@@ -263,7 +249,6 @@
   </div>
 </section>
 
-<!-- PROTOCOL / layer model + anchors + snapshot -->
 <section id="protocol">
   <div class="wrap">
     <p class="sec-eyebrow">Scientific layer model</p>
@@ -278,7 +263,6 @@
       <div class="step"><div class="n">06</div><div><h3>Object relation and fittingness</h3><p>What the felt state is about, what it makes possible, and whether it fits the situation, object, and value relation.</p></div></div>
       <div class="step"><div class="n">07</div><div><h3>Interpretive agency</h3><p>Accept, edit, reject, rename, delete, stop, ground, and skip — as user-owned interpretive control.</p></div></div>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Scientific anchors</p>
     <div class="grid">
       <div class="card"><h3>Interoception</h3><p>Body-state sensing and interpretation.</p></div>
@@ -288,7 +272,6 @@
       <div class="card"><h3>Personal informatics</h3><p>Collect → reflect → act, without turning data into absolute truth.</p></div>
       <div class="card"><h3>Music-based intervention rigor</h3><p>Stimuli should be documented, repeatable, and narrow in claim.</p></div>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Protocol snapshot</p>
     <h2 style="font-size:19px">A PI should be able to judge fit in three minutes.</h2>
     <div class="grid">
@@ -299,7 +282,6 @@
   </div>
 </section>
 
-<!-- PILOT -->
 <section id="pilot">
   <div class="wrap">
     <p class="sec-eyebrow">Pilot design</p>
@@ -316,12 +298,10 @@
         <tr><td>Analysis</td><td>Mixed-effects model, event-locked descriptive analysis, ablation comparison, missing-data report, artifact report, individual plots.</td></tr>
       </table>
     </div>
-
     <div class="note warn">
       <span class="k">Confound control — stimulus familiarity vs. self-calibration</span>
       <p>Because the sound files are fixed and repeated, a fall in prediction error could reflect memorizing a specific clip rather than improved self-calibration. To separate the two: (1) test prediction on <b>unheard</b> stimuli from the same family (a transfer test); (2) and/or analyze first-exposure prediction error only; (3) and include a novel-vs-familiar factor in the model. State-naming stability carries the same familiarity confound and is reported with the same control.</p>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Session flow</p>
     <div class="steps">
       <div class="step"><div class="n">T0</div><div><h3>Consent</h3><p>Sound family, intensity ceiling, stop method, data sharing, and AI-summary permission.</p></div></div>
@@ -331,7 +311,6 @@
       <div class="step"><div class="n">T4</div><div><h3>Report</h3><p>User reports body, affect, perception, action tendency, and meaning.</p></div></div>
       <div class="step"><div class="n">T5</div><div><h3>Rename</h3><p>User accepts, edits, rejects, renames, deletes, or exits.</p></div></div>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Phase path</p>
     <div class="grid">
       <div class="card"><span class="k">Phase 0</span><h3>Software only</h3><p>Sound-QDR protocol: prediction, report, rename, and agency logs — no hardware.</p></div>
@@ -341,7 +320,6 @@
   </div>
 </section>
 
-<!-- METHODS: operational defs + schema + feasibility -->
 <section id="methods">
   <div class="wrap">
     <p class="sec-eyebrow">Operational definitions</p>
@@ -352,7 +330,6 @@
       <div class="card"><span class="k">Construct</span><h3>Qualia granularity</h3><p>A shift from generic terms (“good / bad”) toward differentiated bodily–affective–perceptual–action descriptions.</p></div>
       <div class="card"><span class="k">Agency</span><h3>Interpretive agency</h3><p>Stop, Ground, Delete, Reject, Rename, Skip, and Edit recorded as primary events, not UI afterthoughts.</p></div>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Affective-action calibration dimensions</p>
     <h2 style="font-size:19px">Emotion is measured as a five-dimensional structure, not as a hidden inner fingerprint.</h2>
     <div class="scroll">
@@ -369,7 +346,6 @@
       <span class="k">Measurement boundary</span>
       <p>These dimensions are proposed as exploratory and partner-lab revisable. They supplement, rather than replace, prediction-error analysis and optional physiological/neural proxies.</p>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Minimal data schema</p>
     <div class="scroll">
       <table class="tbl wide">
@@ -382,7 +358,6 @@
         <tr><td>Optional sensors</td><td>hrv_rmssd, eda_scr, respiration_proxy, temp, motion, eeg_quality_flag</td><td>Use proxies only when data quality permits.</td></tr>
       </table>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">Technical feasibility</p>
     <h2 style="font-size:19px">The pilot should not depend on custom hardware.</h2>
     <div class="scroll">
@@ -402,7 +377,6 @@
   </div>
 </section>
 
-<!-- LAB FIT -->
 <section id="fit">
   <div class="wrap">
     <p class="sec-eyebrow">Lab fit matrix</p>
@@ -421,34 +395,16 @@
   </div>
 </section>
 
-
-<!-- RELATED WORK -->
 <section id="related">
   <div class="wrap">
     <p class="sec-eyebrow">Related work positioning</p>
     <h2>Adjacent to affective BCI and neurofeedback, but centered on participant-owned calibration.</h2>
     <p class="sub">BCI-HRP does not claim that sound, AI, or neural signals are new by themselves. Its contribution is the protocol arrangement: sound as probe, participant prediction first, phenomenological report, editable naming, and agency events as data.</p>
     <div class="grid">
-      <div class="card">
-        <span class="k">Adjacent field</span>
-        <h3>Affective BCI</h3>
-        <p>Often estimates, classifies, or adapts to affective states using neural, physiological, or behavioral signals. BCI-HRP instead asks how participants can predict, report, revise, and own the meaning of felt states.</p>
-      </div>
-      <div class="card">
-        <span class="k">Adjacent field</span>
-        <h3>Brain-computer music interfaces</h3>
-        <p>Often map brain or affective signals to musical feedback or generation. BCI-HRP treats sound first as a controlled probe for calibration, not as an automatic mood-regulation output.</p>
-      </div>
-      <div class="card">
-        <span class="k">Adjacent field</span>
-        <h3>EEG / fNIRS music-emotion studies</h3>
-        <p>Often analyze responses to music or sound through valence, arousal, attention, or neural/hemodynamic features. BCI-HRP adds first-person prediction, action tendency, object relation, and fittingness as calibration materials.</p>
-      </div>
-      <div class="card">
-        <span class="k">Adjacent field</span>
-        <h3>Neurofeedback and biofeedback</h3>
-        <p>Often train users toward calm, focus, or coherence. BCI-HRP does not optimize for a single “good” state; it tests whether participants can better understand and revise their own affective-action structure.</p>
-      </div>
+      <div class="card"><span class="k">Adjacent field</span><h3>Affective BCI</h3><p>Often estimates, classifies, or adapts to affective states using neural, physiological, or behavioral signals. BCI-HRP instead asks how participants can predict, report, revise, and own the meaning of felt states.</p></div>
+      <div class="card"><span class="k">Adjacent field</span><h3>Brain-computer music interfaces</h3><p>Often map brain or affective signals to musical feedback or generation. BCI-HRP treats sound first as a controlled probe for calibration, not as an automatic mood-regulation output.</p></div>
+      <div class="card"><span class="k">Adjacent field</span><h3>EEG / fNIRS music-emotion studies</h3><p>Often analyze responses to music or sound through valence, arousal, attention, or neural/hemodynamic features. BCI-HRP adds first-person prediction, action tendency, object relation, and fittingness as calibration materials.</p></div>
+      <div class="card"><span class="k">Adjacent field</span><h3>Neurofeedback and biofeedback</h3><p>Often train users toward calm, focus, or coherence. BCI-HRP does not optimize for a single “good” state; it tests whether participants can better understand and revise their own affective-action structure.</p></div>
     </div>
     <div class="note data-clarify">
       <span class="k">Differentiation boundary</span>
@@ -457,7 +413,6 @@
   </div>
 </section>
 
-<!-- SAFETY -->
 <section id="safety">
   <div class="wrap">
     <p class="sec-eyebrow">Safety interaction flow</p>
@@ -477,49 +432,26 @@
   </div>
 </section>
 
-<!-- ABOUT + CONTACT -->
-<section id="about">
+<section id="faq">
   <div class="wrap">
-    <p class="sec-eyebrow">About the researcher</p>
-    <h2>Who is proposing this.</h2>
-    <div class="body">
-      <p style="font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px">Wei Jueran (魏珏然) · Mellow</p>
-      <p>Master's researcher in Learning Sciences and Technologies at the University of Pennsylvania Graduate School of Education. I work across learning sciences, human–computer interaction, and sound studies, with a focus on <b>interpretive agency</b>: how people keep authorship over the meaning of their own bodily and cognitive states when systems — sensors, AI — try to name those states for them.</p>
-      <p>For this protocol specifically, my non-substitutable contribution is <b>sound design</b> — era- and genre-specific acoustic material treated as controlled probes — combined with <b>anti-suggestion interaction ethics</b>: designing so that AI hypotheses stay editable, rejectable, and never overwrite the user's own account.</p>
-    </div>
-    <p class="sec-eyebrow" style="margin-top:26px">Affiliation &amp; contact</p>
-    <div class="contact">
-      <div class="row"><div class="k">Program</div><div class="v">M.S.Ed. in Learning Sciences and Technologies, Penn GSE · 08/2024–12/2026 (expected)</div></div>
-      <div class="row"><div class="k">Advisor</div><div class="v">Susan A. Yoon</div></div>
-      <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
-      <div class="row"><div class="k">CV</div><div class="v"><a href="https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view" target="_blank" rel="noopener">View CV (PDF) ↗</a></div></div>
-    </div>
-    <div class="note"><p style="font-size:13px; color:var(--muted); margin:0">This is an independent research proposal. It is not presented on behalf of any lab, and no participant data is collected before a partner lab's IRB approval.</p></div>
-  </div>
-</section>
-
-<!-- WRITING -->
-<section id="writing">
-  <div class="wrap">
-    <p class="sec-eyebrow">Writing / working papers</p>
-    <h2>What you can read to assess the thinking.</h2>
-    <p class="sub">Working papers, labeled by status. Nothing below is peer-reviewed unless explicitly marked.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="k">Working paper</span>
-        <h3>Interpretive self-determination in learning analytics</h3>
-        <p>On whether learners retain interpretive authority over analytics about themselves, rather than being defined by the system's labels. Directly motivates the editable-naming and interpretive-agency design in this protocol.<br><br><i>Status: in preparation · draft available on request.</i></p>
-      </div>
-      <div class="card">
-        <span class="k">Research concept</span>
-        <h3>Acoustic Familiarity Memory Return (AFMR)</h3>
-        <p>A narrow, non-referential acoustic-cue concept for familiarity-before-recall in older adults, with anti-suggestion safeguards — a focused application of the same sound-probe + interpretive-agency logic.<br><br><i>Status: concept note in development · draft available on request.</i></p>
-      </div>
+    <p class="sec-eyebrow">FAQ</p>
+    <h2>Short answers for collaborators.</h2>
+    <p class="sub">This section translates the protocol into direct questions without replacing the formal research brief above.</p>
+    <div class="qa-list">
+      <div class="qa"><h3>Is this a treatment or diagnostic study?</h3><p>No. BCI-HRP is a non-diagnostic, non-treatment research proposal. It does not claim clinical benefit, crisis detection, or state induction.</p></div>
+      <div class="qa"><h3>Does Phase 0 require custom BCI hardware?</h3><p>No. Phase 0 is a software protocol: self-prediction, sound probe, post-report, editable naming, and agency-event logging. Custom BCI hardware is future-facing and not required for the first pilot.</p></div>
+      <div class="qa"><h3>What is self-calibration?</h3><p>Self-calibration is operationalized as within-person change in prediction error between pre-probe predicted state vectors and post-probe reported state vectors, supported by secondary measures such as naming stability, qualia granularity, and agency events.</p></div>
+      <div class="qa"><h3>What is Human Return?</h3><p>Human Return refers to keeping the participant's own interpretation central: AI summaries are editable, rejectable, and deletable; physiological and neural signals remain optional proxies rather than hidden truth.</p></div>
+      <div class="qa"><h3>Does BCI-HRP aim to make participants feel positive emotion?</h3><p>No. The protocol does not aim to induce positive emotion. It tests whether participants can better identify how a felt state relates to bodily change, action tendency, object relation, and situation fit.</p></div>
+      <div class="qa"><h3>What is affective-action calibration?</h3><p>Affective-action calibration means tracking whether a participant can better relate bodily feeling, felt quality, action tendency, emotional object, and fittingness across sessions. It is a supplement to prediction-error analysis, not a clinical outcome claim.</p></div>
+      <div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is a Phase −1 pause-only baseline. It helps identify baseline effects, task demand, environmental factors, and qualitative coding categories before testing sound probes.</p></div>
+      <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency and affective-action calibration over endogenous experience: how people predict, name, revise, and own the meaning of their internal state descriptions.</p></div>
+      <div class="qa"><h3>Is this already covered by affective BCI or neurofeedback?</h3><p>Partly adjacent, but not identical. BCI-HRP is close to affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is participant-owned calibration: sound as probe, self-prediction, phenomenological report, editable AI naming, and reject / rename / edit / delete as agency data.</p></div>
+      <div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PAUSE DATA -->
 <section id="pause-data">
   <div class="wrap">
     <p class="sec-eyebrow">Preliminary Pause-QDR dataset</p>
@@ -550,34 +482,6 @@
   </div>
 </section>
 
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <p class="sec-eyebrow">FAQ</p>
-    <h2>Short answers for collaborators.</h2>
-    <p class="sub">This section translates the protocol into direct questions without replacing the formal research brief above.</p>
-    <div class="qa-list">
-      <div class="qa"><h3>Is this a treatment or diagnostic study?</h3><p>No. BCI-HRP is a non-diagnostic, non-treatment research proposal. It does not claim clinical benefit, crisis detection, or state induction.</p></div>
-      <div class="qa"><h3>Does Phase 0 require custom BCI hardware?</h3><p>No. Phase 0 is a software protocol: self-prediction, sound probe, post-report, editable naming, and agency-event logging. Custom BCI hardware is future-facing and not required for the first pilot.</p></div>
-      <div class="qa"><h3>What is self-calibration?</h3><p>Self-calibration is operationalized as within-person change in prediction error between pre-probe predicted state vectors and post-probe reported state vectors, supported by secondary measures such as naming stability, qualia granularity, and agency events.</p></div>
-      <div class="qa"><h3>What is Human Return?</h3><p>Human Return refers to keeping the participant's own interpretation central: AI summaries are editable, rejectable, and deletable; physiological and neural signals remain optional proxies rather than hidden truth.</p></div>
-
-      <div class="qa"><h3>Does BCI-HRP aim to make participants feel positive emotion?</h3><p>No. The protocol does not aim to induce positive emotion. It tests whether participants can better identify how a felt state relates to bodily change, action tendency, object relation, and situation fit.</p></div>
-      <div class="qa"><h3>What is affective-action calibration?</h3><p>Affective-action calibration means tracking whether a participant can better relate bodily feeling, felt quality, action tendency, emotional object, and fittingness across sessions. It is a supplement to prediction-error analysis, not a clinical outcome claim.</p></div>
-
-      <div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is a Phase −1 pause-only baseline. It helps identify baseline effects, task demand, environmental factors, and qualitative coding categories before testing sound probes.</p></div>
-      <div class="qa"><h3>Is data_schema.csv collected pause data?</h3><p>No. data_schema.csv is a future protocol data dictionary / field template. The actual preliminary static-pause summary is pause_qdr_preliminary_summary.csv, with interpretation in pause_qdr_preliminary_dataset.md.</p></div>
-      <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency and affective-action calibration over endogenous experience: how people predict, name, revise, and own the meaning of their internal state descriptions.</p></div>
-
-      <div class="qa"><h3>Is this already covered by affective BCI or neurofeedback?</h3><p>Partly adjacent, but not identical. BCI-HRP is close to affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is participant-owned calibration: sound as probe, self-prediction, phenomenological report, editable AI naming, and reject / rename / edit / delete as agency data.</p></div>
-
-      <div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MATERIALS -->
 <section id="materials">
   <div class="wrap">
     <p class="sec-eyebrow">Research materials stack</p>
@@ -590,11 +494,11 @@
     <div class="files">
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/DATA_FILES_GUIDE.md" target="_blank" rel="noopener">DATA_FILES_GUIDE.md ↗</a><span>Which files are future templates and which are actual preliminary Pause-QDR data.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief.md" target="_blank" rel="noopener">protocol_brief.md ↗</a><span>English research question, hypotheses, outcomes, confounds, safety, and lab decisions.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief_zh.md" target="_blank" rel="noopener">protocol_brief_zh.md ↗</a><span>中文协议简报：研究问题、假设、结果指标、混杂因素、安全边界与实验室决策点。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief_zh.md" target="_blank" rel="noopener">protocol_brief_zh.md ↗</a><span>Chinese protocol brief — research question, hypotheses, outcome measures, confounds, safety boundary, and lab decision points.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/data_schema.csv" target="_blank" rel="noopener">data_schema.csv ↗</a><span>Field template for future studies — not collected pause data.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/stimulus_sheet_template.csv" target="_blank" rel="noopener">stimulus_sheet_template.csv ↗</a><span>Sound family, file hash, loudness, events, source, license, notes.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow.md" target="_blank" rel="noopener">safety_flow.md ↗</a><span>Consent gate, persistent controls, auto-pause, grounding mode, no-crisis boundary.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow_zh.md" target="_blank" rel="noopener">safety_flow_zh.md ↗</a><span>中文安全交互流程。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow_zh.md" target="_blank" rel="noopener">safety_flow_zh.md ↗</a><span>Chinese safety interaction flow.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/osf_structure.md" target="_blank" rel="noopener">osf_structure.md ↗</a><span>Suggested wiki, files, components, and access settings.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/references.bib" target="_blank" rel="noopener">references.bib ↗</a><span>Starter BibTeX: interoception, allostasis, constructed emotion, predictive processing, personal informatics.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/README.md" target="_blank" rel="noopener">README.md ↗</a><span>File list and boundary statement.</span></div>
@@ -603,7 +507,46 @@
   </div>
 </section>
 
-<!-- COLLABORATE -->
+<section id="about">
+  <div class="wrap">
+    <p class="sec-eyebrow">About the researcher</p>
+    <h2>Who is proposing this.</h2>
+    <div class="body">
+      <p style="font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px">Wei Jueran (魏珏然) · Mellow</p>
+      <p>Master's researcher in Learning Sciences and Technologies at the University of Pennsylvania Graduate School of Education. I work across learning sciences, human–computer interaction, and sound studies, with a focus on <b>interpretive agency</b>: how people keep authorship over the meaning of their own bodily and cognitive states when systems — sensors, AI — try to name those states for them.</p>
+      <p>For this protocol specifically, my non-substitutable contribution is <b>sound design</b> — era- and genre-specific acoustic material treated as controlled probes — combined with <b>anti-suggestion interaction ethics</b>: designing so that AI hypotheses stay editable, rejectable, and never overwrite the user's own account.</p>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:26px">Affiliation &amp; contact</p>
+    <div class="contact">
+      <div class="row"><div class="k">Program</div><div class="v">M.S.Ed. in Learning Sciences and Technologies, Penn GSE · 08/2024–12/2026 (expected)</div></div>
+      <div class="row"><div class="k">Advisor</div><div class="v">Susan A. Yoon</div></div>
+      <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
+      <div class="row"><div class="k">CV</div><div class="v"><a href="https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view" target="_blank" rel="noopener">View CV (PDF) ↗</a></div></div>
+    </div>
+    <div class="note"><p style="font-size:13px; color:var(--muted); margin:0">This is an independent research proposal. It is not presented on behalf of any lab, and no participant data is collected before a partner lab's IRB approval.</p></div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <p class="sec-eyebrow">Writing / working papers</p>
+    <h2>What you can read to assess the thinking.</h2>
+    <p class="sub">Working papers, labeled by status. Nothing below is peer-reviewed unless explicitly marked.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="k">Working paper</span>
+        <h3>Interpretive self-determination in learning analytics</h3>
+        <p>On whether learners retain interpretive authority over analytics about themselves, rather than being defined by the system's labels. Directly motivates the editable-naming and interpretive-agency design in this protocol.<br><br><i>Status: in preparation · draft available on request.</i></p>
+      </div>
+      <div class="card">
+        <span class="k">Research concept</span>
+        <h3>Acoustic Familiarity Memory Return (AFMR)</h3>
+        <p>A narrow, non-referential acoustic-cue concept for familiarity-before-recall in older adults, with anti-suggestion safeguards — a focused application of the same sound-probe + interpretive-agency logic.<br><br><i>Status: concept note in development · draft available on request.</i></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="collaborate">
   <div class="wrap">
     <p class="sec-eyebrow">Collaboration model</p>
@@ -629,7 +572,6 @@
         </ul>
       </div>
     </div>
-
     <p class="sec-eyebrow" style="margin-top:34px">First ask</p>
     <h2>A 15-minute fit call.</h2>
     <div class="body">
@@ -641,7 +583,7 @@
 
 Dear Professor [Name],
 
-I'm a master's researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I'm developing an independent lab-facing proposal — the Human Return Protocol — rather than a consumer device or lab-sponsored study. The testable question is whether brief sound probes plus a self-prediction and editable-naming step support within-person self-calibration and affective-action calibration, measured through cross-session prediction error, action-tendency/object-relation reports, and transfer controls that rule out memorization; autonomic/neural signals are optional proxies.
+I'm a master's researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I'm developing an independent lab-facing proposal — the Human Return Protocol — rather than a consumer device or lab-sponsored study. This is not another brain decoder; it is a participant-centered calibration protocol where the user, not the signal, holds the final interpretation. The testable question is whether brief sound probes plus a self-prediction and editable-naming step support within-person self-calibration and affective-action calibration, measured through cross-session prediction error, action-tendency/object-relation reports, and transfer controls that rule out memorization; autonomic/neural signals are optional proxies.
 
 I have a drafted protocol, data schema, stimulus documentation, and an anti-suggestion safety flow, and I'd do the build and analysis. I'm looking for an IRB-holding lab to host a small Phase 0 feasibility pilot — and the authority to narrow, rename, or reject the construct.
 
@@ -657,7 +599,7 @@ CV (PDF): https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view
 
 <footer>
   <div class="wrap">
-    <span class="mono">© 2026 Wei Jueran / Mellow Wei. All rights reserved. BCI-HRP // Human Return Protocol · protocol-first · non-diagnostic · non-treatment</span>
+    <span class="mono">© 2026 Wei Jueran / Mellow Wei. BCI-HRP // Human Return Protocol · protocol-first · non-diagnostic · non-treatment</span>
     <span><a href="#top">Back to top ↑</a> · <a href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html">中文</a></span>
   </div>
 </footer>
