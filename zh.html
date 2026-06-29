@@ -1,191 +1,619 @@
 <!DOCTYPE html>
+<!-- BCI-HRP Lab zh v2.4: 加入显眼定位板块与“不是另一个脑解码器”声明。 -->
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BCI-HRP Lab — 中文</title>
+<title>BCI-HRP // 人类回归协议 — 实验室合作简报</title>
+<meta name="description" content="BCI-HRP // 人类回归协议:一个面向 PI 的研究协议,检验声音探针、自我预测、现象学报告与可编辑 AI 命名能否支持个体内的自我校准与情绪-行动校准。独立研究提案,宾夕法尼亚大学教育研究生院。" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#02030a; --panel:rgba(11,14,34,.74); --text:#f5f7ff; --muted:#aab2d4; --dim:#6b7396;
-  --cyan:#00f5ff; --pink:#ff2bd6; --green:#35ff9f; --yellow:#ffe66d; --red:#ff5a75;
-  --line:rgba(0,245,255,.18); --line2:rgba(255,255,255,.09);
-  --shadow:0 24px 90px rgba(0,0,0,.46);
-  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-  --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;color:var(--text);font-family:var(--sans);background:
-radial-gradient(circle at 12% 4%,rgba(0,245,255,.16),transparent 30%),
-radial-gradient(circle at 88% 10%,rgba(255,43,214,.14),transparent 31%),
-radial-gradient(circle at 48% 88%,rgba(53,255,159,.09),transparent 38%),
-linear-gradient(180deg,var(--bg) 0%,#050612 48%,#02030a 100%);overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:
-linear-gradient(rgba(0,245,255,.06) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,43,214,.05) 1px,transparent 1px);
-background-size:72px 72px;opacity:.4;mask-image:linear-gradient(to bottom,transparent 0,black 16%,black 74%,transparent 100%);z-index:-2}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.24) 58%,rgba(0,0,0,.82) 100%);z-index:-1}
-a{color:inherit}.wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
-header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(4,6,18,.88);backdrop-filter:blur(18px);box-shadow:0 0 28px rgba(0,245,255,.08)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0}.brand{display:flex;align-items:center;gap:10px;min-width:230px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.dot{width:11px;height:11px;border-radius:99px;background:var(--cyan);box-shadow:0 0 16px rgba(0,245,255,.9),0 0 34px rgba(255,43,214,.25)}
-nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 14px}nav a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}nav a:hover{color:var(--cyan);text-shadow:0 0 12px rgba(0,245,255,.65)}
-section{padding:64px 0;scroll-margin-top:84px}.hero{padding:78px 0 58px}.hero-grid{display:grid;grid-template-columns:1fr;gap:26px}
-.eyebrow{color:var(--cyan);font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px;text-shadow:0 0 14px rgba(0,245,255,.55)}
-h1,h2,h3,p{margin:0}h1{font-size:clamp(52px,8.2vw,118px);line-height:.88;letter-spacing:-.09em;font-weight:860;max-width:1180px}
-.glitch{position:relative;display:block;color:#f4f7ff;max-width:100%;white-space:normal;text-shadow:0 0 12px rgba(0,245,255,.45),0 0 32px rgba(255,43,214,.22);animation:titlePulse 3.2s ease-in-out infinite}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;opacity:.68;display:block;width:100%;white-space:inherit}
-.glitch::before{color:var(--cyan);clip-path:inset(0 0 58% 0);animation:glitchA 2.6s infinite linear alternate-reverse}.glitch::after{color:var(--pink);clip-path:inset(48% 0 0 0);animation:glitchB 1.9s infinite linear alternate-reverse}
-.title-cutline{width:min(760px,88%);height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);margin:20px 0 22px;box-shadow:0 0 18px rgba(0,245,255,.38),0 0 28px rgba(255,43,214,.18)}
-h2{max-width:980px;font-size:clamp(32px,4.5vw,58px);line-height:1.04;letter-spacing:-.055em;font-weight:800;margin-bottom:16px}h3{font-size:21px;line-height:1.18;letter-spacing:-.025em;margin-bottom:10px}
-p{color:var(--muted);font-size:15.5px;line-height:1.68}.hero-sub{max-width:980px;color:rgba(245,247,255,.95);font-size:clamp(20px,2.4vw,32px);line-height:1.22;letter-spacing:-.03em;margin-top:8px}.hero-note{max-width:920px;margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
-.card{position:relative;padding:22px;border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,rgba(10,14,33,.78),rgba(8,11,24,.92));box-shadow:var(--shadow);overflow:hidden}.card::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(140deg,rgba(0,245,255,.05),transparent 24%,transparent 70%,rgba(255,43,214,.05));opacity:.9}.feature{border-color:rgba(0,245,255,.24)}.secondary{background:linear-gradient(180deg,rgba(10,14,33,.62),rgba(8,11,24,.86))}.warn{border-color:rgba(255,230,109,.28)}.green{border-color:rgba(53,255,159,.24)}.red{border-color:rgba(255,90,117,.28)}
-.pill,.button,.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,245,255,.21);border-radius:999px;background:linear-gradient(90deg,rgba(0,245,255,.07),rgba(255,43,214,.045)),rgba(255,255,255,.032);color:var(--muted);padding:8px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase}.button{color:var(--text);text-decoration:none;cursor:pointer;padding:12px 15px}.button.primary{border-color:rgba(53,255,159,.44);box-shadow:0 0 22px rgba(53,255,159,.12)}.button-row,.status-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.pill.good{border-color:rgba(53,255,159,.34);color:var(--green)}.pill.warn{border-color:rgba(255,230,109,.34);color:var(--yellow)}.pill.no{border-color:rgba(255,90,117,.34);color:#ffb1bf}
-.large-claim{font-size:clamp(24px,3vw,36px);line-height:1.2;color:#f7fbff;letter-spacing:-.03em}.claim-box,.mini,.layer,.phase,.safety-node,.flow-step{padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.025)}.claim-box{margin-top:18px}.stack{display:grid;gap:12px}.layer{border-left:3px solid rgba(0,245,255,.42)}.layer b,.num,.flow-step b,.phase b,.safety-node b{display:block;color:var(--cyan);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}.num{margin-bottom:12px;color:var(--cyan)}.split,.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.phase-grid{grid-template-columns:repeat(3,1fr)}
-.table-wrap{overflow:auto;margin-top:10px}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:13px 12px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;line-height:1.52}th{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;background:rgba(0,245,255,.045)}
-.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}.safety-machine{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.clean{margin:10px 0 0;padding-left:18px;color:var(--muted)}.clean li{margin:0 0 8px;line-height:1.55}.copy-box{margin-top:14px;padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);font-size:13px;line-height:1.6;color:#dce2ff;white-space:pre-wrap}.lang-switch{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-@keyframes titlePulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes glitchA{0%{transform:translate(2px,0)}20%{transform:translate(-3px,-1px)}40%{transform:translate(4px,1px)}60%{transform:translate(-1px,0)}80%{transform:translate(3px,-2px)}100%{transform:translate(0,0)}}@keyframes glitchB{0%{transform:translate(-2px,0)}25%{transform:translate(3px,1px)}50%{transform:translate(-4px,-1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0,0)}}
-@media(max-width:1120px){.split,.phase-grid,.safety-machine{grid-template-columns:1fr!important}.flow{grid-template-columns:repeat(3,1fr)}}@media(max-width:900px){.span-8,.span-7,.span-6,.span-5,.span-4,.span-3,.span-12{grid-column:span 12}.nav{align-items:flex-start;flex-direction:column}.flow{grid-template-columns:1fr 1fr}h1{font-size:clamp(44px,12vw,82px);letter-spacing:-.075em}}@media(max-width:640px){section{padding:52px 0}.wrap{width:min(100% - 24px,1160px)}.flow{grid-template-columns:1fr}.button{width:100%;justify-content:center}h1{font-size:clamp(40px,15vw,68px);letter-spacing:-.065em}}
+  :root{
+    --paper:#f4f6f6; --surface:#ffffff; --ink:#19211f; --muted:#54605d; --faint:#7b8784;
+    --line:#dce2e0; --line2:#e8eceb; --accent:#2f5f6e; --accent-deep:#244c58; --accent-soft:#e9f1f1;
+    --blue:#2b7fb8; --red:#b2455d; --blue-soft:#e7f2f8; --red-soft:#faedf0;
+    --sans:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --wrap:884px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:64px}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+       font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline; text-underline-offset:3px}
+  h1,h2,h3{margin:0; font-weight:700; line-height:1.3}
+  p{margin:0 0 .85em}
+  .wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
+  nav{position:sticky; top:0; z-index:50; background:rgba(244,246,246,.86);
+      backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
+  .brand{font-family:var(--mono); font-size:12.5px; font-weight:500; letter-spacing:.02em; color:var(--ink); white-space:nowrap}
+  .brand b{color:var(--accent)}
+  .navlinks{display:flex; gap:12px; align-items:center; overflow-x:auto; scrollbar-width:none; padding:2px 0}
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a{font-size:13px; color:var(--muted); white-space:nowrap}
+  .navlinks a:hover{color:var(--accent); text-decoration:none}
+  .navlinks .en{font-family:var(--mono); font-size:12px; color:var(--accent)}
+  header.hero{padding:62px 0 40px; border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 16px}
+  h1{font-size:32px; margin:0 0 14px}
+  .title-bci{display:inline-block; background:linear-gradient(90deg,var(--blue),var(--red)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .signal-line{width:100%; max-width:520px; height:2px; margin:0 0 22px; background:linear-gradient(90deg,var(--blue),var(--accent),var(--red)); opacity:.72; border-radius:999px}
+  .microstatus{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin:2px 0 20px; letter-spacing:.02em}
+  .byline{font-size:14.5px; color:var(--muted); margin:0 0 18px}
+  .byline b{color:var(--ink); font-weight:600}
+  .lede{font-size:16.5px; line-height:1.7; color:var(--ink); max-width:40em; margin:0 0 22px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 26px}
+  .chip{font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--muted); border:1px solid var(--line); border-radius:100px; padding:5px 11px; background:var(--surface)}
+  .cta{display:flex; flex-wrap:wrap; gap:10px}
+  .btn{font-family:var(--sans); font-size:13.5px; font-weight:600; cursor:pointer; border:1px solid var(--accent); border-radius:8px; padding:9px 16px; background:var(--accent); color:#fff; transition:background .15s}
+  .btn:hover{background:var(--accent-deep)}
+  .btn-ghost{background:transparent; color:var(--accent)}
+  .btn-ghost:hover{background:var(--accent-soft)}
+  section{padding:46px 0; border-bottom:1px solid var(--line2)}
+  .sec-eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 10px}
+  h2{font-size:21px; margin:0 0 8px}
+  .sub{font-size:15px; color:var(--muted); max-width:42em; margin:0 0 22px}
+  .body{max-width:44em}
+  .body p{color:#222b29}
+  .claim{background:var(--accent-soft); border:1px solid #cfe0df; border-left:3px solid var(--accent); border-radius:10px; padding:22px 24px; margin:0 0 20px}
+  .claim .q{font-size:17px; font-weight:600; color:var(--accent-deep); line-height:1.6; margin:0}
+  .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); margin:6px 0 0}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:15px 16px}
+  .card h3{font-size:14.5px; margin:0 0 5px}
+  .card p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.66}
+  .card .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; display:block; margin:0 0 6px}
+  .steps{display:grid; gap:12px; margin:6px 0 0}
+  .step{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+  .step .n{font-family:var(--mono); font-size:12px; font-weight:500; color:#fff; background:var(--accent); border-radius:6px; min-width:30px; height:26px; display:flex; align-items:center; justify-content:center}
+  .step h3{font-size:14.5px; margin:0 0 3px}
+  .step p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.66}
+  .tbl{width:100%; border-collapse:collapse; margin:8px 0 0; font-size:13.5px}
+  .tbl th{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; text-align:left; color:var(--accent); font-weight:500; padding:0 14px 8px 0; border-bottom:1.5px solid var(--accent); vertical-align:bottom}
+  .tbl td{padding:11px 14px 11px 0; border-bottom:1px solid var(--line2); color:#2a3331; vertical-align:top; line-height:1.66}
+  .tbl td:first-child{font-weight:600; color:var(--ink)}
+  .scroll{overflow-x:auto}
+  .note{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:15px 17px; margin:16px 0 0}
+  .data-clarify{border-left:3px solid var(--blue); background:linear-gradient(90deg,var(--blue-soft),#fff)}
+  .note .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; display:block; margin:0 0 6px}
+  .note p{margin:0; font-size:13.5px; color:#2a3331; line-height:1.7}
+  .warn{border-left:3px solid #b5732f; background:#fbf5ee}
+  .warn .k{color:#9c5f22}
+  .contact{display:grid; gap:0; margin:6px 0 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--surface)}
+  .row{display:grid; grid-template-columns:120px 1fr; gap:14px; padding:11px 16px; border-bottom:1px solid var(--line2)}
+  .row:last-child{border-bottom:0}
+  .row .k{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--accent); padding-top:2px}
+  .row .v{font-size:14px; color:var(--ink)}
+  .files{display:grid; gap:9px; margin:6px 0 0}
+  .file{display:grid; grid-template-columns:1fr; gap:1px; padding:11px 14px; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
+  .file a{font-size:14px; font-weight:600}
+  .file span{font-size:12.5px; color:var(--muted)}
+  ul.plain{margin:6px 0 0; padding-left:18px}
+  ul.plain li{margin:0 0 6px; color:#2a3331; line-height:1.66; font-size:14px}
+  .two{display:grid; gap:16px; grid-template-columns:1fr 1fr; margin:6px 0 0}
+  .panel{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .panel h3{font-size:14px; margin:0 0 9px; font-family:var(--mono); font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--accent)}
+  .qa-list{display:grid; gap:10px; margin:8px 0 0}
+  .qa{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+  .qa h3{font-size:14.5px; margin:0 0 5px}
+  .qa p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.7}
+  .briefwrap{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:6px 0 0}
+  .briefwrap pre{font-family:var(--mono); font-size:12.5px; line-height:1.7; color:#2a3331; white-space:pre-wrap; margin:12px 0 0}
+  footer{padding:34px 0 48px; color:var(--faint); font-size:12.5px}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; justify-content:space-between}
+  footer .mono{font-family:var(--mono); letter-spacing:.03em}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+  @media (max-width:680px){
+    h1{font-size:26px} .lede{font-size:15.5px} h2{font-size:18.5px}
+    .two{grid-template-columns:1fr} .row{grid-template-columns:1fr; gap:3px}
+    nav .wrap{height:auto; min-height:56px; align-items:flex-start; padding-top:12px; padding-bottom:10px}
+    .brand{padding-top:2px} .navlinks{max-width:100%; padding-bottom:2px} .navlinks a{font-size:12.5px}
+    section{padding:38px 0}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><div class="brand"><span class="dot"></span>BCI-HRP LAB // HUMAN RETURN</div><nav><a href="#claim">主张</a>
-<a href="#pilot">试点</a>
-<a href="#methods">方法</a>
-<a href="#fit">实验室适配</a>
-<a href="#pause-data">暂停数据</a>
-<a href="#materials">材料</a>
-<a href="#safety">安全</a>
-<a href="#outreach">外联</a>
-<a href="#collaborate">合作</a><a href="en.html">English</a><a href="index.html">双语首页</a></nav></div></header>
-<main>
-<section class="hero" id="top"><div class="wrap">
-  <div class="eyebrow">中文子页 // 实验室合作入口</div>
-  <h1 class="glitch" data-text="BCI - The Human Return Protocol">BCI - The Human Return Protocol</h1>
-  <div class="title-cutline"></div>
-  <p class="hero-sub">一个面向实验室合作的研究协议：测试声音探针、自我预测、可编辑命名与可穿戴/神经代理，是否能提升个体内自我校准。</p>
-  <p class="hero-note">当前试点：Sound-QDR 协议优先；现有实验室设备其次；未来三件套硬件最后。它不是消费级 BCI 产品，也不是诊断、治疗或状态诱导系统。</p>
-  <div class="status-row"><span class="pill good">当前试点：Sound-QDR</span><span class="pill warn">未来愿景：AI 耳机 + 头贴 + 腕环</span><span class="pill no">不诊断 · 不治疗 · 不诱导状态</span></div>
-  <div class="lang-switch"><a class="button primary" href="en.html">English page</a><a class="button" href="index.html">双语首页</a></div>
-</div></section>
+<a id="top"></a>
+<nav>
+  <div class="wrap">
+    <div class="brand">BCI-HRP <b>//</b> 人类回归协议</div>
+    <div class="navlinks">
+      <a href="#claim">主张</a>
+      <a href="#positioning">定位</a>
+      <a href="#why">动机</a>
+      <a href="#protocol">协议</a>
+      <a href="#pilot">试点</a>
+      <a href="#methods">方法</a>
+      <a href="#fit">实验室契合</a>
+      <a href="#related">相关工作</a>
+      <a href="#safety">安全</a>
+      <a href="#faq">问答</a>
+      <a href="#about">关于</a>
+      <a href="#collaborate">合作</a>
+      <a class="en" href="https://mellowwei.github.io/BCI-HRP-Lab/index.html">EN</a>
+    </div>
+  </div>
+</nav>
 
-<section id="claim"><div class="wrap grid"><div class="card feature span-12">
-  <div class="eyebrow">一个可证伪主张</div>
-  <p class="large-claim">声音探针 + 自我预测 + 可编辑命名协议，是否能提升个体内自我校准？自主神经/神经代理是否比仅自评提供额外解释价值？</p>
-  <div class="claim-box"><p>研究定位：这是可行性与构念校准，不是临床验证。“感质对齐”和“Human Return”是候选构念，可以在预注册前由合作实验室缩小、改名、否定或修正。</p></div>
-</div></div></section>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">实验室合作简报 · 独立研究提案</p>
+    <h1><span class="title-bci">BCI-HRP</span> // 人类回归协议</h1>
+    <p class="byline"><b>魏珏然(Wei Jueran)· Mellow</b> — 宾夕法尼亚大学教育研究生院 学习科学与技术 M.S.Ed.</p>
+    <p class="lede">一个以协议为先、面向实验室的研究提案,检验声音探针、自我预测、现象学报告与可编辑的 AI 命名,能否支持个体内的自我校准(self-calibration)与情绪-行动校准(affective-action calibration)——自主神经与神经信号仅作可选代理,而非隐藏真相。</p>
+    <div class="signal-line" aria-hidden="true"></div>
+    <p class="microstatus">当前范围:Phase −1 Pause-QDR 基线 + Phase 0 Sound-QDR 软件协议。定制 BCI 硬件属未来方向,试点并不需要。</p>
+    <div class="chips">
+      <span class="chip">不诊断</span>
+      <span class="chip">不治疗</span>
+      <span class="chip">不诱导状态</span>
+      <span class="chip">非消费级设备</span>
+      <span class="chip">协议为先</span>
+      <span class="chip">独立提案</span>
+    </div>
+    <div class="cta">
+      <a class="btn" href="#claim">读 3 分钟简报</a>
+      <button class="btn btn-ghost" id="copyTop" type="button">复制邮件简报</button>
+    </div>
+  </div>
+</header>
 
-<section id="gap"><div class="wrap grid"><div class="card span-7">
-  <div class="eyebrow">为什么值得做</div><h2>现有系统往往不是过度解释用户，就是过度压扁体验。</h2>
-  <p>情绪工具常把人压进 calm / stressed 这样的粗标签；消费级神经科技容易对弱生理代理做过度解释；音乐工具又常只做 mood playlist，而不处理自我预测、解释权与安全退出。BCI-HRP Lab 做的是中间缺口：声音成为可控探针，用户先预测，生理信号只是代理，AI 解释始终可编辑、可拒绝、可删除。</p>
-</div><div class="card span-5 secondary"><div class="eyebrow">研究缺口</div><div class="stack">
-  <div class="layer"><b>Gap 01</b><p>过度依赖粗情绪标签，缺少感质颗粒度。</p></div>
-  <div class="layer"><b>Gap 02</b><p>传感器权威过强，用户解释权不足。</p></div>
-  <div class="layer"><b>Gap 03</b><p>声音常被当成 mood control，而不是可证伪探针。</p></div>
-  <div class="layer"><b>Gap 04</b><p>伦理常停留在原则，缺少交互级安全设计。</p></div>
-</div></div></div></section>
+<section id="claim">
+  <div class="wrap">
+    <p class="sec-eyebrow">一条可检验的主张</p>
+    <h2>在一切之前,先给出一个可被证伪的问题。</h2>
+    <div class="claim">
+      <p class="q">"声音探针 + 自我预测 + 现象学报告 + 可编辑命名"这一协议,能否改善个体内的自我校准与情绪-行动校准——以及自主神经/神经代理是否在自我报告之外提供额外的解释力?</p>
+    </div>
+    <div class="body">
+      <p><b>研究立场。</b>首期研究是可行性与构念校准,不是临床验证。"自我校准"与"人类回归"是候选构念——合作实验室在预注册前可以自由收窄、重命名、否决或修订它们。</p>
+    </div>
+    <div class="note">
+      <span class="k">命名边界</span>
+      <p><b>BCI-HRP</b> 在此仅作项目名与长期研究方向。眼下的试点不是定制 BCI 的搭建。第一个实证对象是协议本身:预测 → 探针 → 报告 → 可编辑命名 → 自主性事件。</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="k">不是设备推销</span><p>首期研究不需要任何定制硬件。</p></div>
+      <div class="card"><span class="k">不是读心</span><p>代理信号不揭示意义,也不揭示"真实"情绪。</p></div>
+      <div class="card"><span class="k">不是固定教条</span><p>实验室有权重新设计该构念。</p></div>
+      <div class="card"><span class="k">不是治疗</span><p>不作任何治疗或危机检测的声称。</p></div>
+    </div>
+  </div>
+</section>
 
-<section id="layers"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">科学版层级模型</div><h2>保留结构复杂度，但把它翻译成科学上可读的语言。</h2></div>
-<div class="card span-7"><div class="stack">
-  <div class="layer"><b>Layer 01 — 声音事件</b><p>固定音频文件，具有已记录的声学属性与事件标记。</p></div>
-  <div class="layer"><b>Layer 02 — 感官接触</b><p>声音如何通过听觉、身体共振、呼吸耦合与注意进入人。</p></div>
-  <div class="layer"><b>Layer 03 — 自主神经 / 身体反应</b><p>HRV、EDA、运动、皮温与身体自评，作为个体内反应轨迹。</p></div>
-  <div class="layer"><b>Layer 04 — 情绪构成</b><p>身体变化如何被体验成压强、释放、激活、安全或过载。</p></div>
-  <div class="layer"><b>Layer 05 — 认知预测</b><p>用户在播放前以为会发生什么，以及预测误差是否下降。</p></div>
-  <div class="layer"><b>Layer 06 — 意义生成</b><p>记忆、未来方向、自传性共振与价值意义笔记。</p></div>
-  <div class="layer"><b>Layer 07 — 解释自主</b><p>接受、编辑、拒绝、重命名、删除、停止、落地、跳过。</p></div>
-</div></div><div class="card span-5 secondary"><div class="eyebrow">科学锚点</div><div class="stack">
-  <div class="layer"><b>Interoception</b><p>身体内部状态感知与解释。</p></div>
-  <div class="layer"><b>Allostasis</b><p>调节与恢复，而不是静态平衡。</p></div>
-  <div class="layer"><b>Constructed Emotion</b><p>情绪不是从信号中直接读出。</p></div>
-  <div class="layer"><b>Predictive Processing</b><p>声音前预测误差是可操作目标。</p></div>
-  <div class="layer"><b>Personal Informatics</b><p>收集、反思、行动，但不把数据当绝对真相。</p></div>
-</div></div></div></section>
 
-<section id="protocol-snapshot"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">协议快照</div><h2>PI 应该能在三分钟内判断是否值得一次 fit call。</h2></div>
-<div class="card span-4"><div class="num">研究单位</div><h3>Session，不是设备</h3><p>一次声音反应 session：预测、声音探针、报告、可编辑命名与解释自主事件。</p></div>
-<div class="card span-4"><div class="num">主要测试</div><h3>预测误差</h3><p>个体内声音前预测误差是否跨 session 变化，并能否迁移到未听过的新刺激。</p></div>
-<div class="card span-4"><div class="num">安全原则</div><h3>解释前先保留自主</h3><p>AI 总结始终可编辑、可拒绝。停止、落地、删除、重命名、跳过是主要数据。</p></div>
-</div></section>
+<section id="positioning">
+  <div class="wrap">
+    <p class="sec-eyebrow">定位</p>
+    <h2>不是"音乐 + BCI + 情绪调节",而是以参与者为中心的校准层。</h2>
+    <p class="sub">本项目与情感 BCI、脑机音乐接口、EEG/fNIRS 音乐-情绪研究、神经反馈相邻。但它的差异化对象不是新的传感器或新的情绪分类器,而是一个保护解释权、同时让校准可检验的协议。</p>
+    <div class="grid">
+      <div class="card">
+        <span class="k">传统 BCI</span>
+        <h3>信号解码 / 控制</h3>
+        <p>常强调从神经信号中解码外部控制、意图推断或状态估计。</p>
+      </div>
+      <div class="card">
+        <span class="k">情感计算</span>
+        <h3>情绪分类</h3>
+        <p>常从生理、行为或多模态特征中估计情绪类别、效价或唤醒度。</p>
+      </div>
+      <div class="card">
+        <span class="k">神经反馈 / BCMI</span>
+        <h3>反馈或调节</h3>
+        <p>常通过声音或音乐反馈训练平静、专注、一致性或自适应情绪调节。</p>
+      </div>
+      <div class="card">
+        <span class="k">BCI-HRP</span>
+        <h3>参与者自有的校准</h3>
+        <p>把声音用作探针,让参与者先预测、先报告,把 AI 标签视作可编辑假设,并把拒绝/重命名/编辑/删除记录为自主性数据。</p>
+      </div>
+    </div>
+    <div class="note">
+      <span class="k">操作性差异</span>
+      <p>BCI-HRP 不问系统能否推断用户的"真实情绪"。它问的是:一个结构化协议能否改善参与者对自身身体-情绪-行动状态的预测、描述、修订与意义归属能力。</p>
+    </div>
+  </div>
+</section>
 
-<section id="pilot"><div class="wrap grid"><div class="card span-12"><div class="eyebrow">试点研究设计</div><h2>小样本、个体内、可消融。</h2><div class="table-wrap"><table><thead><tr><th>项目</th><th>设计</th></tr></thead><tbody>
-<tr><td>研究类型</td><td>个体内可行性试点；重复 session；非临床参与者；不做治疗声明。</td></tr>
-<tr><td>样本依据</td><td>N=5–12 只支持可用性、数据质量、负面交互发现，以及为后续功效研究估计方差。</td></tr>
-<tr><td>主要结果</td><td>跨 session 的个体内声音前预测误差变化。</td></tr>
-<tr><td>次要结果</td><td>状态命名稳定性、感质颗粒度、解释自主事件、完成率、不适/停止事件。</td></tr>
-<tr><td>信号</td><td>自评优先；HRV/RMSSD、EDA/SCR、呼吸、皮温、运动其次；EEG/fNIRS 可选且由实验室条件决定。</td></tr>
-<tr><td>消融</td><td>仅自评；固定声音 + 自评；腕 + 声音；头 + 声音；完整三件套；静默/中性场。</td></tr>
-</tbody></table></div></div></div></section>
+<section id="why">
+  <div class="wrap">
+    <p class="sec-eyebrow">为什么重要</p>
+    <h2>多数系统要么过度解读使用者,要么对体验描述不足。</h2>
+    <div class="body">
+      <p>情绪工具常把人塞进"平静""紧张"这类粗标签;消费级神经科技常用薄弱的生理代理过度声称"隐藏洞察";音乐工具常只优化情绪歌单,而不建模一个人的预测、解释控制权或安全退出。本协议瞄准被忽略的中间地带:把声音当作受控探针,让使用者先预测,生理始终只是代理,AI 的解释始终可编辑、可拒绝。</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="k">缺口 01</span><p>过于依赖粗糙的情绪标签,对感质的细粒度关注太少。</p></div>
+      <div class="card"><span class="k">缺口 02</span><p>给传感器太多权威,给使用者自有的解释太少。</p></div>
+      <div class="card"><span class="k">缺口 03</span><p>把声音当情绪调控的太多,把声音当带可证伪结果的探针的太少。</p></div>
+      <div class="card"><span class="k">缺口 04</span><p>伦理口号太多,交互层面的安全设计太少。</p></div>
+    </div>
+    <div class="note data-clarify">
+      <span class="k">情绪-行动立场</span>
+      <p>BCI-HRP 不把情绪当作隐藏的内部状态、通用的神经指纹,或一个"越正面越好"的分数。它把"感受到的状态"看作一种具身的、面向行动的、与世界的关系。声音探针被用作可重复的情境,让参与者去觉察身体感受、追踪行动倾向、识别情绪可供性(affordance),并修订自己状态的意义。AI 层是一个可编辑的情绪脚手架,不是诊断权威。</p>
+    </div>
+  </div>
+</section>
 
-<section id="methods"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">操作化定义</div><h2>让“人类返回”可测，但不把它压扁成隐藏信号。</h2></div>
-<div class="card span-6"><h3>自我预测误差</h3><p>声音前预测向量与播放后报告向量比较。候选维度：紧张度、清晰度、身体返回、行动冲动、情绪压强、安全感。</p></div>
-<div class="card span-6"><h3>感质颗粒度</h3><p>从“舒服/难受”的泛化词，转向更细的身体—情绪—感知—行动描述。</p></div>
-<div class="card span-6"><h3>状态命名稳定性</h3><p>重复声音条件下，用户是否能复用、细化或稳定个人标签，而不是被 AI 标签强行牵引。</p></div>
-<div class="card span-6"><h3>解释自主</h3><p>停止、落地、删除、拒绝、重命名、跳过、编辑是主要数据事件，不是 UI 附属品。</p></div>
-</div></section>
+<section id="protocol">
+  <div class="wrap">
+    <p class="sec-eyebrow">科学分层模型</p>
+    <h2>架构可以丰富,但必须在科学上可读。</h2>
+    <p class="sub">一次"声音-反应"会话经过七层,从物理刺激一路到使用者自有的解释。</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>声音事件</h3><p>真正的刺激:一个固定音频文件,具备有记录的声学属性与事件标记。</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>感官接触</h3><p>声音如何进入——听觉、身体共振、呼吸耦合、注意捕获。</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>自主神经/身体反应</h3><p>HRV、EDA、动作、体温与身体自评,作为个体内的反应痕迹。</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>情绪-行动建构</h3><p>身体变化如何成为压力、释然、激活、安全或淹没感——以及它如何打开或关闭可能的行动。</p></div></div>
+      <div class="step"><div class="n">05</div><div><h3>认知预测</h3><p>使用者在声音之前的预期,以及预测误差是否随会话下降。</p></div></div>
+      <div class="step"><div class="n">06</div><div><h3>对象关系与契合性</h3><p>这份感受是"关于"什么、让什么成为可能、是否契合情境、对象与价值关系。</p></div></div>
+      <div class="step"><div class="n">07</div><div><h3>解释自主性</h3><p>接受、编辑、拒绝、重命名、删除、停止、回到地面、跳过——作为使用者自有的解释控制权。</p></div></div>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">科学锚点</p>
+    <div class="grid">
+      <div class="card"><h3>内感受(Interoception)</h3><p>身体状态的感知与解释。</p></div>
+      <div class="card"><h3>稳态调节(Allostasis)</h3><p>关注调节与恢复,而非静态的内稳态。</p></div>
+      <div class="card"><h3>建构情绪论</h3><p>情绪并非从信号中被直接读出。</p></div>
+      <div class="card"><h3>预测加工</h3><p>探针前的预测误差是一个真实的可操作目标。</p></div>
+      <div class="card"><h3>个人信息学</h3><p>采集 → 反思 → 行动,但不把数据当作绝对真理。</p></div>
+      <div class="card"><h3>音乐干预的严谨性</h3><p>刺激应有记录、可复现、声称要窄。</p></div>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">协议快照</p>
+    <h2 style="font-size:18.5px">一位 PI 应能在三分钟内判断是否契合。</h2>
+    <div class="grid">
+      <div class="card"><span class="k">核心单元</span><h3>会话,而非设备</h3><p>研究单元是一次"声音-反应"会话:预测、声音探针、报告、可编辑命名与自主性事件。</p></div>
+      <div class="card"><span class="k">主检验</span><h3>预测误差</h3><p>个体内的探针前预测误差是否随会话变化,并能迁移到记忆之外的片段。</p></div>
+      <div class="card"><span class="k">安全原则</span><h3>先自主,后解释</h3><p>AI 摘要始终可编辑、可拒绝。停止、回到地面、删除、重命名、跳过都是一手数据——不是失败。</p></div>
+    </div>
+  </div>
+</section>
 
-<section id="feasibility"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">技术可行性</div><h2>试点不应依赖自研硬件。</h2></div>
-<div class="card span-12"><div class="table-wrap"><table><thead><tr><th>领域</th><th>现实可行版本</th><th>边界</th></tr></thead><tbody>
-<tr><td>声音探针</td><td>冻结、可复现、有 loudness、事件标记、来源与授权记录的音频。</td><td>不是普适声音处方。</td></tr>
-<tr><td>可穿戴</td><td>使用现有研究可接受设备记录 HRV、EDA、呼吸代理、皮温、运动。</td><td>只做个体内代理，不推断隐藏真相。</td></tr>
-<tr><td>EEG/fNIRS</td><td>可选扩展，不是核心证明。</td><td>只作为聆听状态代理，不做意义解码。</td></tr>
-<tr><td>AI 角色</td><td>可选生产辅助和可编辑总结器。</td><td>AI 标签可拒绝，不被当成真相。</td></tr>
-</tbody></table></div></div></div></section>
+<section id="pilot">
+  <div class="wrap">
+    <p class="sec-eyebrow">试点设计</p>
+    <h2>小规模、被试内、带消融。</h2>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>项目</th><th>面向实验室的版本</th></tr>
+        <tr><td>研究类型</td><td>被试内可行性试点;重复会话;非临床被试;不作治疗声称。</td></tr>
+        <tr><td>样本依据</td><td>N = 5–12 足以支撑可用性、数据质量估计、不良体验发现,以及为后续有功效力研究做方差估计。</td></tr>
+        <tr><td>主结果</td><td>个体内探针前预测误差跨会话的变化。</td></tr>
+        <tr><td>次结果</td><td>命名稳定性、感质细粒度、解释自主性事件、完成率、不适/停止事件。</td></tr>
+        <tr><td>信号</td><td>先自我报告;其次 HRV/RMSSD、EDA/SCR、呼吸、体温、动作;EEG/fNIRS 可选、视实验室而定。</td></tr>
+        <tr><td>控制/消融</td><td>仅自我报告;固定声音+自我报告;腕部+声音;头部+声音;完整三联;必要时静默/中性场。</td></tr>
+        <tr><td>分析</td><td>混合效应模型、事件锁定的描述性分析、消融比较、缺失数据报告、伪迹报告、个体曲线。</td></tr>
+      </table>
+    </div>
+    <div class="note warn">
+      <span class="k">混淆控制 — 刺激熟悉度 vs. 自我校准</span>
+      <p>由于声音文件固定且重复,预测误差的下降可能只是记住了某个片段,而非自我校准的提升。要区分二者:(1) 在同一族中用<b>未听过</b>的刺激测预测(迁移测试);(2) 仅分析首次暴露的预测误差;(3) 在模型中纳入"新/熟"因子。命名稳定性带有同样的熟悉度混淆,并用同样的控制来报告。</p>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">会话流程</p>
+    <div class="steps">
+      <div class="step"><div class="n">T0</div><div><h3>知情同意</h3><p>声音族、强度上限、停止方式、数据共享,以及是否允许 AI 摘要。</p></div></div>
+      <div class="step"><div class="n">T1</div><div><h3>基线</h3><p>短暂休息加自我报告;可选生理基线。</p></div></div>
+      <div class="step"><div class="n">T2</div><div><h3>预测</h3><p>使用者在声音之前预测状态变化的方向与强度。</p></div></div>
+      <div class="step"><div class="n">T3</div><div><h3>探针</h3><p>固定、有记录、带事件标记的声音文件,停止控件始终可见。</p></div></div>
+      <div class="step"><div class="n">T4</div><div><h3>报告</h3><p>使用者报告身体、情绪、知觉、行动倾向与意义。</p></div></div>
+      <div class="step"><div class="n">T5</div><div><h3>重命名</h3><p>使用者接受、编辑、拒绝、重命名、删除或退出。</p></div></div>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">阶段路径</p>
+    <div class="grid">
+      <div class="card"><span class="k">Phase 0</span><h3>仅软件</h3><p>Sound-QDR 协议:预测、报告、重命名与自主性日志——无硬件。</p></div>
+      <div class="card"><span class="k">Phase 1</span><h3>加入可穿戴代理</h3><p>用现有设备测 HRV、EDA、呼吸、动作与体温。</p></div>
+      <div class="card"><span class="k">Phase 2</span><h3>可选 EEG / fNIRS</h3><p>仅当实验室条件与数据质量证明合理时,才作为"聆听态"扩展。</p></div>
+    </div>
+  </div>
+</section>
 
-<section id="fit"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">实验室适配矩阵</div><h2>不同实验室可以从协议的不同位置进入。</h2></div>
-<div class="card span-12"><div class="table-wrap"><table><thead><tr><th>实验室类型</th><th>适配原因</th><th>可主导内容</th></tr></thead><tbody>
-<tr><td>HCI / Personal Informatics</td><td>用户拥有解释权、可编辑标签、agency events、交互安全。</td><td>界面、用户研究、安全流程、日记协议。</td></tr>
-<tr><td>Music Cognition / Neuroaesthetics</td><td>声音探针、审美经验、熟悉性、期待与感质命名。</td><td>刺激设计、聆听研究、体验测量。</td></tr>
-<tr><td>Wearable Sensing</td><td>HRV、EDA、运动、呼吸作为个体内生理代理。</td><td>设备选择、信号质量、伪迹标准、同步。</td></tr>
-<tr><td>Affective Computing</td><td>非诊断 AI 反馈、反暗示设计、可编辑假设。</td><td>反馈边界、人机解释、suggestion bias 检查。</td></tr>
-<tr><td>Computational Neuroscience</td><td>预测误差、跨 session 变化、多模态对齐。</td><td>建模、推断、混合效应模型、事件锁定分析。</td></tr>
-</tbody></table></div></div></div></section>
+<section id="methods">
+  <div class="wrap">
+    <p class="sec-eyebrow">操作性定义</p>
+    <h2>让"人类回归"可测量,而不把它还原成一个隐藏信号。</h2>
+    <div class="grid">
+      <div class="card"><span class="k">主</span><h3>自我预测误差</h3><p>探针前的预测向量 vs. 探针后的报告向量。候选维度:紧张、清晰、身体回归、动作冲动、情绪压力、安全。方向匹配 + 归一化绝对误差。</p></div>
+      <div class="card"><span class="k">次</span><h3>命名稳定性</h3><p>在重复的声音族中,使用者是否复用、提炼或稳定其个人标签,而不被拉进 AI 的标签。</p></div>
+      <div class="card"><span class="k">构念</span><h3>感质细粒度</h3><p>从笼统词("好/坏")转向有区分度的身体-情绪-知觉-行动描述。</p></div>
+      <div class="card"><span class="k">自主性</span><h3>解释自主性</h3><p>停止、回到地面、删除、拒绝、重命名、跳过、编辑都记为一手事件,而非 UI 附属。</p></div>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">情绪-行动校准维度</p>
+    <h2 style="font-size:18.5px">情绪被测量为一个五维结构,而非隐藏的内在指纹。</h2>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>维度</th><th>捕捉什么</th><th>候选字段</th></tr>
+        <tr><td>身体感受</td><td>呼吸、紧张、沉重、温热、麻木、疲惫、放松或身体回归。</td><td>body_tension, body_return, breath_note, movement_note</td></tr>
+        <tr><td>感受质地</td><td>体验的纹理与基调:压力、明亮、平淡、尖锐、温热、漂移、清晰。</td><td>felt_quality, qualia_terms, emotional_pressure, clarity</td></tr>
+        <tr><td>行动倾向</td><td>该状态让人想做什么:靠近、回避、停下、书写、说话、休息、移动、联系、求助。</td><td>action_tendency, action_readiness</td></tr>
+        <tr><td>对象/关系</td><td>情绪"关于"什么:某人、任务、地点、身体部位、未来、丧失、威胁、机会或价值关系。</td><td>material_object, formal_object, core_relational_theme</td></tr>
+        <tr><td>契合性</td><td>该感受是否契合情境、对象与价值关系——而非是否"正面"。</td><td>emotion_fit, situation_fit, value_object_fit, affordance_update</td></tr>
+      </table>
+    </div>
+    <div class="note">
+      <span class="k">测量边界</span>
+      <p>这些维度作为探索性、合作实验室可修订的提案。它们是对预测误差分析与可选生理/神经代理的<b>补充,而非替代</b>。</p>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">最小数据 schema</p>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>字段组</th><th>示例字段</th><th>用途</th></tr>
+        <tr><td>会话</td><td>participant_hash, session_id, session_date, consent_version</td><td>追踪重复会话而不暴露身份。</td></tr>
+        <tr><td>刺激</td><td>stimulus_id, file_hash, loudness_norm, event_markers, playback_onset</td><td>保持声音探针固定、可复现。</td></tr>
+        <tr><td>预测</td><td>pre_tension, pre_clarity, pre_body_return, pre_action_urge, confidence</td><td>计算预测误差。</td></tr>
+        <tr><td>后报告</td><td>post_vector, free_text, qualia_terms, action_tendency, material_object, formal_object, emotion_fit, situation_fit, affordance_update, meaning_note</td><td>捕捉主观与情绪-行动结构,而不声称隐藏真相。</td></tr>
+        <tr><td>自主性</td><td>stop, ground, reject, rename, edit, delete, skip, timestamp</td><td>测量解释控制与安全行为。</td></tr>
+        <tr><td>可选传感器</td><td>hrv_rmssd, eda_scr, respiration_proxy, temp, motion, eeg_quality_flag</td><td>仅在数据质量允许时使用代理。</td></tr>
+      </table>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">技术可行性</p>
+    <h2 style="font-size:18.5px">试点不应依赖定制硬件。</h2>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>领域</th><th>现在现实可行</th><th>风险</th><th>边界/缓解</th></tr>
+        <tr><td>声音探针</td><td>冻结、有记录的音频,带响度归一化、事件标记与来源表。</td><td>刺激过宽或过度审美化。</td><td>固定库、可审计来源、可复现播放。</td></tr>
+        <tr><td>可穿戴</td><td>现成研究级设备测 HRV、EDA、呼吸代理、皮温、动作。</td><td>EDA 延迟、动作伪迹、体温响应慢。</td><td>质量标记、恢复窗分析、伪迹报告、个体内解释。</td></tr>
+        <tr><td>EEG / fNIRS</td><td>可选实验室扩展,非核心证据;仅作"聆听态"代理。</td><td>Fp1/Fp2 眼动/肌电伪迹;fNIRS 同戴复杂。</td><td>预设伪迹剔除、质量阈值、可选排除、不做意义解码。</td></tr>
+        <tr><td>同步</td><td>共享事件日志、测得起始、LSL 或实验室等价的时间同步。</td><td>时钟漂移与设备未同步。</td><td>除非时序经验证,否则拒绝毫秒级声称。</td></tr>
+        <tr><td>AI 角色</td><td>可选的生产辅助与可编辑的报告摘要器。</td><td>AI 过度包装/暗示偏倚。</td><td>研究中冻结刺激;AI 标签可拒绝,不当真相。</td></tr>
+      </table>
+    </div>
+    <div class="two">
+      <div class="panel"><h3>保持可选</h3><p style="margin:0; font-size:13.5px; color:var(--muted)">EEG/fNIRS、定制头贴形态、完整三联硬件应保持可选,直到一个协议为先的试点显示出足够价值、值得承担工程复杂度。</p></div>
+      <div class="panel"><h3>现在已可做</h3><p style="margin:0; font-size:13.5px; color:var(--muted)">固定声音库、前后自我预测量表、定性命名提示、自主性事件记录、可导出的会话 schema——已足以启动 Phase 0。</p></div>
+    </div>
+  </div>
+</section>
 
-<section id="pause-data"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">Pause-QDR 静坐暂停前测数据</div><h2>在声音探针之前，必须先测量“暂停本身”。</h2><p>这组约 10 人静坐暂停探索性数据，不是 BCI-HRP 或 Sound-QDR 有效性证据。它作为 Phase -1 可行性材料：说明参与者可以完成前后自评、产生丰富感质笔记，并暴露任务需求、环境、脱离手机和纯暂停效应等关键混淆因素。</p></div>
-<div class="card warn span-12">
-          <div class="eyebrow">Data File Clarification // 数据文件说明</div>
-          <p><strong>Important:</strong> <code>data_schema.csv</code> is a future protocol data dictionary. It is not the static-pause dataset. If you want the preliminary 静坐 / pause data, open <code>pause_qdr_preliminary_summary.csv</code> and <code>pause_qdr_preliminary_dataset.md</code>.</p>
-          <p class="cn"><strong>重要：</strong><code>data_schema.csv</code> 是未来正式研究的数据字段模板，不是静坐前测数据。要看静坐数据，请打开 <code>pause_qdr_preliminary_summary.csv</code> 和 <code>pause_qdr_preliminary_dataset_zh.md</code>。</p>
-        </div>
-<div class="card span-4"><div class="num">数据类型</div><h3>Pause-only baseline</h3><p>暂停日常任务约 10–12 分钟，记录前后心情、专注、身体状态评分与开放式笔记。</p></div>
-<div class="card span-4"><div class="num">描述性信号</div><h3>身体放松最明显</h3><p>描述性看，N=9 的平均身体放松改善约 2.11；心情和专注变化异质性更高，不应夸大。</p></div>
-<div class="card span-4"><div class="num">设计含义</div><h3>必须加入 pause-only baseline</h3><p>未来 Sound-QDR 试点必须区分暂停效应、环境效应、任务需求效应、声音效应与解释自主效应。</p></div>
-<div class="card span-12 secondary"><div class="stack">
-  <div class="layer"><b>中文数据摘要</b><p><a href="./pause_qdr_preliminary_dataset_zh.md">pause_qdr_preliminary_dataset_zh.md</a></p></div>
-  <div class="layer"><b>真正的静坐前测数据摘要</b><p><a href="./pause_qdr_preliminary_summary.csv">pause_qdr_preliminary_summary.csv</a> — 匿名化派生数据表</p></div>
-  <div class="layer"><b>限制说明</b><p><a href="./pause_qdr_limitations.md">pause_qdr_limitations.md</a></p></div>
-</div></div></div></section>
+<section id="fit">
+  <div class="wrap">
+    <p class="sec-eyebrow">实验室契合矩阵</p>
+    <h2>不同实验室可从协议的不同部分切入。</h2>
+    <p class="sub">这不是单一学科的推销。第一次通话应确认"项目的哪个版本"适合该实验室。</p>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>实验室类型</th><th>为何契合</th><th>实验室可主导什么</th></tr>
+        <tr><td>HCI / 个人信息学</td><td>使用者自有的解释、可编辑标签、自主性事件、交互层安全。</td><td>界面设计、交互日志、用户研究、安全流程、日记式协议。</td></tr>
+        <tr><td>音乐认知 / 神经美学</td><td>声音作为受控探针;期待、熟悉度、可预测性;感质命名。</td><td>刺激设计、聆听协议、音乐特征选取、体验测量。</td></tr>
+        <tr><td>可穿戴传感</td><td>HRV / EDA / 呼吸 / 动作作为个体内生理代理。</td><td>设备选型、信号质量、伪迹标准、同步、可行性分析。</td></tr>
+        <tr><td>情感计算</td><td>可编辑的 AI 假设、非诊断的状态支持、反暗示设计。</td><td>反馈边界、人在回路的解释、偏倚/暗示检查。</td></tr>
+        <tr><td>计算神经科学</td><td>预测误差、跨会话变化、多模态对齐、个体时间序列。</td><td>建模、推断、混合效应设计、事件锁定分析、证伪标准。</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
 
-<section id="materials"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">研究材料包</div><h2>网站只是入口；材料包才让项目进入真实研究合作。</h2></div>
-<div class="card span-6"><div class="stack">
-            <div class="layer"><b>Data files guide / 数据文件说明</b><p><a href="./DATA_FILES_GUIDE.md">DATA_FILES_GUIDE.md</a> — explains which files are future templates and which files are actual preliminary Pause-QDR data.</p></div>
-  <div class="layer"><b>中文协议简报</b><p><a href="./protocol_brief_zh.md">protocol_brief_zh.md</a></p></div>
-  <div class="layer"><b>英文协议简报</b><p><a href="./protocol_brief.md">protocol_brief.md</a></p></div>
-  <div class="layer"><b>未来协议数据字典</b><p><a href="./data_schema.csv">data_schema.csv</a> — 未来研究字段模板，不是静坐前测数据</p></div>
-  <div class="layer"><b>声音刺激模板</b><p><a href="./stimulus_sheet_template.csv">stimulus_sheet_template.csv</a></p></div>
-</div></div>
-<div class="card span-6 secondary"><div class="stack">
-  <div class="layer"><b>中文安全流程</b><p><a href="./safety_flow_zh.md">safety_flow_zh.md</a></p></div>
-  <div class="layer"><b>英文安全流程</b><p><a href="./safety_flow.md">safety_flow.md</a></p></div>
-  <div class="layer"><b>OSF 结构</b><p><a href="./osf_structure.md">osf_structure.md</a></p></div>
-  <div class="layer"><b>参考文献</b><p><a href="./references.bib">references.bib</a></p></div>
-</div></div></div></section>
+<section id="related">
+  <div class="wrap">
+    <p class="sec-eyebrow">相关工作定位</p>
+    <h2>与情感 BCI、神经反馈相邻,但以"参与者自有的校准"为中心。</h2>
+    <p class="sub">BCI-HRP 不声称声音、AI 或神经信号本身是新的。它的贡献在于协议的编排:声音作探针、参与者先预测、现象学报告、可编辑命名,以及把自主性事件当作数据。</p>
+    <div class="grid">
+      <div class="card"><span class="k">相邻领域</span><h3>情感 BCI</h3><p>常用神经/生理/行为信号去估计、分类或适应情感状态。BCI-HRP 转而问:参与者如何预测、报告、修订并拥有"感受到的状态"的意义。</p></div>
+      <div class="card"><span class="k">相邻领域</span><h3>脑机音乐接口(BCMI)</h3><p>常把脑或情感信号映射为音乐反馈/生成。BCI-HRP 把声音首先当作校准的受控探针,而非自动的情绪调控输出。</p></div>
+      <div class="card"><span class="k">相邻领域</span><h3>EEG / fNIRS 音乐-情绪研究</h3><p>常通过效价、唤醒、注意或神经/血流特征分析对音乐的反应。BCI-HRP 增补第一人称预测、行动倾向、对象关系与契合性,作为校准材料。</p></div>
+      <div class="card"><span class="k">相邻领域</span><h3>神经反馈/生物反馈</h3><p>常训练用户走向平静、专注或一致性。BCI-HRP 不为单一"好状态"优化;它检验参与者能否更好地理解并修订自己的情绪-行动结构。</p></div>
+    </div>
+    <div class="note data-clarify">
+      <span class="k">差异化边界</span>
+      <p>不应把项目仅描述为"音乐 + BCI + 情绪调节"——那个空间已经很拥挤。BCI-HRP 更好的定位是:面向非侵入式情感 BCI 的、以参与者为中心的校准协议;可选的 EEG、fNIRS、HRV、EDA 始终是"使用者自有解释工作流"内部的代理,而非凌驾于"隐藏情绪"之上的权威。</p>
+    </div>
+  </div>
+</section>
 
-<section id="safety"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">安全交互流程</div><h2>伦理必须落实为交互，而不能只停留在原则声明。</h2></div>
-<div class="card span-3"><h3>同意门槛</h3><p>用户选择声音家族、强度上限、停止方式、数据分享和 AI 总结许可。</p></div>
-<div class="card span-3"><h3>持续控制</h3><p>Stop / Ground / Volume Down / Skip / Delete 始终可见。</p></div>
-<div class="card span-3"><h3>自动暂停</h3><p>自评不安全、重复停止、不回应、不适上升或实验室阈值触发暂停。</p></div>
-<div class="card span-3 red"><h3>非危机系统</h3><p>高风险表露退出协议，进入实验室批准的人类安全流程。</p></div>
-</div></section>
+<section id="safety">
+  <div class="wrap">
+    <p class="sec-eyebrow">安全交互流程</p>
+    <h2>伦理必须表现为交互,而不只是原则。</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h3>同意门</h3><p>使用者选择声音族、强度上限、停止方式、数据共享,以及是否允许 AI 摘要。</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>常驻控件</h3><p>停止、回到地面、降低音量、跳过、删除——在播放前、中、后始终可见。</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>自动暂停触发</h3><p>不安全的自我报告、反复的停止手势、无响应、不适快速上升,或实验室定义的生理阈值。</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>回到地面模式</h3><p>淡出声音、抑制解释、显示落地提示、提供研究者问询。</p></div></div>
+      <div class="step"><div class="n">5</div><div><h3>不是危机系统</h3><p>这不是紧急检测或治疗。高风险披露离开本协议,遵循实验室批准的人工安全流程。</p></div></div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><span class="k">UI 要求</span><h3>始终可见的退出</h3><p>停止键大于装饰性控件,键盘/触控可达,并被记为有效结果——而非失败。</p></div>
+      <div class="card"><span class="k">UI 要求</span><h3>触发后不作分析</h3><p>若回到地面模式被触发,系统不产生深度解释——只总结使用者自己的安全动作。</p></div>
+      <div class="card"><span class="k">UI 要求</span><h3>自主性即数据</h3><p>拒绝、重命名、停止、删除、跳过都是核心交互事件,不是附属。</p></div>
+    </div>
+  </div>
+</section>
 
-<section id="outreach"><div class="wrap grid"><div class="card feature span-12"><div class="eyebrow">PI 外联策略</div><h2>不要用同一封通用邮件发给所有实验室。</h2><p>项目有同一个协议核心，但不同实验室应该看到不同入口。外联邮件应匹配该实验室的方法学归属。</p></div>
-<div class="card span-12"><p>邮件模板见：<a href="./pi_email_variants.md">pi_email_variants.md</a></p></div></div></section>
+<section id="faq">
+  <div class="wrap">
+    <p class="sec-eyebrow">问答</p>
+    <h2>给合作者的简短回答。</h2>
+    <p class="sub">本节把协议译成直接的问题,但不替代上面的正式研究简报。</p>
+    <div class="qa-list">
+      <div class="qa"><h3>这是治疗或诊断研究吗?</h3><p>不是。BCI-HRP 是非诊断、非治疗的研究提案,不声称临床获益、危机检测或状态诱导。</p></div>
+      <div class="qa"><h3>Phase 0 需要定制 BCI 硬件吗?</h3><p>不需要。Phase 0 是软件协议:自我预测、声音探针、后报告、可编辑命名与自主性事件记录。定制 BCI 硬件属未来方向,首期试点不需要。</p></div>
+      <div class="qa"><h3>什么是自我校准?</h3><p>自我校准被操作化为:探针前预测状态向量与探针后报告状态向量之间预测误差的个体内变化,辅以命名稳定性、感质细粒度与自主性事件等次级测量。</p></div>
+      <div class="qa"><h3>什么是"人类回归"?</h3><p>"人类回归"指把参与者自己的解释保持在中心:AI 摘要可编辑、可拒绝、可删除;生理与神经信号始终是可选代理,而非隐藏真相。</p></div>
+      <div class="qa"><h3>BCI-HRP 是要让参与者感到正面情绪吗?</h3><p>不是。本协议不以诱导正面情绪为目标。它检验参与者能否更好地识别一份感受如何与身体变化、行动倾向、对象关系与情境契合相关联。</p></div>
+      <div class="qa"><h3>什么是情绪-行动校准?</h3><p>指追踪参与者能否跨会话更好地关联身体感受、感受质地、行动倾向、情绪对象与契合性。它是对预测误差分析的补充,不是临床结果声称。</p></div>
+      <div class="qa"><h3>什么是 Pause-QDR?</h3><p>Pause-QDR 是 Phase −1 的"仅暂停"基线。它帮助在测试声音探针之前,识别基线效应、任务需求、环境因素与定性编码类别。</p></div>
+      <div class="qa"><h3>这和传统 BCI 有何不同?</h3><p>传统 BCI 常强调外部任务控制或信号解码(如运动意图、视觉诱发控制)。BCI-HRP 聚焦对内源性体验的解释自主性与情绪-行动校准:人如何预测、命名、修订并拥有对自身内部状态描述的意义。</p></div>
+      <div class="qa"><h3>这不是已被情感 BCI 或神经反馈覆盖了吗?</h3><p>部分相邻,但不等同。BCI-HRP 接近情感 BCI、脑机音乐接口、EEG/fNIRS 音乐-情绪研究与神经反馈。其差异化对象是参与者自有的校准:声音作探针、自我预测、现象学报告、可编辑 AI 命名,以及把拒绝/重命名/编辑/删除当作自主性数据。</p></div>
+      <div class="qa"><h3>合作 PI 能改动什么?</h3><p>合作 PI 可主导实验设计、刺激选取、招募、安全审查、IRB 路径、分析方案与预注册,并可收窄、重命名、拆分或否决核心构念。</p></div>
+    </div>
+  </div>
+</section>
 
-<section id="collaborate"><div class="wrap grid"><div class="card span-12"><div class="eyebrow">合作模型</div><h2>不是请实验室执行一个已经封闭的系统。</h2><div class="split"><div class="mini"><h3>我带来</h3><ul class="clean"><li>Human Return / QDR 构念与用户界面逻辑。</li><li>感质命名提示与解释自主设计。</li><li>声音探针交互原型与叙事设计。</li><li>AI 可编辑、可拒绝、可删除的伦理结构。</li></ul></div><div class="mini"><h3>实验室带来</h3><ul class="clean"><li>方法学严谨、IRB 路径和安全审查。</li><li>传感器选择、信号处理和伪迹标准。</li><li>招募、统计建模和预注册。</li><li>缩小、改名、否定或拆分假设的权力。</li></ul></div></div></div>
-<div class="card feature span-12"><div class="eyebrow">第一请求</div><h2>一次 15 分钟的契合对话。</h2><p>第一次对话不是融资请求，也不是硬件请求，只是判断这个方向更适合成为软件协议、可穿戴可行性试点、HCI 安全研究，还是音乐认知/神经美学项目。</p></div></div></section>
-</main>
-<footer style="padding:34px 0 54px;color:var(--dim);text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase"><div class="wrap">BCI-HRP LAB // Research prototype · non-diagnostic · non-treatment · user-owned interpretation.</div></footer>
+<section id="pause-data">
+  <div class="wrap">
+    <p class="sec-eyebrow">初步 Pause-QDR 数据</p>
+    <h2>在声音探针之前,"暂停"本身必须先被测量。</h2>
+    <div class="body">
+      <p>这份探索性的 N≈10 静态暂停数据<b>不是</b>协议有效性的证据。它是 Phase −1 的可行性材料:表明参与者能完成前后自我报告、产出丰富的感质笔记,并暴露任务需求、环境、无手机、纯暂停效应等混淆。</p>
+    </div>
+    <div class="note data-clarify">
+      <span class="k">数据文件澄清</span>
+      <p><b><code>data_schema.csv</code> 不是静态暂停数据集。</b>它是未来协议的数据字典/字段模板。实际的初步"仅暂停"汇总是 <a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_summary.csv" target="_blank" rel="noopener"><code>pause_qdr_preliminary_summary.csv</code></a>,其解读见 <a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_dataset.md" target="_blank" rel="noopener"><code>pause_qdr_preliminary_dataset.md</code></a>。</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="k">数据类型</span><h3>仅暂停基线</h3><p>约 10–12 分钟暂停日常任务,带前后心情、专注与身体状态评分及开放笔记。</p></div>
+      <div class="card"><span class="k">初步信号</span><h3>身体放松最明显</h3><p>描述性上,N=9 的身体放松均值增益为 2.11;心情与专注变化异质,不应过度声称。</p></div>
+      <div class="card"><span class="k">设计含义</span><h3>加入仅暂停基线</h3><p>未来 Sound-QDR 试点应分离暂停、情境、任务需求、声学与解释自主性效应。</p></div>
+    </div>
+    <div class="note warn">
+      <span class="k">正确用法</span>
+      <p>用这份数据来论证基线设计与定性编码——而非声称冥想功效、临床获益、声音探针功效或生理验证。原始笔记保持私有;下方仅链接匿名化的派生汇总。</p>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:26px">Pause-QDR 文件</p>
+    <div class="files">
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_dataset.md" target="_blank" rel="noopener">pause_qdr_preliminary_dataset.md ↗</a><span>描述性解读与正确定位。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_summary.csv" target="_blank" rel="noopener">pause_qdr_preliminary_summary.csv ↗</a><span>匿名化派生的静态暂停数据汇总。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_limitations.md" target="_blank" rel="noopener">pause_qdr_limitations.md ↗</a><span>这份数据能与不能支撑什么。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_codebook.md" target="_blank" rel="noopener">pause_qdr_codebook.md ↗</a><span>注意、机制、身体、情绪与自主性的初步编码类别。</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="materials">
+  <div class="wrap">
+    <p class="sec-eyebrow">研究材料栈</p>
+    <h2>站点是入口;材料让项目达到"可研究"状态。</h2>
+    <p class="sub">合作草案——协议简报、数据 schema、刺激文档、安全流程、参考文献与开放科学骨架。这些是草案,不是 IRB 批准的文件。</p>
+    <div class="note data-clarify">
+      <span class="k">文件地图</span>
+      <p><b>这里分开两类文件:</b>协议模板(如 <code>data_schema.csv</code>、<code>stimulus_sheet_template.csv</code>);以及实际的初步 Pause-QDR 材料(如 <code>pause_qdr_preliminary_summary.csv</code>、<code>pause_qdr_preliminary_dataset.md</code>、<code>pause_qdr_limitations.md</code>、<code>pause_qdr_codebook.md</code>)。</p>
+    </div>
+    <div class="files">
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/DATA_FILES_GUIDE.md" target="_blank" rel="noopener">DATA_FILES_GUIDE.md ↗</a><span>哪些是未来模板、哪些是实际初步 Pause-QDR 数据。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief.md" target="_blank" rel="noopener">protocol_brief.md ↗</a><span>英文协议简报:研究问题、假设、结果、混淆、安全与实验室决策点。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief_zh.md" target="_blank" rel="noopener">protocol_brief_zh.md ↗</a><span>中文协议简报:研究问题、假设、结果指标、混杂因素、安全边界与实验室决策点。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/data_schema.csv" target="_blank" rel="noopener">data_schema.csv ↗</a><span>未来研究的字段模板——不是已采集的暂停数据。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/stimulus_sheet_template.csv" target="_blank" rel="noopener">stimulus_sheet_template.csv ↗</a><span>声音族、文件哈希、响度、事件、来源、许可、备注。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow.md" target="_blank" rel="noopener">safety_flow.md ↗</a><span>同意门、常驻控件、自动暂停、回到地面模式、不作危机系统的边界。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow_zh.md" target="_blank" rel="noopener">safety_flow_zh.md ↗</a><span>中文安全交互流程。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/osf_structure.md" target="_blank" rel="noopener">osf_structure.md ↗</a><span>建议的 wiki、文件、组件与访问设置。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/references.bib" target="_blank" rel="noopener">references.bib ↗</a><span>起步 BibTeX:内感受、稳态调节、建构情绪、预测加工、个人信息学。</span></div>
+      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/README.md" target="_blank" rel="noopener">README.md ↗</a><span>文件清单与边界声明。</span></div>
+    </div>
+    <div class="note"><p style="font-size:13px; color:var(--muted); margin:0">所有材料都是合作草案,用于让首次 PI 对话更具体——而非绕过实验室审查、预注册、IRB 或安全批准。任何涉及人类被试的研究都必须与合作实验室一起重新设计并获批。</p></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <p class="sec-eyebrow">关于研究者</p>
+    <h2>是谁在提这件事。</h2>
+    <div class="body">
+      <p style="font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px">魏珏然(Wei Jueran)· Mellow</p>
+      <p>宾夕法尼亚大学教育研究生院 学习科学与技术 硕士研究者。我的工作横跨学习科学、人机交互与声音研究,核心是<b>解释自主性</b>:当系统——传感器、AI——试图为人命名其身体与认知状态时,人如何保有对这些状态意义的作者权。</p>
+      <p>就本协议而言,我不可替代的贡献是<b>声音设计</b>——把特定年代与流派的声学材料当作受控探针——并结合<b>反暗示的交互伦理</b>:让 AI 的假设始终可编辑、可拒绝,绝不覆盖使用者自己的叙述。</p>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:26px">所属与联系</p>
+    <div class="contact">
+      <div class="row"><div class="k">项目</div><div class="v">宾夕法尼亚大学教育研究生院 学习科学与技术 M.S.Ed. · 2024.08–2026.12(预计)</div></div>
+      <div class="row"><div class="k">导师</div><div class="v">Susan A. Yoon</div></div>
+      <div class="row"><div class="k">邮箱</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
+      <div class="row"><div class="k">CV</div><div class="v"><a href="https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view" target="_blank" rel="noopener">查看 CV(PDF)↗</a></div></div>
+    </div>
+    <div class="note"><p style="font-size:13px; color:var(--muted); margin:0">这是一份独立研究提案。它不代表任何实验室,且在合作实验室的 IRB 批准之前不采集任何被试数据。</p></div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <p class="sec-eyebrow">写作 / 工作论文</p>
+    <h2>可供你评估思路的材料。</h2>
+    <p class="sub">工作论文,按状态标注。除非明确标注,以下均未经同行评审。</p>
+    <div class="grid">
+      <div class="card">
+        <span class="k">工作论文</span>
+        <h3>学习分析中的解释性自决</h3>
+        <p>探讨学习者能否保有对"关于自己的分析"的解释权,而不被系统标签所定义。直接驱动了本协议中可编辑命名与解释自主性的设计。<br><br><i>状态:撰写中 · 草案可应请求提供。</i></p>
+      </div>
+      <div class="card">
+        <span class="k">研究概念</span>
+        <h3>声学熟悉度记忆回归(AFMR)</h3>
+        <p>一个针对老年人"先熟悉、后回忆"的窄范围、非指涉性声学线索概念,带反暗示保障——是同一"声音探针 + 解释自主性"逻辑的聚焦应用。<br><br><i>状态:概念笔记发展中 · 草案可应请求提供。</i></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="collaborate">
+  <div class="wrap">
+    <p class="sec-eyebrow">合作模式</p>
+    <h2>不是请实验室去执行一个成品系统。</h2>
+    <div class="two">
+      <div class="panel">
+        <h3>我带来什么</h3>
+        <ul class="plain">
+          <li>"人类回归 / 自我校准"构念与面向用户的交互逻辑。</li>
+          <li>感质命名提示与解释自主性设计。</li>
+          <li>声音探针交互原型与刺激设计。</li>
+          <li>一种伦理立场:AI 假设可编辑、可拒绝、可删除。</li>
+          <li>搭建与分析工作。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>实验室带来什么</h3>
+        <ul class="plain">
+          <li>方法严谨性、IRB 路径与安全审查。</li>
+          <li>传感器选型、信号处理、伪迹标准。</li>
+          <li>招募、统计建模、预注册。</li>
+          <li>收窄、重命名、否决或拆分假设的权力。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sec-eyebrow" style="margin-top:34px">第一步请求</p>
+    <h2>一次 15 分钟的契合通话。</h2>
+    <div class="body">
+      <p>第一次会面不是要经费、也不是要硬件。它是一次契合通话,用来判断这件事应作为 Phase 0 软件协议、可穿戴可行性试点、HCI 安全研究、音乐认知/神经美学研究,还是建模项目——或者这个框法是否应被否决。</p>
+    </div>
+    <div class="briefwrap">
+      <button class="btn" id="copyBottom" type="button">复制邮件简报</button>
+      <pre id="brief">主题:实验室合作适配通话 — 人类回归协议(宾大 GSE 独立提案)
+
+尊敬的 [教授姓名]:
+
+我是宾夕法尼亚大学教育研究生院的硕士研究者(学习科学与技术,导师 Susan Yoon)。我在推进一个独立的、面向实验室的提案——人类回归协议(Human Return Protocol)——它不是消费级设备,也不是已有实验室资助的研究。这不是另一个脑解码器,而是一个以参与者为中心的校准协议:最终解释权在用户,而不是信号。可检验的问题是:简短的声音探针 + 自我预测与可编辑命名步骤,能否支持个体内的自我校准与情绪-行动校准——通过跨会话的预测误差、行动倾向/对象关系报告,以及排除记忆效应的迁移控制来测量;自主神经/神经信号仅作可选代理。
+
+我已起草协议、数据 schema、刺激材料文档与一套反暗示的安全流程,并将承担搭建与分析工作。我在寻找一个持有 IRB 的实验室来承载一个小规模的 Phase 0 可行性试点——并拥有收窄、重命名或否决该构念的权力。
+
+能否占用您 15 分钟,看看是否契合?
+
+此致
+Mellow Wei(魏珏然)
+jueran@upenn.edu
+CV(PDF): https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view</pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© 2026 魏珏然 / Mellow Wei. BCI-HRP // 人类回归协议 · 协议为先 · 不诊断 · 不治疗</span>
+    <span><a href="#top">回到顶部 ↑</a> · <a href="https://mellowwei.github.io/BCI-HRP-Lab/index.html">EN</a></span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var briefText = document.getElementById('brief').innerText;
+    function copy(btn){
+      var done = function(){ var t = btn.textContent; btn.textContent = '已复制 ✓';
+        setTimeout(function(){ btn.textContent = t; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(briefText).then(done, function(){ fallback(); done(); });
+      } else { fallback(); done(); }
+      function fallback(){ var ta=document.createElement('textarea'); ta.value=briefText;
+        document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){}
+        document.body.removeChild(ta); }
+    }
+    var a=document.getElementById('copyTop'), b=document.getElementById('copyBottom');
+    if(a) a.addEventListener('click', function(){ copy(a); });
+    if(b) b.addEventListener('click', function(){ copy(b); });
+  })();
+</script>
 </body>
 </html>
