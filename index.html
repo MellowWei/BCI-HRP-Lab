@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- BCI-HRP Lab index: PI-first v2.1; added Why nav, complete materials link map, mobile nav fix, and clearer file separation. -->
+<!-- BCI-HRP Lab index: PI-first v2.2; adds affective-action calibration layer from emotion-action / intentionality lecture, without changing PI-first structure. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>BCI-HRP // The Human Return Protocol — Lab Collaboration Brief</title>
-<meta name="description" content="BCI-HRP // The Human Return Protocol: a PI-facing research protocol testing whether sound probes, self-prediction, and editable AI naming improve within-person self-calibration. Independent research proposal, University of Pennsylvania GSE." />
+<meta name="description" content="BCI-HRP // The Human Return Protocol: a PI-facing research protocol testing whether sound probes, self-prediction, phenomenological reporting, and editable AI naming support within-person self-calibration and affective-action calibration. Independent research proposal, University of Pennsylvania GSE." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mellowwei.github.io/BCI-HRP-Lab/" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml" />
@@ -138,7 +138,7 @@
   .panel h3{font-size:14px; margin:0 0 9px; font-family:var(--mono); font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--accent)}
 
 
-  /* AI-readable FAQ */
+  /* FAQ */
   .qa-list{display:grid; gap:10px; margin:8px 0 0}
   .qa{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
   .qa h3{font-size:14.5px; margin:0 0 5px}
@@ -183,7 +183,6 @@
       <a href="#pause-data">Pause data</a>
       <a href="#faq">FAQ</a>
       <a href="#materials">Materials</a>
-      <a href="#ai-readable">AI docs</a>
       <a href="#safety">Safety</a>
       <a href="#writing">Writing</a>
       <a href="#about">About</a>
@@ -198,7 +197,7 @@
     <p class="eyebrow">Lab collaboration brief · independent research proposal</p>
     <h1><span class="title-bci">BCI-HRP</span> // The Human Return Protocol</h1>
     <p class="byline"><b>Wei Jueran (魏珏然) · Mellow</b> — M.S.Ed. in Learning Sciences and Technologies, University of Pennsylvania GSE</p>
-    <p class="lede">A protocol-first, lab-facing research proposal testing whether sound probes, self-prediction, and editable AI naming can improve within-person self-calibration — with autonomic and neural signals as optional proxies, not as hidden truth.</p>
+    <p class="lede">A protocol-first, lab-facing research proposal testing whether sound probes, self-prediction, phenomenological reporting, and editable AI naming can support within-person self-calibration and affective-action calibration — with autonomic and neural signals as optional proxies, not as hidden truth.</p>
     <div class="signal-line" aria-hidden="true"></div>
     <p class="microstatus">Current scope: Phase −1 Pause-QDR baseline + Phase 0 Sound-QDR software protocol. Custom BCI hardware is future-facing, not required for the pilot.</p>
     <div class="chips">
@@ -222,7 +221,7 @@
     <p class="sec-eyebrow">One testable claim</p>
     <h2>A single falsifiable question, before anything else.</h2>
     <div class="claim">
-      <p class="q">Does a sound-probe + self-prediction + editable-naming protocol improve within-person self-calibration — and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
+      <p class="q">Does a sound-probe + self-prediction + phenomenological report + editable-naming protocol improve within-person self-calibration and affective-action calibration — and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
     </div>
     <div class="body">
       <p><b>Research stance.</b> The first study is feasibility and construct calibration, not clinical validation. “Self-calibration” and “Human Return” are candidate constructs — a partner lab is free to narrow, rename, reject, or revise them before preregistration.</p>
@@ -255,6 +254,11 @@
       <div class="card"><span class="k">Gap 03</span><p>Too much sound-as-mood-control; too little sound-as-probe with falsifiable outcomes.</p></div>
       <div class="card"><span class="k">Gap 04</span><p>Too much ethics rhetoric; too little interaction-level safety design.</p></div>
     </div>
+
+    <div class="note data-clarify">
+      <span class="k">Affective-action stance</span>
+      <p>BCI-HRP does not treat emotion as a hidden internal state, a universal neural fingerprint, or a score to be made simply more positive. It treats felt state as an embodied, action-oriented relation to the world. Sound probes are used as repeatable situations in which participants can notice bodily feeling, track action tendency, identify emotional affordances, and revise the meaning of their own state. The AI layer functions as an editable affective scaffold, not as a diagnostic authority.</p>
+    </div>
   </div>
 </section>
 
@@ -268,9 +272,9 @@
       <div class="step"><div class="n">01</div><div><h3>Sound event</h3><p>The actual stimulus: a fixed audio file with documented acoustic properties and event markers.</p></div></div>
       <div class="step"><div class="n">02</div><div><h3>Sensory contact</h3><p>How the sound enters — hearing, bodily resonance, respiration coupling, attentional capture.</p></div></div>
       <div class="step"><div class="n">03</div><div><h3>Autonomic / body response</h3><p>HRV, EDA, movement, temperature, and body self-report as within-person response traces.</p></div></div>
-      <div class="step"><div class="n">04</div><div><h3>Affective construction</h3><p>How bodily change becomes felt pressure, relief, activation, safety, or overwhelm.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>Affective-action construction</h3><p>How bodily change becomes felt pressure, relief, activation, safety, or overwhelm — and how it opens or closes possible actions.</p></div></div>
       <div class="step"><div class="n">05</div><div><h3>Cognitive prediction</h3><p>What the user expected before the sound, and whether prediction error decreases over sessions.</p></div></div>
-      <div class="step"><div class="n">06</div><div><h3>Meaning making</h3><p>Memory, future direction, autobiographical resonance, or value-significance notes.</p></div></div>
+      <div class="step"><div class="n">06</div><div><h3>Object relation and fittingness</h3><p>What the felt state is about, what it makes possible, and whether it fits the situation, object, and value relation.</p></div></div>
       <div class="step"><div class="n">07</div><div><h3>Interpretive agency</h3><p>Accept, edit, reject, rename, delete, stop, ground, and skip — as user-owned interpretive control.</p></div></div>
     </div>
 
@@ -348,6 +352,23 @@
       <div class="card"><span class="k">Agency</span><h3>Interpretive agency</h3><p>Stop, Ground, Delete, Reject, Rename, Skip, and Edit recorded as primary events, not UI afterthoughts.</p></div>
     </div>
 
+    <p class="sec-eyebrow" style="margin-top:34px">Affective-action calibration dimensions</p>
+    <h2 style="font-size:19px">Emotion is measured as a five-dimensional structure, not as a hidden inner fingerprint.</h2>
+    <div class="scroll">
+      <table class="tbl wide">
+        <tr><th>Dimension</th><th>What it captures</th><th>Candidate fields</th></tr>
+        <tr><td>Bodily feeling</td><td>Breath, tension, heaviness, warmth, numbness, fatigue, relaxation, or body-return.</td><td>body_tension, body_return, breath_note, movement_note</td></tr>
+        <tr><td>Felt quality</td><td>The texture and tone of experience: pressure, brightness, flatness, sharpness, warmth, drift, clarity.</td><td>felt_quality, qualia_terms, emotional_pressure, clarity</td></tr>
+        <tr><td>Action tendency</td><td>What the state makes the participant want to do: approach, avoid, stop, write, speak, rest, move, contact, ask for help.</td><td>action_tendency, action_readiness</td></tr>
+        <tr><td>Object / relation</td><td>What the emotion is about: a person, task, place, body part, future, loss, threat, opportunity, or value relation.</td><td>material_object, formal_object, core_relational_theme</td></tr>
+        <tr><td>Fittingness</td><td>Whether the felt state fits the situation, object, and value relation — not whether it is simply positive.</td><td>emotion_fit, situation_fit, value_object_fit, affordance_update</td></tr>
+      </table>
+    </div>
+    <div class="note">
+      <span class="k">Measurement boundary</span>
+      <p>These dimensions are proposed as exploratory and partner-lab revisable. They supplement, rather than replace, prediction-error analysis and optional physiological/neural proxies.</p>
+    </div>
+
     <p class="sec-eyebrow" style="margin-top:34px">Minimal data schema</p>
     <div class="scroll">
       <table class="tbl wide">
@@ -355,7 +376,7 @@
         <tr><td>Session</td><td>participant_hash, session_id, session_date, consent_version</td><td>Track repeated sessions without exposing identity.</td></tr>
         <tr><td>Stimulus</td><td>stimulus_id, file_hash, loudness_norm, event_markers, playback_onset</td><td>Keep sound probes fixed and reproducible.</td></tr>
         <tr><td>Prediction</td><td>pre_tension, pre_clarity, pre_body_return, pre_action_urge, confidence</td><td>Compute prediction error.</td></tr>
-        <tr><td>Post-report</td><td>post_vector, free_text, qualia_terms, action_tendency, meaning_note</td><td>Capture subjective change without claiming hidden truth.</td></tr>
+        <tr><td>Post-report</td><td>post_vector, free_text, qualia_terms, action_tendency, material_object, formal_object, emotion_fit, situation_fit, affordance_update, meaning_note</td><td>Capture subjective and affective-action structure without claiming hidden truth.</td></tr>
         <tr><td>Agency</td><td>stop, ground, reject, rename, edit, delete, skip, timestamp</td><td>Measure interpretive control and safety behavior.</td></tr>
         <tr><td>Optional sensors</td><td>hrv_rmssd, eda_scr, respiration_proxy, temp, motion, eeg_quality_flag</td><td>Use proxies only when data quality permits.</td></tr>
       </table>
@@ -496,17 +517,21 @@
 <!-- FAQ -->
 <section id="faq">
   <div class="wrap">
-    <p class="sec-eyebrow">AI-readable FAQ</p>
-    <h2>Short answers for PI collaborators, search engines, and AI agents.</h2>
+    <p class="sec-eyebrow">FAQ</p>
+    <h2>Short answers for collaborators.</h2>
     <p class="sub">This section translates the protocol into direct questions without replacing the formal research brief above.</p>
     <div class="qa-list">
       <div class="qa"><h3>Is this a treatment or diagnostic study?</h3><p>No. BCI-HRP is a non-diagnostic, non-treatment research proposal. It does not claim clinical benefit, crisis detection, or state induction.</p></div>
       <div class="qa"><h3>Does Phase 0 require custom BCI hardware?</h3><p>No. Phase 0 is a software protocol: self-prediction, sound probe, post-report, editable naming, and agency-event logging. Custom BCI hardware is future-facing and not required for the first pilot.</p></div>
       <div class="qa"><h3>What is self-calibration?</h3><p>Self-calibration is operationalized as within-person change in prediction error between pre-probe predicted state vectors and post-probe reported state vectors, supported by secondary measures such as naming stability, qualia granularity, and agency events.</p></div>
       <div class="qa"><h3>What is Human Return?</h3><p>Human Return refers to keeping the participant's own interpretation central: AI summaries are editable, rejectable, and deletable; physiological and neural signals remain optional proxies rather than hidden truth.</p></div>
+
+      <div class="qa"><h3>Does BCI-HRP aim to make participants feel positive emotion?</h3><p>No. The protocol does not aim to induce positive emotion. It tests whether participants can better identify how a felt state relates to bodily change, action tendency, object relation, and situation fit.</p></div>
+      <div class="qa"><h3>What is affective-action calibration?</h3><p>Affective-action calibration means tracking whether a participant can better relate bodily feeling, felt quality, action tendency, emotional object, and fittingness across sessions. It is a supplement to prediction-error analysis, not a clinical outcome claim.</p></div>
+
       <div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is a Phase −1 pause-only baseline. It helps identify baseline effects, task demand, environmental factors, and qualitative coding categories before testing sound probes.</p></div>
       <div class="qa"><h3>Is data_schema.csv collected pause data?</h3><p>No. data_schema.csv is a future protocol data dictionary / field template. The actual preliminary static-pause summary is pause_qdr_preliminary_summary.csv, with interpretation in pause_qdr_preliminary_dataset.md.</p></div>
-      <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency over endogenous experience: how people predict, name, revise, and own their internal state descriptions.</p></div>
+      <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency and affective-action calibration over endogenous experience: how people predict, name, revise, and own the meaning of their internal state descriptions.</p></div>
       <div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
     </div>
   </div>
@@ -532,38 +557,9 @@
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow_zh.md" target="_blank" rel="noopener">safety_flow_zh.md ↗</a><span>中文安全交互流程。</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/osf_structure.md" target="_blank" rel="noopener">osf_structure.md ↗</a><span>Suggested wiki, files, components, and access settings.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/references.bib" target="_blank" rel="noopener">references.bib ↗</a><span>Starter BibTeX: interoception, allostasis, constructed emotion, predictive processing, personal informatics.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pi_email_variants.md" target="_blank" rel="noopener">pi_email_variants.md ↗</a><span>PI outreach variants by lab type.</span></div>
       <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/README.md" target="_blank" rel="noopener">README.md ↗</a><span>File list and boundary statement.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/llms.txt" target="_blank" rel="noopener">llms.txt ↗</a><span>AI-readable project summary, boundaries, key concepts, and file map.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/sitemap.xml" target="_blank" rel="noopener">sitemap.xml ↗</a><span>Standard URL map for search engines and crawlers.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/robots.txt" target="_blank" rel="noopener">robots.txt ↗</a><span>Crawler access and sitemap pointer.</span></div>
-      <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/ai-index.md" target="_blank" rel="noopener">ai-index.md ↗</a><span>Extended AI-agent reading guide and FAQ.</span></div>
     </div>
     <div class="note"><p style="font-size:13px; color:var(--muted); margin:0">All materials are collaboration drafts meant to make the first PI conversation concrete — not to bypass lab review, preregistration, IRB, or safety approval. Any study with human participants must be redesigned and approved with the partner lab.</p></div>
-  </div>
-</section>
-
-
-<!-- AI READABLE -->
-<section id="ai-readable">
-  <div class="wrap">
-    <p class="sec-eyebrow">AI-readable deployment layer</p>
-    <h2>Files that help crawlers, AI agents, and collaborators understand the project correctly.</h2>
-    <p class="sub">These files do not turn the project into a SaaS product. They make the current GitHub Pages research site easier to parse, cite, and audit.</p>
-    <div class="grid">
-      <div class="card"><span class="k">Required</span><h3>sitemap.xml</h3><p>Lists public pages and research-material URLs so crawlers can discover the site structure.</p></div>
-      <div class="card"><span class="k">Recommended</span><h3>llms.txt</h3><p>Summarizes the project for language models: what it is, what it is not, phases, constructs, materials, and safety boundaries.</p></div>
-      <div class="card"><span class="k">Recommended</span><h3>robots.txt</h3><p>Allows crawling and points crawlers to the sitemap. It is not a copyright enforcement mechanism.</p></div>
-      <div class="card"><span class="k">Optional</span><h3>ai-index.md</h3><p>Provides an extended reading guide for AI agents and human reviewers.</p></div>
-    </div>
-    <div class="note data-clarify">
-      <span class="k">Future machine-readable interface candidates</span>
-      <p>No MCP server, API, or SaaS feature is currently implemented. Future candidates may include session-export validation, stimulus metadata validation, agency-event log validation, and dataset-schema checking. These remain future research/product directions, not current operational claims.</p>
-    </div>
-    <div class="note">
-      <span class="k">Static hosting note</span>
-      <p>On plain GitHub Pages, existing files should resolve normally, missing files should use a 404 page, and advanced rate-limit behavior such as 429 requires a separate backend, proxy, or CDN layer.</p>
-    </div>
   </div>
 </section>
 
@@ -605,7 +601,7 @@
 
 Dear Professor [Name],
 
-I'm a master's researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I'm developing an independent lab-facing proposal — the Human Return Protocol — rather than a consumer device or lab-sponsored study. The testable question is whether brief sound probes plus a self-prediction step improve within-person self-calibration, measured as cross-session prediction error with transfer controls that rule out memorization; autonomic/neural signals are optional proxies.
+I'm a master's researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I'm developing an independent lab-facing proposal — the Human Return Protocol — rather than a consumer device or lab-sponsored study. The testable question is whether brief sound probes plus a self-prediction and editable-naming step support within-person self-calibration and affective-action calibration, measured through cross-session prediction error, action-tendency/object-relation reports, and transfer controls that rule out memorization; autonomic/neural signals are optional proxies.
 
 I have a drafted protocol, data schema, stimulus documentation, and an anti-suggestion safety flow, and I'd do the build and analysis. I'm looking for an IRB-holding lab to host a small Phase 0 feasibility pilot — and the authority to narrow, rename, or reject the construct.
 
