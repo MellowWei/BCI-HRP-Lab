@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- BCI-HRP Lab index: PI-first v3.4; adds early partner-lab value signal while keeping full lab gains section after Lab fit. -->
+<!-- BCI-HRP Lab index: PI-first v3.5; removes public email-template block and keeps concise first-ask contact section. -->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -165,7 +165,7 @@
 </div>
 <div class="cta">
 <a class="btn" href="#claim">Read the 3-min brief</a>
-<button class="btn btn-ghost" id="copyTop" type="button">Copy email brief</button>
+
 </div>
 </div>
 </header>
@@ -732,28 +732,17 @@
 <p class="sec-eyebrow" style="margin-top:34px">First ask</p>
 <h2>A 15-minute fit call.</h2>
 <div class="body">
-<p>The first meeting is not a funding ask and not a hardware ask. It is a fit call to decide whether this belongs as a Phase 0 software protocol, a wearable feasibility pilot, an HCI safety study, a music-cognition / neuroaesthetics study, or a modeling project — and to discuss whether the division of work is realistic for the lab.</p>
+<p>I am looking for a 15-minute fit call to determine whether BCI-HRP should be narrowed into a Phase 0 HCI, personal informatics, music cognition, affective computing, or wearable-sensing feasibility study.</p>
+<p>This is not a funding ask or a hardware ask. The goal is to test fit, clarify methodological scope, and decide whether the construct should be narrowed, renamed, or rejected.</p>
 </div>
-<div class="briefwrap">
-<button class="btn" id="copyBottom" type="button">Copy email brief</button>
-<pre id="brief">Subject: Fit call: Phase 0 sound-probe self-calibration study (Penn GSE)
-
-Dear Professor [Name],
-
-I’m a master’s student at Penn GSE working on a protocol-first study: can sound probes + self-prediction + editable AI naming improve within-person self-calibration beyond ordinary pause?
-
-Phase 0 would be small (N=5–12), software-only, non-clinical, and hardware-free, with a pre-specified analysis order and explicit falsification criteria. This is not another brain decoder or emotion classifier: AI labels are editable hypotheses, and reject / rename / edit / delete actions are treated as agency data.
-
-I would lead the protocol software, sound-probe design, data schema, analysis, and manuscript drafting. I’m looking for a partner lab that can provide IRB oversight, recruitment access, methodological guidance, and safety review, while retaining full authority to narrow, rename, or reject the construct.
-
-Would you have 15 minutes to see whether this could fit as a Phase 0 HCI / personal informatics / music cognition feasibility study in your lab’s methodological frame?
-
-Implementation-specific details, lab-resource questions, and IP / ownership boundaries can be clarified after an initial fit call.
-
-Thank you,
-Mellow Wei
-jueran@upenn.edu
-CV (PDF): https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view</pre>
+<div class="contact" style="margin-top:14px">
+<div class="row"><div class="k">Contact</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
+<div class="row"><div class="k">Project brief</div><div class="v"><a href="https://mellowwei.github.io/BCI-HRP-Lab/index.html" target="_blank" rel="noopener">BCI-HRP // Human Return Protocol ↗</a></div></div>
+<div class="row"><div class="k">CV</div><div class="v"><a href="https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view" target="_blank" rel="noopener">View CV (PDF) ↗</a></div></div>
+</div>
+<div class="note">
+<span class="k">Boundary</span>
+<p>Implementation-specific details, lab-resource questions, and IP / ownership boundaries can be clarified after an initial fit call.</p>
 </div>
 </div>
 </section>
@@ -763,23 +752,6 @@ CV (PDF): https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view
 <span><a href="#top">Back to top ↑</a> · <a href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html">中文</a></span>
 </div>
 </footer>
-<script>
-  (function(){
-    var briefText = document.getElementById('brief').innerText;
-    function copy(btn){
-      var done = function(){ var t = btn.textContent; btn.textContent = 'Copied ✓';
-        setTimeout(function(){ btn.textContent = t; }, 1600); };
-      if (navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(briefText).then(done, function(){ fallback(); done(); });
-      } else { fallback(); done(); }
-      function fallback(){ var ta=document.createElement('textarea'); ta.value=briefText;
-        document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){}
-        document.body.removeChild(ta); }
-    }
-    var a=document.getElementById('copyTop'), b=document.getElementById('copyBottom');
-    if(a) a.addEventListener('click', function(){ copy(a); });
-    if(b) b.addEventListener('click', function(){ copy(b); });
-  })();
-</script>
+
 </body>
 </html>
