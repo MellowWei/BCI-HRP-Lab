@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- BCI-HRP Lab zh v3.2: 修复 counterbalancing 重复、优化邮件主题、细化长期转化副标题。 -->
+<!-- BCI-HRP Lab zh v3.4: 在前部加入合作实验室价值提示,完整收益板块仍保留在实验室契合之后。 -->
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
@@ -136,6 +136,7 @@
 <a href="#validity">效度</a>
 <a href="#methods">方法</a>
 <a href="#fit">实验室契合</a>
+<a href="#lab-gains">实验室收益</a>
 <a href="#related">相关工作</a>
 <a href="#safety">安全</a>
 <a href="#faq">问答</a>
@@ -250,6 +251,12 @@
 <span class="k">操作性差异</span>
 <p>BCI-HRP 不问系统能否推断用户的"真实情绪"。它问的是:一个结构化协议能否改善参与者对自身身体-情绪-行动状态的预测、描述、修订与意义归属能力。</p>
 </div>
+
+<div class="note data-clarify">
+<span class="k">对合作实验室</span>
+<p>这被设计为一个低风险的 Phase 0 试点:有可复用协议材料、明确失败条件,并围绕情感系统中的解释自主性提出一个可发表研究问题。完整的合作实验室收益说明放在"实验室契合"之后。</p>
+</div>
+
 </div>
 </section>
 
@@ -526,6 +533,26 @@
 </div>
 </div>
 </section>
+
+<section id="lab-gains">
+<div class="wrap">
+<p class="sec-eyebrow">合作实验室能获得什么</p>
+<h2>一个低风险试点、一套可复用协议、一个可发表问题。</h2>
+<p class="sub">合作实验室不是被要求验证一个成品发明。这个合作提供的是一个低风险的 Phase 0 研究机会:仅软件、非临床、带明确失败条件、带仅暂停基线,并能为 HCI、个人信息学、情感计算或音乐认知提供一个以参与者为中心的新研究问题。</p>
+<div class="grid">
+<div class="card"><span class="k">具体试点</span><h3>低成本 Phase 0 研究</h3><p>一个小规模可行性研究,可在预注册前被收窄、重命名或否决;失败模式也会被视为有用发现。</p></div>
+<div class="card"><span class="k">可复用材料</span><h3>协议 + schema + 刺激框架</h3><p>Sound-QDR 会话逻辑、可导出数据 schema、刺激材料元数据、自主性事件日志与构念效度检查。</p></div>
+<div class="card"><span class="k">发表角度</span><h3>情感系统中的解释自主性</h3><p>一个可发表研究问题:情感 AI / BCI 系统如何保留参与者自有解释,而不是只优化分类。</p></div>
+<div class="card"><span class="k">未来研究线</span><h3>可穿戴 / 神经影像 / AI 反馈扩展</h3><p>如果 Phase 0 有前景,实验室可把协议延展到可穿戴代理、EEG/fNIRS 聆听研究或 AI 反馈伦理。</p></div>
+<div class="card"><span class="k">合作者贡献</span><h3>设计、搭建、分析、写作</h3><p>我带来构念、声音探针设计、软件实现、数据结构、分析工作与论文初稿劳动。</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">交换关系</span>
+<p>预期交换关系很清楚:我带来候选构念、原型逻辑、声音设计、实现劳动、分析与写作;实验室带来方法严谨性、IRB 路径、招募渠道、安全审查,以及重塑研究的权力。</p>
+</div>
+</div>
+</section>
+
 <section id="related">
 <div class="wrap">
 <p class="sec-eyebrow">相关工作定位</p>
@@ -677,32 +704,34 @@
 <section id="collaborate">
 <div class="wrap">
 <p class="sec-eyebrow">合作模式</p>
-<h2>不是请实验室去执行一个成品系统。</h2>
+<h2>这是分工合作,不是请求实验室背书。</h2>
 <div class="two">
 <div class="panel">
 <h3>我带来什么</h3>
 <ul class="plain">
-<li>"人类回归 / 自我校准"构念与面向用户的交互逻辑。</li>
-<li>感质命名提示与解释自主性设计。</li>
-<li>声音探针交互原型与刺激设计。</li>
-<li>一种伦理立场:AI 假设可编辑、可拒绝、可删除。</li>
-<li>搭建与分析工作。</li>
+<li>"人类回归 / 自我校准"构念与解释自主性交互逻辑。</li>
+<li>声音探针刺激设计与感质命名提示框架。</li>
+<li>协议软件实现、数据 schema 与可导出的会话日志。</li>
+<li>初步 Pause-QDR 基线材料与定性编码框架。</li>
+<li>数据分析、可视化与论文初稿的主导工作。</li>
 </ul>
 </div>
 <div class="panel">
-<h3>实验室带来什么</h3>
+<h3>合作实验室提供什么</h3>
 <ul class="plain">
-<li>方法严谨性、IRB 路径与安全审查。</li>
-<li>传感器选型、信号处理、伪迹标准。</li>
-<li>招募、统计建模、预注册。</li>
-<li>收窄、重命名、否决或拆分假设的权力。</li>
+<li>IRB 监督、安全审查与伦理审批路径。</li>
+<li>被试招募渠道,例如被试池、课程学分、实验室邮件列表或获批招募平台。</li>
+<li>如有需要,提供线下实验空间与设备。</li>
+<li>在研究设计、统计、条件平衡与预注册上的方法学指导。</li>
+<li>根据实验室能力,提供研究助理或 lab manager 对实验运行与数据处理的支持。</li>
+<li>为论文发表、会议展示与后续基金申请提供机构语境。</li>
 </ul>
 </div>
 </div>
 <p class="sec-eyebrow" style="margin-top:34px">第一步请求</p>
 <h2>一次 15 分钟的契合通话。</h2>
 <div class="body">
-<p>第一次会面不是要经费、也不是要硬件。它是一次契合通话,用来判断这件事应作为 Phase 0 软件协议、可穿戴可行性试点、HCI 安全研究、音乐认知/神经美学研究,还是建模项目——或者这个框法是否应被否决。</p>
+<p>第一次会面不是要经费、也不是要硬件。它是一次契合通话,用来判断这件事应作为 Phase 0 软件协议、可穿戴可行性试点、HCI 安全研究、音乐认知/神经美学研究,还是建模项目——并讨论这种分工对实验室是否现实。</p>
 </div>
 <div class="briefwrap">
 <button class="btn" id="copyBottom" type="button">复制邮件简报</button>
@@ -714,7 +743,7 @@
 
 Phase 0 会是小规模(N=5–12)、仅软件、非临床、无硬件需求的可行性试点,并预先设定分析顺序与失败/证伪标准。这不是另一个脑解码器或情绪分类器:AI 标签只是可编辑假设,拒绝 / 重命名 / 编辑 / 删除会被视为自主性数据。
 
-我可以承担搭建与分析工作。我希望寻找一个持有 IRB 的实验室提供方法指导、安全审查,并拥有收窄、重命名或否决该构念的权力。
+我可以主导协议软件、声音探针设计、数据 schema、分析与论文初稿。我希望寻找一个能提供 IRB 监督、招募渠道、方法学指导与安全审查的合作实验室,并保留收窄、重命名或否决该构念的完整权力。
 
 能否占用您 15 分钟,看看它是否适合作为您实验室方法框架下的 Phase 0 HCI / 个人信息学 / 音乐认知可行性研究?
 
