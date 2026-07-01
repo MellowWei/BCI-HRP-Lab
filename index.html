@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- BCI-HRP Lab index: PI-first v2.9; shortened and sharpened email brief for PI outreach. -->
+<!-- BCI-HRP Lab index: PI-first v3.2; fixes counterbalancing duplicate, tightens email subject, and refines translational subtitle. -->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -129,7 +129,7 @@
 <a href="#claim">Claim</a>
 <a href="#research-questions">RQs</a>
 <a href="#positioning">Positioning</a>
-<a href="#invention">Invention</a>
+<a href="#translation">Pathway</a>
 <a href="#why">Why</a>
 <a href="#protocol">Protocol</a>
 <a href="#pilot">Pilot</a>
@@ -253,42 +253,7 @@
 </div>
 </div>
 </section>
-<section id="invention">
-<div class="wrap">
-<p class="sec-eyebrow">Long-range invention pathway</p>
-<h2>From lab protocol to interoceptive calibration system.</h2>
-<p class="sub">The current PI-facing study validates the protocol, not a finished product. The long-range invention is a participant-owned interoceptive and affective-action calibration system: not a meditation app, not an emotion detector, and not a brain decoder.</p>
-<div class="claim">
-<p class="q">Meditation trains attention and regulation; BCI-HRP trains interoceptive prediction, bodily-affective awareness, and interpretive agency.</p>
-</div>
-<div class="grid">
-<div class="card">
-<span class="k">Phase 0 product skeleton</span>
-<h3>Phone app + ordinary headphones</h3>
-<p>Runs the core protocol: sound probe, pre-prediction, post-report, editable AI naming, agency events, and exportable session data.</p>
-</div>
-<div class="card">
-<span class="k">Phase 1 wearable layer</span>
-<h3>Wristband as body-reference prompt</h3>
-<p>HRV, EDA, skin temperature, and motion are used as prompts for self-observation, not as direct emotion labels.</p>
-</div>
-<div class="card">
-<span class="k">Phase 2 interaction layer</span>
-<h3>AI headphones as probe interface</h3>
-<p>Supports calibrated playback, voice or touch prediction/report, safe exit, and grounding mode. Sound remains a probe, not a treatment stimulus.</p>
-</div>
-<div class="card">
-<span class="k">Phase 3 research layer</span>
-<h3>Optional head patch for lab contexts</h3>
-<p>EEG / fNIRS can be used to study rapid auditory response, rhythm following, and slower hemodynamic state changes — only as optional proxies.</p>
-</div>
-</div>
-<div class="note data-clarify">
-<span class="k">Invention boundary</span>
-<p>The invention pathway is staged. Phase 0 can be built and studied without custom hardware. Future wearables do not “read emotion”; they provide body and neural reference signals inside a workflow where the participant keeps final interpretive authority.</p>
-</div>
-</div>
-</section>
+
 <section id="why">
 <div class="wrap">
 <p class="sec-eyebrow">Why this matters</p>
@@ -352,7 +317,7 @@
 <tr><td>Primary outcome</td><td>Within-person change in pre-probe prediction error across sessions.</td></tr>
 <tr><td>Secondary outcomes</td><td>State-naming stability, qualia granularity, interpretive-agency events, completion rate, discomfort / stop events.</td></tr>
 <tr><td>Signals</td><td>Self-report first; HRV/RMSSD, EDA/SCR, respiration, temperature, motion second; EEG/fNIRS optional and lab-dependent.</td></tr>
-<tr><td>Controls / ablations</td><td>Minimum: pause-only vs. full BCI-HRP protocol. Preferred: A) pause-only; B) sound + report; C) sound + prediction + report; D) sound + prediction + report + editable AI naming. Wearable / EEG / fNIRS extensions remain optional.</td></tr>
+<tr><td>Controls / ablations</td><td>Minimum: pause-only vs. full BCI-HRP protocol. Preferred: A) pause-only; B) sound + report; C) sound + prediction + report; D) sound + prediction + report + editable AI naming. Wearable / EEG / fNIRS extensions remain optional. Condition order should be counterbalanced where feasible to reduce order and fatigue effects.</td></tr>
 <tr><td>Analysis</td><td>Mixed-effects model, event-locked descriptive analysis, ablation comparison, missing-data report, artifact report, individual plots.</td></tr>
 </table>
 </div>
@@ -446,7 +411,7 @@
 </div>
 <div class="note">
 <span class="k">Decision rule</span>
-<p>Fixed before data collection. A self-calibration reading requires all three: (a) the primary within-person prediction-error change; (b) <b>transfer to unheard stimuli — a necessary condition</b>; and (c) convergence on at least two triangulation measures (qualia granularity, naming stability, action-tendency clarity, object/fittingness, agency revision). If transfer fails, or fewer than two triangulation measures converge, the result is reported as task learning, familiarity, or demand characteristics — not self-calibration.</p>
+<p>Fixed before data collection. A self-calibration reading requires all three: (a) the primary within-person prediction-error change; (b) <b>transfer to unheard stimuli — a necessary condition</b>; and (c) convergence on at least two triangulation measures (qualia granularity, naming stability, action-tendency clarity, object/fittingness, agency revision). If transfer fails, or fewer than two triangulation measures converge, the result is reported as task learning, familiarity, or demand characteristics — not self-calibration. For Phase 0, these rules guide interpretation and next-step decisions; they do not constitute powered efficacy claims.</p>
 </div>
 </div>
 </section>
@@ -503,6 +468,45 @@
 <div class="two">
 <div class="panel"><h3>What stays optional</h3><p style="margin:0; font-size:13.5px; color:var(--muted)">EEG/fNIRS, custom head-patch form factors, and full triadic hardware should remain optional until a protocol-first pilot shows enough value to justify the engineering complexity.</p></div>
 <div class="panel"><h3>What can already be done</h3><p style="margin:0; font-size:13.5px; color:var(--muted)">A fixed sound library, pre/post self-prediction scales, qualitative naming prompts, agency-event logging, and an exportable session schema are already enough to start Phase 0.</p></div>
+</div>
+</div>
+</section><section id="translation">
+<div class="wrap">
+<p class="sec-eyebrow">Long-range translational pathway</p>
+<h2>From protocol validation to staged research extension.</h2>
+<p class="sub">The current PI-facing study validates the protocol, not a finished product. The long-range system direction is a participant-owned interoceptive and affective-action calibration system: not a meditation app, not an emotion detector, and not a brain decoder.</p>
+<div class="claim">
+<p class="q">Meditation trains attention and regulation; BCI-HRP trains interoceptive prediction, bodily-affective awareness, and interpretive agency.</p>
+</div>
+<div class="grid">
+<div class="card">
+<span class="k">Phase 0: Software implementation</span>
+<h3>Session software + ordinary headphones</h3>
+<p>Runs the core protocol: sound probe, pre-prediction, post-report, editable AI naming, agency events, and exportable session data.</p>
+</div>
+<div class="card">
+<span class="k">Phase 1: Wearable proxy integration</span>
+<h3>Wristband-based body-reference prompts</h3>
+<p>HRV, EDA, skin temperature, and motion are treated as optional body-reference proxies, not as direct emotion labels.</p>
+</div>
+<div class="card">
+<span class="k">Phase 2: Headphone-based probe delivery</span>
+<h3>Headphone-based probe interface</h3>
+<p>Supports calibrated playback, voice or touch prediction/report, safe exit, and grounding mode. Sound remains a probe, not a treatment stimulus.</p>
+</div>
+<div class="card">
+<span class="k">Phase 3: Optional neuroimaging extension</span>
+<h3>Optional EEG / fNIRS extension for lab contexts</h3>
+<p>EEG / fNIRS can be used to study rapid auditory response, rhythm following, and slower hemodynamic state changes — only as optional proxies.</p>
+</div>
+</div>
+<div class="note data-clarify">
+<span class="k">Translation boundary</span>
+<p>The system pathway is staged. Phase 0 can be built and studied without custom hardware. Future wearables do not “read emotion”; they provide body and neural reference signals inside a workflow where the participant keeps final interpretive authority.</p>
+</div>
+<div class="note">
+<span class="k">IP / ownership boundary</span>
+<p>Implementation-specific collaboration, use of lab resources, human-subject data collection, and IP / ownership questions should be clarified before moving beyond an initial fit call or high-level protocol discussion.</p>
 </div>
 </div>
 </section>
@@ -566,7 +570,7 @@
 <div class="qa-list">
 <div class="qa"><h3>Is this a treatment or diagnostic study?</h3><p>No. BCI-HRP is a non-diagnostic, non-treatment research proposal. It does not claim clinical benefit, crisis detection, or state induction.</p></div>
 <div class="qa"><h3>Is BCI-HRP just a meditation app?</h3><p>No. Meditation often trains attention, calm, or regulation. BCI-HRP trains interoceptive prediction, bodily-affective awareness, and interpretive agency: participants predict, sense, name, revise, and own their state descriptions.</p></div>
-<div class="qa"><h3>Is this already a wearable product?</h3><p>No. The current study is a Phase 0 software protocol. The long-range invention pathway may include AI headphones, a wristband, and an optional head patch, but hardware is staged and not required for the first lab study.</p></div>
+<div class="qa"><h3>Is this already a wearable product?</h3><p>No. The current study is a Phase 0 software protocol. The long-range translational pathway may include AI headphones, a wristband, and an optional head patch, but hardware is staged and not required for the first lab study.</p></div>
 <div class="qa"><h3>Does Phase 0 require custom BCI hardware?</h3><p>No. Phase 0 is a software protocol: self-prediction, sound probe, post-report, editable naming, and agency-event logging. Custom BCI hardware is future-facing and not required for the first pilot.</p></div>
 <div class="qa"><h3>What is self-calibration?</h3><p>Self-calibration is operationalized as within-person change in prediction error between pre-probe predicted state vectors and post-probe reported state vectors, supported by secondary measures such as naming stability, qualia granularity, and agency events.</p></div>
 <div class="qa"><h3>Does lower prediction error prove self-calibration?</h3><p>No. Lower prediction error is only a candidate indicator. A self-calibration interpretation requires triangulation across qualia granularity, naming stability, action-tendency clarity, object/fittingness reports, agency events, transfer to novel stimuli, and suspicion checks.</p></div>
@@ -703,17 +707,19 @@
 </div>
 <div class="briefwrap">
 <button class="btn" id="copyBottom" type="button">Copy email brief</button>
-<pre id="brief">Subject: Fit call — Human Return Protocol / Phase 0 feasibility study
+<pre id="brief">Subject: Fit call: Phase 0 sound-probe self-calibration study (Penn GSE)
 
 Dear Professor [Name],
 
-I’m a master’s researcher at Penn GSE (Learning Sciences and Technologies, advised by Susan Yoon). I’m developing BCI-HRP // The Human Return Protocol as an independent, protocol-first research proposal.
+I’m a master’s student at Penn GSE working on a protocol-first study: can sound probes + self-prediction + editable AI naming improve within-person self-calibration beyond ordinary pause?
 
-This is not another brain decoder or emotion classifier. It is a participant-centered calibration protocol: sound probes are used to prompt self-prediction and phenomenological reporting; AI labels are editable hypotheses; and reject / rename / edit / delete actions are treated as agency data.
+Phase 0 would be small (N=5–12), software-only, non-clinical, and hardware-free, with a pre-specified analysis order and explicit falsification criteria. This is not another brain decoder or emotion classifier: AI labels are editable hypotheses, and reject / rename / edit / delete actions are treated as agency data.
 
-The core research question is whether the full protocol provides calibration value beyond pause-only and self-report-only baselines. Phase 0 would be software-only, non-clinical, non-diagnostic, and designed to surface failure modes such as task learning, stimulus familiarity, demand characteristics, and whether optional physiological/neural proxies add value.
+I would do the build and analysis. I’m looking for an IRB-holding lab to provide methodological guidance, safety review, and the authority to narrow, rename, or reject the construct.
 
-I’m seeking a 15-minute fit call to ask whether this could be narrowed into a Phase 0 HCI / personal informatics / music cognition feasibility study in your lab’s methodological frame. I would do the build and analysis, and I welcome the lab’s authority to narrow, rename, or reject the construct.
+Would you have 15 minutes to see whether this could fit as a Phase 0 HCI / personal informatics / music cognition feasibility study in your lab’s methodological frame?
+
+Implementation-specific details, lab-resource questions, and IP / ownership boundaries can be clarified after an initial fit call.
 
 Thank you,
 Mellow Wei
