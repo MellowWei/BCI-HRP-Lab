@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- BCI-HRP Lab index: PI-first v3.5; removes public email-template block and keeps concise first-ask contact section. -->
+<!-- BCI-HRP Lab index: PI-first v3.7; removes Phase 0 resource over-ask and downgrades Pause-QDR public data language to internal design observations. -->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -138,6 +138,7 @@
 <a href="#methods">Methods</a>
 <a href="#fit">Lab fit</a>
 <a href="#lab-gains">Lab gains</a>
+<a href="#staged-request">Staged request</a>
 <a href="#related">Related</a>
 <a href="#safety">Safety</a>
 <a href="#faq">FAQ</a>
@@ -154,7 +155,7 @@
 <p class="byline"><b>Wei Jueran (魏珏然) · Mellow</b> — M.S.Ed. in Learning Sciences and Technologies, University of Pennsylvania GSE</p>
 <p class="lede">A protocol-first, lab-facing research proposal testing whether sound probes, self-prediction, phenomenological reporting, and editable AI naming can support within-person self-calibration and affective-action calibration — with autonomic and neural signals as optional proxies, not as hidden truth.</p>
 <div aria-hidden="true" class="signal-line"></div>
-<p class="microstatus">Current scope: Phase −1 Pause-QDR baseline + Phase 0 Sound-QDR software protocol. Custom BCI hardware is future-facing, not required for the pilot.</p>
+<p class="microstatus">Current scope: Phase −1 internal pause-only design observations + Phase 0 Sound-QDR software protocol. Custom BCI hardware is future-facing, not required for the pilot.</p>
 <div class="chips">
 <span class="chip">No diagnosis</span>
 <span class="chip">No treatment</span>
@@ -320,7 +321,7 @@
 <table class="tbl wide">
 <tr><th>Item</th><th>Lab-facing version</th></tr>
 <tr><td>Study type</td><td>Within-subject feasibility pilot; repeated sessions; non-clinical participants; no treatment claim.</td></tr>
-<tr><td>Sample rationale</td><td>N = 5–12 supports usability, data-quality estimation, adverse-UX discovery, and variance estimates for a later powered study.</td></tr>
+<tr><td>Sample rationale</td><td>N = 5–12 is for Phase 0 feasibility only: usability, data-quality estimation, adverse-UX discovery, and variance estimates. If feasibility evidence supports scaling, a partner-lab-supported follow-up would require a larger sample through IRB and recruitment infrastructure.</td></tr>
 <tr><td>Primary outcome</td><td>Within-person change in pre-probe prediction error across sessions.</td></tr>
 <tr><td>Secondary outcomes</td><td>State-naming stability, qualia granularity, interpretive-agency events, completion rate, discomfort / stop events.</td></tr>
 <tr><td>Signals</td><td>Self-report first; HRV/RMSSD, EDA/SCR, respiration, temperature, motion second; EEG/fNIRS optional and lab-dependent.</td></tr>
@@ -348,6 +349,7 @@
 <p class="sec-eyebrow" style="margin-top:34px">Phase path</p>
 <div class="grid">
 <div class="card"><span class="k">Phase 0</span><h3>Software only</h3><p>Sound-QDR protocol: prediction, report, rename, and agency logs — no hardware.</p></div>
+<div class="card"><span class="k">Phase 0b</span><h3>Expanded sample follow-up</h3><p>If Phase 0 is feasible, test construct stability and effect estimates with a larger partner-lab-supported sample.</p></div>
 <div class="card"><span class="k">Phase 1</span><h3>Add wearable proxies</h3><p>Existing devices for HRV, EDA, respiration, motion, and temperature.</p></div>
 <div class="card"><span class="k">Phase 2</span><h3>Optional EEG / fNIRS</h3><p>A listening-state extension only when lab conditions and data quality justify it.</p></div>
 </div>
@@ -539,7 +541,7 @@
 <div class="wrap">
 <p class="sec-eyebrow">What a partner lab gains</p>
 <h2>A low-risk pilot, a reusable protocol, and a publishable question.</h2>
-<p class="sub">A partner lab is not being asked to validate a finished invention. The collaboration offers a low-risk Phase 0 research opportunity: software-only, non-clinical, explicit failure criteria, a pause-only baseline, and a participant-centered contribution to HCI, personal informatics, affective computing, or music cognition.</p>
+<p class="sub">A partner lab is not being asked to validate a finished invention or commit to a large study upfront. The collaboration begins with a low-risk Phase 0 research opportunity: software-only, non-clinical, explicit failure criteria, a pause-only baseline, and a participant-centered contribution to HCI, personal informatics, affective computing, or music cognition. If Phase 0 is feasible, the collaboration can stage toward a larger partner-lab-supported follow-up.</p>
 <div class="grid">
 <div class="card"><span class="k">Concrete pilot</span><h3>Low-cost Phase 0 study</h3><p>A small feasibility study that can be narrowed, renamed, or rejected before preregistration, with failure modes treated as useful findings.</p></div>
 <div class="card"><span class="k">Reusable materials</span><h3>Protocol + schema + stimulus framework</h3><p>Sound-QDR session logic, exportable data schema, stimulus metadata, agency-event logging, and construct-validity checks.</p></div>
@@ -549,7 +551,26 @@
 </div>
 <div class="note data-clarify">
 <span class="k">Exchange model</span>
-<p>The intended exchange is straightforward: I bring the candidate construct, prototype logic, sound design, implementation labor, analysis, and drafting; the lab brings methodological rigor, IRB pathway, recruitment access, safety review, and the authority to reshape the study.</p>
+<p>The intended Phase 0 exchange is deliberately light: I bring the candidate construct, prototype logic, sound design, implementation labor, scheduling/session-running labor, data handling, analysis, and drafting. A partner lab would bring methodological rigor, safety review, IRB pathway or faculty oversight if appropriate, and the authority to reshape the study. Lab recruitment infrastructure, physical space, equipment, or RA support would only be discussed for a later expanded follow-up if Phase 0 justifies scaling.</p>
+</div>
+</div>
+</section>
+
+
+<section id="staged-request">
+<div class="wrap">
+<p class="sec-eyebrow">Staged collaboration request</p>
+<h2>Small immediate ask; larger study only if Phase 0 justifies it.</h2>
+<p class="sub">The immediate request is intentionally small: a 15-minute fit call and, if appropriate, a Phase 0 feasibility study with N=5–12. Phase 0 is small by design because it tests whether the protocol is understandable, safe, data-generating, and worth scaling.</p>
+<div class="grid">
+<div class="card"><span class="k">Immediate step</span><h3>Fit call + Phase 0 feasibility</h3><p>Test whether the protocol belongs in the lab’s methodological frame. For Phase 0, I would handle scheduling, session running, data handling, analysis, and drafting under the appropriate IRB determination or approval.</p></div>
+<div class="card"><span class="k">Gate condition</span><h3>Only scale if the construct survives</h3><p>Expansion requires feasibility, acceptable safety, transfer beyond memorized stimuli, and convergence across at least two triangulation measures.</p></div>
+<div class="card"><span class="k">Expanded follow-up</span><h3>Partner-lab-supported larger sample</h3><p>If Phase 0 is promising, a Phase 0b follow-up could then discuss use of lab recruitment infrastructure, physical space, equipment, or study-running support by mutual agreement.</p></div>
+<div class="card"><span class="k">Later extensions</span><h3>Wearable or neural proxies remain optional</h3><p>Only after the software protocol shows value should HRV, EDA, EEG, fNIRS, or other proxies be added to test explanatory gain beyond reports.</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">Scope boundary</span>
+<p>In short: Phase 0 is intentionally small and does not ask the lab for physical space, equipment, or RA support. The reason to seek a partner lab is methodological and compliance-oriented: IRB pathway, safety review, construct validity, and a design that can scale only if the feasibility evidence justifies it.</p>
 </div>
 </div>
 </section>
@@ -604,7 +625,7 @@
 <div class="qa"><h3>What is Human Return?</h3><p>Human Return refers to keeping the participant's own interpretation central: AI summaries are editable, rejectable, and deletable; physiological and neural signals remain optional proxies rather than hidden truth.</p></div>
 <div class="qa"><h3>Does BCI-HRP aim to make participants feel positive emotion?</h3><p>No. The protocol does not aim to induce positive emotion. It tests whether participants can better identify how a felt state relates to bodily change, action tendency, object relation, and situation fit.</p></div>
 <div class="qa"><h3>What is affective-action calibration?</h3><p>Affective-action calibration means tracking whether a participant can better relate bodily feeling, felt quality, action tendency, emotional object, and fittingness across sessions. It is a supplement to prediction-error analysis, not a clinical outcome claim.</p></div>
-<div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is a Phase −1 pause-only baseline. It helps identify baseline effects, task demand, environmental factors, and qualitative coding categories before testing sound probes.</p></div>
+<div class="qa"><h3>What is Pause-QDR?</h3><p>Pause-QDR is now positioned as Phase −1 internal pause-only design observation: informal alpha feedback used to motivate a pause-only baseline. It is not presented as formal research data or efficacy evidence.</p></div>
 <div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency and affective-action calibration over endogenous experience: how people predict, name, revise, and own the meaning of their internal state descriptions.</p></div>
 <div class="qa"><h3>Is this already covered by affective BCI or neurofeedback?</h3><p>Partly adjacent, but not identical. BCI-HRP is close to affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is participant-owned calibration: sound as probe, self-prediction, phenomenological report, editable AI naming, and reject / rename / edit / delete as agency data.</p></div>
 <div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
@@ -613,30 +634,20 @@
 </section>
 <section id="pause-data">
 <div class="wrap">
-<p class="sec-eyebrow">Preliminary Pause-QDR dataset</p>
-<h2>Before sound probes, pause itself must be measured.</h2>
+<p class="sec-eyebrow">Phase −1 internal pause-only design observations</p>
+<h2>Before a formal study, pause-only effects still need to be controlled.</h2>
 <div class="body">
-<p>This exploratory N≈10 static-pause dataset is <b>not</b> evidence that the protocol is effective. It is Phase −1 feasibility material: it shows that participants can complete pre/post self-report, produce rich qualia notes, and reveal confounds such as task demand, environment, phone absence, and pause-only effects.</p>
-</div>
-<div class="note data-clarify">
-<span class="k">Data file clarification</span>
-<p><b><code>data_schema.csv</code> is not the static-pause dataset.</b> It is a future protocol data dictionary / field template. The actual preliminary pause-only summary is <a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_summary.csv" rel="noopener" target="_blank"><code>pause_qdr_preliminary_summary.csv</code></a>, with interpretation in <a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_dataset.md" rel="noopener" target="_blank"><code>pause_qdr_preliminary_dataset.md</code></a>.</p>
-</div>
-<div class="grid">
-<div class="card"><span class="k">Dataset type</span><h3>Pause-only baseline</h3><p>Roughly 10–12 minutes of pausing ordinary tasks, with pre/post mood, focus, and body-state ratings plus open notes.</p></div>
-<div class="card"><span class="k">Preliminary signal</span><h3>Body relaxation is strongest</h3><p>Descriptively, mean body-relaxation gain is 2.11 across N=9; mood and focus shifts are heterogeneous and should not be overclaimed.</p></div>
-<div class="card"><span class="k">Design implication</span><h3>Add a pause-only baseline</h3><p>Future Sound-QDR pilots should separate pause, context, task-demand, acoustic, and interpretive-agency effects.</p></div>
+<p>Before seeking a formal human-subjects study, I ran informal internal alpha observations to test the interaction flow and to identify whether a pause-only condition would be necessary. These observations are not presented as research data, not used as evidence of efficacy, and not part of any publishable dataset.</p>
+<p>The practical design lesson is simple: a formal Phase 0 Sound-QDR study should include a pause-only baseline, because ordinary pausing may itself change body awareness, affective report, and task engagement.</p>
 </div>
 <div class="note warn">
-<span class="k">Correct use</span>
-<p>Use this dataset to justify baseline design and qualitative coding — not to claim meditation efficacy, clinical benefit, sound-probe efficacy, or physiological validation. Raw notes are kept private; only anonymized derived summaries are linked below.</p>
+<span class="k">IRB boundary</span>
+<p>A formal Phase 0 study would require the appropriate IRB determination or approval before recruitment or data collection. Any prior internal observations should be treated only as design feedback for protocol refinement, not as preliminary human-subjects research evidence.</p>
 </div>
-<p class="sec-eyebrow" style="margin-top:26px">Pause-QDR files</p>
-<div class="files">
-<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_dataset.md" rel="noopener" target="_blank">pause_qdr_preliminary_dataset.md ↗</a><span>Descriptive interpretation and correct positioning.</span></div>
-<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_preliminary_summary.csv" rel="noopener" target="_blank">pause_qdr_preliminary_summary.csv ↗</a><span>Anonymized derived static-pause data summary.</span></div>
-<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_limitations.md" rel="noopener" target="_blank">pause_qdr_limitations.md ↗</a><span>What this dataset can and cannot support.</span></div>
-<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/pause_qdr_codebook.md" rel="noopener" target="_blank">pause_qdr_codebook.md ↗</a><span>Preliminary coding categories for attention, mechanism, body, affect, and agency.</span></div>
+<div class="grid">
+<div class="card"><span class="k">Use only as design rationale</span><h3>Why pause-only remains in the protocol</h3><p>The internal observations motivated a stricter design: the full protocol must show added structure beyond ordinary pause.</p></div>
+<div class="card"><span class="k">Not efficacy evidence</span><h3>No formal claims</h3><p>No clinical, therapeutic, physiological, or sound-probe efficacy claim is made from these observations.</p></div>
+<div class="card"><span class="k">Formal next step</span><h3>IRB-governed Phase 0</h3><p>Any publishable data collection should occur only after a partner-lab-appropriate IRB pathway is clarified.</p></div>
 </div>
 </div>
 </section>
@@ -647,10 +658,9 @@
 <p class="sub">Collaboration drafts — a protocol brief, data schema, stimulus documentation, safety flow, references, and an open-science scaffold. These are drafts, not IRB-approved documents.</p>
 <div class="note data-clarify">
 <span class="k">File map</span>
-<p><b>Two file types are separated here:</b> protocol templates such as <code>data_schema.csv</code> and <code>stimulus_sheet_template.csv</code>; and actual preliminary Pause-QDR materials such as <code>pause_qdr_preliminary_summary.csv</code>, <code>pause_qdr_preliminary_dataset.md</code>, <code>pause_qdr_limitations.md</code>, and <code>pause_qdr_codebook.md</code>.</p>
+<p><b>Public materials are limited to protocol templates and collaboration drafts.</b> Internal Phase −1 pause-only observations are not presented here as research data. Formal human-subjects data collection would require an appropriate IRB pathway before recruitment or data collection.</p>
 </div>
 <div class="files">
-<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/DATA_FILES_GUIDE.md" rel="noopener" target="_blank">DATA_FILES_GUIDE.md ↗</a><span>Which files are future templates and which are actual preliminary Pause-QDR data.</span></div>
 <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief.md" rel="noopener" target="_blank">protocol_brief.md ↗</a><span>English research question, hypotheses, outcomes, confounds, safety, and lab decisions.</span></div>
 <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief_zh.md" rel="noopener" target="_blank">protocol_brief_zh.md ↗</a><span>Chinese protocol brief — research question, hypotheses, outcome measures, confounds, safety boundary, and lab decision points.</span></div>
 <div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/data_schema.csv" rel="noopener" target="_blank">data_schema.csv ↗</a><span>Field template for future studies — not collected pause data.</span></div>
@@ -720,12 +730,12 @@
 <div class="panel">
 <h3>What a partner lab provides</h3>
 <ul class="plain">
-<li>IRB oversight, safety review, and ethical approval pathway.</li>
-<li>Participant recruitment access, such as subject pools, course credit, lab mailing lists, or approved recruitment platforms.</li>
-<li>Lab space and equipment for in-person sessions, if needed.</li>
 <li>Methodological guidance on study design, statistics, counterbalancing, and preregistration.</li>
-<li>Research-assistant or lab-manager support for session running and data handling, depending on lab capacity.</li>
-<li>Institutional context for publication, presentation, and future grant development.</li>
+<li>Safety review and guidance on the appropriate IRB pathway or determination.</li>
+<li>Faculty oversight if a formal study is pursued under the lab's institutional context.</li>
+<li>Feedback on whether the construct should be narrowed, renamed, split, or rejected.</li>
+<li>Guidance on compliant recruitment pathways, without requiring lab recruitment labor for the initial Phase 0 pilot.</li>
+<li>For Phase 0b or later: recruitment infrastructure, physical space, equipment, or RA support only if scaling is mutually agreed.</li>
 </ul>
 </div>
 </div>
@@ -733,7 +743,8 @@
 <h2>A 15-minute fit call.</h2>
 <div class="body">
 <p>I am looking for a 15-minute fit call to determine whether BCI-HRP should be narrowed into a Phase 0 HCI, personal informatics, music cognition, affective computing, or wearable-sensing feasibility study.</p>
-<p>This is not a funding ask or a hardware ask. The goal is to test fit, clarify methodological scope, and decide whether the construct should be narrowed, renamed, or rejected.</p>
+<p>This is not a funding ask, hardware ask, or request for lab space, equipment, RA support, or a large sample upfront. For the initial Phase 0 feasibility pilot, I would handle the implementation, scheduling, session running, data handling, analysis, and drafting, subject to the appropriate IRB determination or approval.</p>
+<p>The goal of the first call is to test fit, clarify methodological and compliance scope, and decide whether the construct should be narrowed, renamed, or rejected. If Phase 0 is feasible, a later Phase 0b conversation could address whether the lab can support an expanded sample.</p>
 </div>
 <div class="contact" style="margin-top:14px">
 <div class="row"><div class="k">Contact</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
